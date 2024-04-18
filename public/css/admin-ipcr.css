@@ -1,0 +1,105 @@
+.admin-ipcr-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 10px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+}
+
+.top-menu {
+    display: inline-flex;
+    padding: 10px;
+    width: 95%;
+}
+
+#search-ipcr {
+    padding: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 40%;
+    width: 30%;
+}
+
+#print {
+    padding: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 2%;
+}
+
+#export {
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.display-ipcr {
+    margin: 1%;
+    height: 80%;
+    width: 95%;
+    padding: 1%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: 1px solid black;
+    
+}
+
+td button{
+    background-color: #FFFFFF;
+    border: none;
+    margin-left: 1px;
+}
+
+td img{
+    vertical-align: center;
+    width: 25px;
+    height: 25px;
+}
+
+
+.view-file{
+    display: none;
+    position: fixed;
+    align-items: end;
+    background-color: #ffffff;
+    width: 80%;
+    height: 85%;
+}
+
+iframe {
+
+    width: 100%;
+    height: 93%;
+}
+#view-btns {
+    display: inline-flex;
+    padding: 5px;
+    width: 95%;
+    height: 7%;
+}
+
+#view-btns button {
+    width: 90px;
+    height: 30px;
+}

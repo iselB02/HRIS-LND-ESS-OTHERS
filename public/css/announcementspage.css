@@ -1,0 +1,208 @@
+.announcements-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 10px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.list-container {
+    display: flex;
+    height: 450px;
+    padding: 10px;
+}
+
+.heading {
+    position: fixed;
+    margin-bottom: 500px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#announcement {
+    display: flex;
+    background-color: #ffffff;
+    width: 650px;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 10px;
+}
+
+#announcement i {
+    font-size: 65px;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.content{
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+    padding-left: 10px;
+}
+
+.announcement-header {
+    font-size: 25px;
+    text-align: center;
+    margin: 1%;
+    font-weight: bold;
+    width: 750px;
+    padding: 10px;
+}
+
+.popup-modal {
+    display: flex;
+    position: fixed;
+    background-color: #FFFFFF;
+    padding: 50px;
+    padding-top: 15px;
+    width: 700px;
+    height: 500px;
+    border: 2px solid black;
+    border-radius: 20px;
+    display: none;
+    z-index: 100;
+}
+
+.announcement-container {
+    margin-top: 50px;
+}
+
+.announcement-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #AB830F;
+}
+
+.description {
+    margin-top: 20px;
+    text-align: justify;
+}
+
+#close {
+    position: fixed;
+    margin-left: 600px;
+    font-size: 25px;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 99; /* Ensure a higher z-index than the navbar */
+}
+
+@media screen and (max-width: 1100px) {
+    #announcement {
+        width: 600px;
+    }
+    #announcement i {
+        font-size: 60px;
+    }
+    
+    .content{
+        font-size: 15px;
+    }
+    
+    .announcement-header {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+  .popup-modal {
+    width: 600px;
+    height: 450px;
+  }
+  .announcement-title {
+    font-size: 25px;
+  }
+  .date1, .time1 {
+    font-size: 15px;
+  }
+  .description {
+    font-size: 15px;
+  }
+  #close {
+    margin-left: 500px;
+    font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    #announcement {
+        width: 570px;
+    }
+    #announcement i {
+        font-size: 55px;
+    }
+    
+    .content{
+        font-size: 12px;
+    }
+    
+    .announcement-header {
+        font-size: 1px;
+    }
+    .popup-modal {
+        width: 550px;
+        height: 450px;
+    }
+    .announcement-title {
+        font-size: 25px;
+    }
+    .date1, .time1 {
+        font-size: 15px;
+    }
+    .description {
+        font-size: 15px;
+    }
+    #close {
+        margin-left: 450px;
+        font-size: 23   px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #announcement {
+        width: 500px;
+    }
+    #announcement i {
+        font-size: 50px;
+    }
+    
+    .content{
+        font-size: 10px;
+    }
+    
+    .announcement-header {
+        font-size: 10px;
+    }
+
+    .popup-modal {
+        width: 500px;
+        height: 450px;
+      }
+      .announcement-title {
+        font-size: 23px;
+      }
+      .date1, .time1 {
+        font-size: 13px;
+      }
+      .description {
+        font-size: 13px;
+      }
+    #close {
+        margin-left: 400px;
+        font-size: 23px;
+    }
+}

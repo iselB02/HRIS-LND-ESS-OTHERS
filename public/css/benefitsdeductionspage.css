@@ -1,0 +1,47 @@
+.benefits_and_deduction_container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 10px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+  }
+
+  .benefits_and_deduction_container .benefits_and_deduction_sheet {
+    display: flex;
+    flex-grow: 1;
+    margin: 20px;
+    background: #D5A106;
+    border-radius: 8px;
+    width: 95%;
+    height: 100%;
+    padding: 20px; /* Adjust padding as needed /
+    box-sizing: border-box; / Include padding in the height calculation */
+    overflow-y: auto;
+  }
+
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+    background-color: #FFFFFF;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #f5f5f5;
+  }

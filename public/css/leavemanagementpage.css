@@ -1,0 +1,46 @@
+.leavemanagementpage_container{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 10px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #EFF0FF;
+    margin: 0;
+}
+
+.table-container {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 20px; /* Increased padding for larger content */
+    text-align: left;
+    font-size: 20px; /* Increased font size by 15px */
+}
+
+th {
+    background: #333;
+    color: #fff;
+}
+
+.blue-text {
+    color: blue;
+}
+
+.red-text {
+    color: red;
+}

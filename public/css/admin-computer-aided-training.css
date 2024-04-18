@@ -1,0 +1,51 @@
+/* Accordion container */
+.admin-computer-aided {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 10px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 30px; /* Increase padding */
+    margin: 10px 0; /* Add 10px margin to the top and bottom */
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 20px; /* Increase font size */
+    transition: 0.4s;
+    width: 100%; /* Make the button fill its container */
+}
+ 
+.nested {
+    background-color: #ddd;
+    margin-left: 20px; /* Indent nested accordions */
+}
+
+/* Add a background color to the button if it is clicked on (active) */
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+  
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: none; /* Set a maximum height */
+    width: 100%; /* Make the button fill its container */
+    
+}

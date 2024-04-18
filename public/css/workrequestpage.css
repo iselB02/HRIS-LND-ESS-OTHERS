@@ -1,0 +1,570 @@
+.workreq-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin: 10px;
+    flex-grow: 1;
+    background: #FFFFFF;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.banner {
+    display: flex;
+    width: 100%;
+    height: 40%;
+    align-content: center;
+    border-radius: 8px;
+    
+}
+.button-container {
+    display: flex;
+    width: 100%;
+    height: 60%;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}
+
+.col1, .col2 {
+    background-color: #FFFFFF;
+    width: 50%;
+    padding-top: 0.5%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}
+
+.col1 div, .col2 div {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 5%;
+    height: 45%;
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.col1 div h1, .col2 div h1 {
+    margin-top: 3%;
+    margin-left: 5%;
+    color: #AB830F;
+    font-weight: 600;
+}
+
+.col1 div img, .col2 div img {
+    margin-left: 5%;
+    width: 15%;
+}
+
+#banner_img {
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.banner_h1 {
+    position: absolute;
+    top: 150px; /* Adjust the vertical position as needed */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center both vertically and horizontally */
+    color: #ffffff;
+    font-size: 50px;
+    background-color: rgb(45, 52, 154, 0.5);
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+/*Leave From*/
+
+#leave-form {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 72%;
+    height: 85%;
+    background-color: #FFFFFF;
+    overflow-y: scroll; 
+    z-index: 2;
+    display: none;
+} 
+#leave-form .form-heading    {
+    padding: 2%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background-color: rgb(45, 52, 154);
+    width: 100%;
+}
+
+#leave-form form {
+    background-color:rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    padding: 3%;
+}
+
+.Lname, .Fname, .Mname, .salary, .startDate, .endDate, .filing-date, .position1,
+#tarvelDestination, #startDateTrav, #endDateTrav, #from, #to{
+    margin-left: 6%;
+    width: 205px;
+    border: none;
+    border-bottom:solid black 2px ;
+}
+
+
+#leave-form form input, #overtime-form form input, #travelOrder-form form input, #officialBusiness-form form input{
+    padding: 1px;
+}
+
+.officedepartment, .position{
+    text-align: center;
+    width: 205px;
+    border: none;
+    border-bottom:solid black 2px ;
+}
+
+.officedepartmentlabel{
+    margin-left: 2%;
+}
+
+.Lnamelabel{
+    text-align: center;
+    margin-left: 15%;
+}
+
+.Fnamelabel{
+    text-align: center;
+    margin-left: 17%;
+}
+
+.Mnamelabel{
+    text-align: center;
+    margin-left: 17%;
+}
+
+.sdatelabel {
+    margin-left: 18%;
+}
+
+#positionlabel1 {
+    margin-left: 17%;
+}
+
+.positionlabel {
+    margin-left: 6%;
+}
+
+.edatelabel {
+    margin-left: 18%;
+}
+
+#otherslabel {
+    margin-top: 2%;
+    font-weight: 500;
+}
+
+
+#filing-date{
+    width: 20%;
+}
+
+#datelabel{
+    margin-left: 4%;
+}
+
+#positionlabel {
+    margin-left: 10%;
+}
+
+#salarylabel {
+    margin-left: 20%;
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    background-color: black;
+}
+
+.form-heading2 {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.details-container {
+    margin-top: 2%;
+    background-color: #ffffff;
+    height: 75%;
+    width: 100%;
+}
+
+.type-leave h2 {
+    font-weight: 500;
+    color: #AB830F;
+}
+
+
+.type-leave label{
+    display: block;
+}
+
+.personalinfo input, .otForm input{ 
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+#others {
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+.details-leave {
+    margin-top: 3%;
+}
+
+.details-leave h2 {
+    font-weight: 500;
+    color: #AB830F;
+    margin-top: 1%;
+}
+
+.details-leave h3 {
+    font-weight: 500;
+    margin-top: 1%;
+}
+
+.inputs {
+    border: none;
+    border-bottom: 2px solid black;
+    margin-left: 1%;
+}
+
+.divider1 {
+    width: 100%;
+    height: 2px;
+    margin-top: 40%;
+    background-color: black;
+}
+
+.NumLeave {
+    margin-top: 2%;
+}
+
+.NumLeave #from, .NumLeave #to {
+    margin-top: 1%;
+}
+
+.divider2 {
+    width: 100%;
+    height: 2px;
+    margin-top: 3%;
+    background-color: black;
+}
+
+.commutation {
+    margin-top: 2%;
+}
+
+.commutation label{
+    padding: 2%;
+}
+
+.submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    column-gap: 20px;
+
+}
+
+.submit button{
+    margin-top: 3%;
+    margin-bottom: 2%;
+    width: 20%;
+    background-color: rgb(45, 52, 154);
+    padding: 3px;
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+
+
+/*Overtime Form*/
+
+#overtime-form {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    width: 72%;
+    height: 85%;
+    background-color: #FFFFFF;
+    display: none;
+    z-index: 2;
+}
+
+#overtime-form .form-heading{
+    padding: 2%;
+    padding-top: 2%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background-color: rgb(45, 52, 154);
+    width: 100%;
+}
+
+#overtime-form form {
+    padding: 2.5%;
+}
+
+.reason-container {
+    margin-top: 3%;
+}
+
+.reasons {
+    width: 100%;
+    height: 200px;
+    border-width: 2px;
+}
+
+
+/*Travel Order*/
+
+#travelOrder-form {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    width: 72%;
+    height: 85%;
+    background-color: #FFFFFF;
+    display: none;
+    z-index: 2;
+
+}
+
+#travelOrder-form .form-heading{
+    padding: 2%;
+    padding-top: 2%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background-color: rgb(45, 52, 154);
+    width: 100%;
+}
+
+#travelOrder-form form {
+    padding: 2.5%;
+}
+
+#travelDestinationlabel {
+    margin-left: 15.5%;
+}
+
+#startDateTravlabel {
+    margin-left: 11%;
+}
+
+#endDateTravlabel {
+    margin-left: 12.5%;
+}
+
+#startDateTrav, #endDateTrav {
+    width: 19.5%;
+}
+
+/*Official Order*/
+
+#officialBusiness-form {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    width: 72%;
+    height: 85%;
+    background-color: #FFFFFF;
+    display: none;
+    z-index: 2;
+}
+
+#officialBusiness-form .form-heading{
+    padding: 2%;
+    padding-top: 2%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background-color: rgb(45, 52, 154);
+    width: 100%;
+}
+
+#officialBusiness-form form {
+    padding: 2.5%;
+}
+
+#departure{
+    margin-left: 6%;
+}
+
+#fromlabel {
+    margin-left: 27%;
+}
+
+#timelabel {
+    margin-left: 28%;
+}
+
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 1; /* Ensure a higher z-index than the navbar */
+}
+
+textarea {
+    resize: none;
+}
+
+@media screen and (max-width: 1100px) {
+    .col1 div, .col2 div {
+        font-size: 26px;
+    }
+    .banner_h1 {
+        font-size: 47px;
+    }
+
+    #leave-form {
+        width: 65%;
+        height: 85%;
+    } 
+
+    #leave-form .form-heading {
+        margin-top: 7.5%;
+        font-size: 20px;
+    }
+
+    #Lname, #Fname, #Mname, #position, #salary, #startDate, #endDate, 
+    #tarvelDestination, #startDateTrav, #endDateTrav, #from, #to{
+    margin-left: 6%;
+    width: 20%;
+    }
+    #officedepartment1{
+        width: 20%;
+    }
+    
+    .personalinfo label {
+        font-size: 13px;
+        margin-left: 1%;
+    }
+    
+    #Lnamelabel{
+        margin-left: 11%;
+    }
+    
+    #Fnamelabel{
+        margin-left: 16%;
+    }
+    
+    #Mnamelabel{
+        margin-left: 14%;
+    }
+
+    .specialPrivilegeLeave label {
+        display: block;
+    }
+
+    .sickLeave label {
+        display: block;
+    }
+
+    .studyLeave label {
+        display: block;
+    }
+
+    .otherPurpose label {
+        display: block;
+    }
+
+    .divider1 {
+        margin-top: 60%;
+    }
+
+    .NumLeave label {
+        display: block;
+    }
+
+    .commutation label {
+        display: block;
+        margin-top: 1%;
+        padding: 0;
+    }
+
+    .type-leave label {
+        font-size: 14px;
+    }
+    
+}
+
+@media screen and (max-width: 1000px) {
+    .col1 div, .col2 div {
+        font-size: 24px;
+    }
+    .banner_h1 {
+        font-size: 44px;
+    }
+    #Mnamelabel{
+        margin-left: 11%;
+    }
+
+    .type-leave label {
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width: 950px) {
+    .col1 div, .col2 div {
+        font-size: 22px;
+    }
+    .banner_h1 {
+        font-size: 41px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .col1 div, .col2 div {
+        font-size: 20px;
+    }
+    .banner_h1 {
+        font-size: 38px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .col1 div, .col2 div {
+        font-size: 18px;
+    }
+    .banner_h1 {
+        font-size: 35px;
+    }
+}
+
