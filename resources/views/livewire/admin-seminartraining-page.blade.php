@@ -135,7 +135,7 @@
             </div>
             <div id="training-body">
                 <label for="description-input">Description</label>
-                <input type="text" name="description" id="description-input">
+                <textarea name="description" id="description" cols="90" rows="5"></textarea>
                 <label for="participants-input">Participants</label>
                 <input type="text" name="participants" id="participants-input">
             </div>

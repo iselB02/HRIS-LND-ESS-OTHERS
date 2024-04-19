@@ -202,3 +202,7 @@ th, td {
 #add-buttons {
     margin-left: 80%;
 }
+
+textarea {
+    resize: none;
+}
