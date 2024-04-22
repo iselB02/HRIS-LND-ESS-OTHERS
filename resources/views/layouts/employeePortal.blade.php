@@ -101,12 +101,12 @@
                       <span>Individual Performance</span>
                     </a>
                   </li>
-                  <li class="item">
+                  {{-- <li class="item">
                     <a href="{{ route('opcr.index') }}" class="link flex">
                       <i class='bx bxs-business'></i>
                       <span>Office Performance</span>
                     </a>
-                  </li>
+                  </li> --}}
                   <li class="item">
                     <a href="{{ route('permittostudy.index') }}" class="link flex">
                       <i class='bx bxs-book-reader'></i>
