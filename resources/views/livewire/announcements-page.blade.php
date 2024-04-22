@@ -26,9 +26,9 @@
                 <div id="announcement">
                     <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
                     <div class="date-time">
-                        <h1 class="announcement-title">Digital Marketing Mastery Seminar</h1>
-                        <span class="date">October 01, 2023</span>
-                        <span class="time">8:00AM</span>
+                        <h1 class="announcement-title">Communication Skill Training</h1>
+                        <span class="date">September 20, 2023</span>
+                        <span class="time">10:00AM</span>
                     </div>
                 </div>
             </li>

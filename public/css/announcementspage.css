@@ -11,10 +11,28 @@
 }
 
 .list-container {
-    display: flex;
+    display:block;
     height: 450px;
+    width: 100%;
     padding: 10px;
+    overflow-y: scroll;
 }
+
+.list-container ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.list-container ul li {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+  }
+
+.list-container::-webkit-scrollbar {
+    width: 0; /* Hide the scrollbar */
+  }
 
 .heading {
     position: fixed;
@@ -68,6 +86,8 @@
     display: none;
     z-index: 100;
 }
+
+
 
 .announcement-container {
     margin-top: 50px;
