@@ -21,11 +21,15 @@
         <div class="main_about">
            <p>Hello! I'm Juan C. Dela Cruz, a marketing professional hailing from Chicago. 
             My journey through Northwestern University has shaped my professional identity,
-             leading me to accumulate over 10 years of experience in digital marketing. Currently, 
-             I'm engaged as a Digital Marketing Manager at XYZ Agency, where I specialize in strategic 
-             campaign planning, data analytics, and content marketing. Beyond work, I indulge in photography, 
-             hiking, and experimenting with new recipes, emphasizing a well-rounded lifestyle. Guided by innovation, collaboration, and a commitment to excellence, I've achieved milestones such as launching award-winning marketing campaigns, securing a 20% increase in client engagement, and earning recognition as a top-performing team member. Looking forward, I aspire to lead cross-functional teams, 
-            drive innovative marketing strategies, and contribute to the evolving landscape of digital marketing. Connect with me on my LinkedIn profile or explore my journey further at johnsmith.com. I'm always open to connecting, sharing ideas, and exploring potential collaborations!</p>
+            leading me to accumulate over 10 years of experience in digital marketing. Currently, 
+            I'm engaged as a Digital Marketing Manager at XYZ Agency, where I specialize in strategic 
+            campaign planning, data analytics, and content marketing. Beyond work, I indulge in photography, 
+            hiking, and experimenting with new recipes, emphasizing a well-rounded lifestyle. Guided by innovation, 
+            collaboration, and a commitment to excellence, I've achieved milestones such as launching award-winning
+            marketing campaigns, securing a 20% increase in client engagement, and earning recognition as a top-performing 
+            team member. Looking forward, I aspire to lead cross-functional teams, drive innovative marketing strategies,
+             and contribute to the evolving landscape of digital marketing. Connect with me on my LinkedIn profile or explore 
+             my journey further at johnsmith.com. I'm always open to connecting, sharing ideas, and exploring potential collaborations!</p>
         </div>
         <div class="main_seminars_tag">
             <table>

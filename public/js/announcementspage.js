@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     closeButton.addEventListener('click', closeModal);
 
-    // Add logic to open the modal when an announcement is clicked
-    var announcementHeader = document.getElementById('announcement');
-    announcementHeader.addEventListener('click', openModal);
+      // Add logic to open the modal when an announcement is clicked
+      var announcements = document.querySelectorAll('.announcement'); // Selects all announcement elements
+      announcements.forEach(function(announcement) {
+          announcement.addEventListener('click', openModal);
+      });
 });

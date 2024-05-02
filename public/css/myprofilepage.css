@@ -95,6 +95,15 @@
     padding: 1%;
 }
 
+.my_profile_main .main_about p {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.my_profile_main .main_about::-webkit-scrollbar {
+    width: 0; /* Hide the scrollbar */
+  }
+
 
 
 
@@ -185,6 +194,10 @@
     word-spacing: 10px;
     overflow-y: scroll;
 }
+
+.main_seminars_tag::-webkit-scrollbar {
+    width: 0; /* Hide the scrollbar */
+  }
 
 .main_seminars_tag td {
     border-left: solid black 2px;

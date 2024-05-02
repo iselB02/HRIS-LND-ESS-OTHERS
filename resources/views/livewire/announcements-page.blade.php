@@ -3,7 +3,7 @@
     <div class="list-container">
         <ul>
             <li class="announcement-list">
-                <div id="announcement">
+                <div class="announcement">
                     <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
                     <div class="date-time">
                         <h1 class="announcement-title">Leadership Seminar</h1>
@@ -13,7 +13,7 @@
                 </div>
             </li>
             <li class="announcement-list">
-                <div id="announcement">
+                <div class="announcement">
                     <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
                     <div class="date-time">
                         <h1 class="announcement-title">Gender Sensitivity Seminar</h1>
@@ -23,7 +23,7 @@
                 </div>
             </li>
             <li class="announcement-list">
-                <div id="announcement">
+                <div class="announcement">
                     <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
                     <div class="date-time">
                         <h1 class="announcement-title">Communication Skill Training</h1>
@@ -33,7 +33,7 @@
                 </div>
             </li>
             <li class="announcement-list">
-                <div id="announcement">
+                <div class="announcement">
                     <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
                     <div class="date-time">
                         <h1 class="announcement-title">Unlocking Creativity Workshop</h1>
@@ -43,11 +43,11 @@
                 </div>
             </li>
             <li class="announcement-list">
-                <div id="announcement">
+                <div class="announcement">
                     <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
                     <div class="date-time">
                         <h1 class="announcement-title">Data Science Bootcamp</h1>
-                        <span class="date">June 5-9, 2023</span>
+                        <span class="date">June 9, 2023</span>
                         <span class="time">5:00PM</span>
                     </div>
                 </div>
