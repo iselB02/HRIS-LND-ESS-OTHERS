@@ -125,6 +125,13 @@
                       <span>Seminars and Training</span>
                     </a>
                   </li>
+                  <li class="item">
+                    <a href="{{ route('computeraided.index') }}" class="link flex">
+                      <i class='bx bxs-chalkboard' ></i>
+                      <span>Computer Aided</span>
+                    </a>
+                  </li>
+                  
                   {{-- <li class="item">
                     <a href="#" class="link flex">
                       <i class='bx bxs-spreadsheet'></i>

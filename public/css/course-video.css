@@ -1,0 +1,155 @@
+.course-video-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 10px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    height: 100%;
+    padding: 10px;
+}
+
+
+
+.main-content {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 15px;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+.navigation {
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.media-content {
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    width: 70%;
+    padding: 10px;
+    overflow-y: scroll;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.media-content::-webkit-scrollbar {
+    width: 0; /* Hide the scrollbar */
+}
+
+.top-content {
+    height: 70%;
+    width: 100%;
+}
+
+.media-player {
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+}
+
+.note-section {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+}
+
+.lower-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    height: 10%;
+} 
+
+.buttons {
+    display: inline-flex;
+    gap: 80%;
+    padding: 10px;
+}
+
+#next {
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#prev {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+textarea {
+    resize: none;
+}
+
+#back {
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.chapters-nav {
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    height: 85%;
+    overflow-y: scroll;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chapters-nav::-webkit-scrollbar {
+    width: 0; /* Hide the scrollbar */
+}
+
+#chapters {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+.chapter {
+    display: flex;
+    padding-right: 30px; 
+    gap: 5px;
+    position: relative;
+    align-items: center;
+    padding: 5px;
+    font-size: 25px;
+    border-radius: 5px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    width: 25px;
+}
+
+#progress {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}

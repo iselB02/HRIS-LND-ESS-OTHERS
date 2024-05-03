@@ -1,0 +1,139 @@
+.course-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 10px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.course-container::-webkit-scrollbar {
+    width: 0; /* Hide the scrollbar */
+  }
+
+.main-container {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.top-menu {
+    display: inline-flex;
+    padding: 10px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+#back {
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 2%;
+}
+
+#edit {
+    padding: 5px;
+    padding-left: 18px;
+    padding-right: 18px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 78%;
+}
+
+#save {
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 2%;
+}
+
+.course-preview {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    height: 50%;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.media-preview {
+    height: 100%;
+    width: 50%;
+    background-color: grey;
+}
+
+.course-info {
+    width: 50%;
+    margin-left: 10px;
+}
+
+.course-info p {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.chapters {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 55px;
+    width: 100%;
+    height: 60%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.chapter {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    height: 100%;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.media-chapter {
+    width: 100%;
+    height: 65%;
+    background-color: grey;
+}
+
+.add-chapter {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 15%;
+    width: 100%;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+#add-chapter {
+    padding: 5px;
+    padding-left: 18px;
+    padding-right: 18px;
+    font-size: 15px;
+    font-weight: 500;
+}

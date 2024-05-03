@@ -13,12 +13,16 @@ use App\Livewire\PermittoStudyPage;
 use App\Livewire\ScholarshipPage;
 use App\Livewire\SeminarTrainingPage;
 use App\Livewire\WorkRequestPage;
+use App\Livewire\ComputerAided;
+use App\Livewire\EmployeeCourses;
+use App\Livewire\CourseVideo;
 use App\Livewire\AdminView;
 use App\Livewire\AdminIPCRPage;
 use App\Livewire\AdminPermittoStudyPage;
 use App\Livewire\AdminScholarshipPage;
 use App\Livewire\AdminSeminartrainingPage;
 use App\Livewire\AdminComputerAidedTraining;
+use App\Livewire\AdminCourses;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,10 +59,14 @@ Route::middleware([])->group(function () {
     Route::get('/emp_permit_to_study', PermittoStudyPage::class)->name('permittostudy.index');
     Route::get('/emp_scholarship', ScholarshipPage::class)->name('scholarship.index');
     Route::get('/emp_seminars_training', SeminarTrainingPage::class)->name('seminartraining.index');
+    Route::get('/emp_computer_aided_training', ComputerAided::class)->name('computeraided.index');
+    Route::get('/emp_courses', EmployeeCourses::class)->name('employeecourses.index');
+    Route::get('/emp_course-video', CourseVideo::class)->name('coursevideo.index');
     Route::get('/admin_myprofile', AdminView::class)->name('adminView.index');
     Route::get('/admin_ipcr', AdminIPCRPage::class)->name('adminIPCR.index');
     Route::get('/admin_permittostudy', AdminPermittoStudyPage::class)->name('adminPermittoStudy.index');
     Route::get('/admin_scholarship', AdminScholarshipPage::class)->name('adminScholarship.index');
     Route::get('/admin_seminarsandtraining', AdminSeminartrainingPage::class)->name('adminSeminarsandTraining.index');
     Route::get('/admin_computeraidedtraining', AdminComputerAidedTraining::class)->name('adminComputerAidedTraining.index');
+    Route::get('/admin_courses', AdminCourses::class)->name('adminCourses.index');
 });

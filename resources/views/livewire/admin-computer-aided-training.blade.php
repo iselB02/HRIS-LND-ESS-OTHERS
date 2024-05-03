@@ -1,56 +1,53 @@
 <div class="admin-computer-aided">
-    <button class="accordion">1. Lorem ipsum dolor</button>
-    <div class="panel">
-        <button class="accordion nested">1.1 Lorem ipsum dolor</button>
-        <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <button class="accordion nested">1.2 Lorem ipsum dolor</button>
-        <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <button class="accordion nested">1.3 Lorem ipsum dolor</button>
-        <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <button class="accordion nested">1.4 Lorem ipsum dolor</button>
-        <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-    </div> <!-- This closing tag was missing -->
-    <button class="accordion">2. Lorem ipsum dolor</button>
-    <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="top-button">
+        <button id="myBtn">Open Modal</button>
     </div>
-
-    <button class="accordion">3. Lorem ipsum dolor</button>
-    <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="training-content">
+      <div class="module">
+          <div class="media">Sample Picture/Video</div>
+          <div class="title">Course Title</div>
+          <div class="videos">10 Videos</div>
+          <a href="{{ route('adminCourses.index') }}" class="enter-btn">
+          <button>Enter</button>
+          </a>
+        </div>
     </div>
-
-    <button class="accordion">4. Lorem ipsum dolor</button>
-    <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+    
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="trainingForm">
+          <label for="title">Training Title:</label>
+          <input type="text" id="title" name="title"><br><br>
+    
+          <div class="banner">
+            <label for="imageUpload">Add Picture:</label>
+            <input type="file" id="imageUpload" name="imageUpload" accept="image/*" onchange="displayImage(this)"><br><br>
+            <img id="displayedImage" style="display:none; max-width:100%; height:auto;">
+            <button type="button" onclick="removeImage()">Remove Image</button>
+          </div>
+    
+          <label for="start-date">Start Date:</label>
+          <input type="date" id="start-date" name="start-date"><br><br>
+    
+          <label for="end-date">End Date:</label>
+          <input type="date" id="end-date" name="end-date"><br><br>
+    
+          <label for="description">Description:</label>
+          <textarea id="description" name="description"></textarea><br><br>
+    
+          <label for="participants">Participants:</label>
+          <input type="number" id="participants" name="participants"><br><br>
+    
+          <button type="button" onclick="submitForm()">Add</button>
+          <button type="button" onclick="closeModal()">Cancel</button>
+        </form>
+      </div>
+    
+</div>
 </div>
 
 @push('styles')

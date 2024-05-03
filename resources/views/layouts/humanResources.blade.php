@@ -66,7 +66,7 @@
                   <li class="item">
                     <a href="{{ route('adminComputerAidedTraining.index') }}" class="link flex">
                       <i class='bx bxs-spreadsheet'></i>
-                      <span>Computer Aided Training</span>
+                      <span>Computer Aided</span>
                     </a>
                   </li>
                 </ul>

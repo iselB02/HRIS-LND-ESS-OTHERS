@@ -10,42 +10,224 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     flex-direction: column;
-
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 30px; /* Increase padding */
-    margin: 10px 0; /* Add 10px margin to the top and bottom */
-    border: none;
-    text-align: center;
-    outline: none;
-    font-size: 20px; /* Increase font size */
-    transition: 0.4s;
-    width: 100%; /* Make the button fill its container */
-}
- 
-.nested {
-    background-color: #ddd;
-    margin-left: 20px; /* Indent nested accordions */
-}
-
-/* Add a background color to the button if it is clicked on (active) */
-.active, .accordion:hover {
-    background-color: #ccc;
-}
   
-/* Style the accordion panel. Note: hidden by default */
-.panel {
-    padding: 0 18px;
-    background-color: white;
-    display: none;
-    overflow: hidden;
     overflow-y: auto; /* Enable vertical scrolling */
-    max-height: none; /* Set a maximum height */
-    width: 100%; /* Make the button fill its container */
-    
-}
+  }
+  
+  .top-button{
+    background-color: blue;
+    height: 10%;
+    width: 100%;
+    padding-left: 85%;  
+    padding-top:10px;
+  }
+  
+  
+  .enter-course-container {
+    display: none; /* Hide the elements by default */
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 10px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px;
+  }
+  
+  
+  
+  .training-content{
+    background-color: red;
+    height: 90%;
+    width: 100%
+  }
+  
+  .module {
+    background-color: #FFFFFF;
+    border: 1px solid #ccc;
+    margin: 10px;
+    border-margin: 10px;
+    width: 30%;
+    height: 45%;
+    text-align: center;
+    box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.1); /* This adds a shadow to the module */
+    outline: 1px solid #000;
+  }
+  .media {
+    background-color: #eee;
+    margin: 5px;
+    height: 50%;
+  }
+  .title {
+    font-size: 20px;
+    padding: 5px 0;
+  }
+  .videos {
+    font-size: 16px;
+    color: #666;
+  }
+  .enter-btn {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  
+  
+  #myBtn {
+    background-color: #FFFFFF;
+    border: 2px;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Increased width for better layout */
+    border-radius: 8px;
+  }
+  
+  .banner {
+    background-color: #f2f2f2; /* Light grey background */
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Add this to limit the size of the description box */
+  textarea#description {
+    max-width: 100%; /* Prevents the box from expanding beyond the modal width */
+    max-height: 150px; /* Sets a maximum height for the box */
+    overflow: auto; /* Adds a scrollbar if the content exceeds the max height */
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  
+  
+  
+  .show {
+    display: flex !important;
+  }
+  
+  .hide {
+    display: none !important;
+  }
+  
+  
+  
+  
+  .course-preview{
+    display:none;
+      gap: 50px;
+  }
+  
+  .preview-media {
+  flex: 6;
+  background-color: #e0e0e0; /* A light gray color to represent the placeholder area */
+  width: 100%; /* Full width of the container */
+  height: 200px; /* Arbitrary height, adjust as needed */
+  margin-bottom: 15px; /* Space below the preview area */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px; /* Optional: if you want rounded corners */
+  }
+  .course-info{
+  flex: 4;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  }
+  
+  .preview-media::before {
+  content: 'Preview Picture/Video'; /* Placeholder text */
+  text-align: center;
+  color: #a0a0a0; /* A darker gray for the placeholder text */
+  font-style: italic;
+  }
+  
+  
+  
+  .course-preview,
+  .chapter {
+      background-color: #fff;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .course-info h1,
+  .video-info p {
+      margin: 0;
+      color: #333;
+  }
+  
+  button {
+      padding: 10px 20px;
+      background-color: #5cb85c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  
+  
+  
+  
+  button:hover {
+      opacity: 0.8;
+  }
+  
+  .buttons{
+    display: flex;
+      justify-content: space-between;
+      
+  }
+  
+  
+  
+  /* Add additional styles as needed */
