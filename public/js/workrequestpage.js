@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var cancel2 = document.getElementById('cancel2');
     var cancel3 = document.getElementById('cancel3');
     var cancel4 = document.getElementById('cancel4');
+    var others = document.getElementById('others');
+    var otherslabel = document.getElementById('otherslabel');
     var overlay  = document.querySelector('.modal-overlay');
 
     function leaveOpen() {
@@ -49,6 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.style.display = 'none';
     }
 
+    function othersOpen() {
+        others.style.display = 'block';
+        otherslabel.style.display = 'block';
+    }
 
 
     cancel1.addEventListener('click', closeForm1);
@@ -65,4 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
     travelOrderRequest.addEventListener('click', tOrderOpen);
     var officialBusinessRequest = document.getElementById('officialBusiness');
     officialBusinessRequest.addEventListener('click', ofBusinessOpen);
+    var otherShow = document.getElementById('others_btn');
+    otherShow.addEventListener('click', othersOpen);
 });
