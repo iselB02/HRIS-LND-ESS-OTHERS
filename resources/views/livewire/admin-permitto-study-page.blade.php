@@ -17,6 +17,7 @@
                  <th>Date</th>
                  <th>Type</th>
              </tr>
+             
              <tr>
                  <td>Juan Dela Cruz</td>
                  <td>Office of the Registrar</td>
