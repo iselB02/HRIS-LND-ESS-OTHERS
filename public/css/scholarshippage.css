@@ -23,11 +23,15 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #FFFFFF;
-    width: 70%;
+    width: 75%;
     height: 85%;
     z-index: 100;
     display: none;
-    
+    overflow-y: scroll;   
+}
+
+#scholarship-form-container::-webkit-scrollbar{
+    display: none;
 }
 
 #scholarship-form-container .form-heading    {

@@ -14,10 +14,29 @@
              <tr>
                  <th>Name</th>
                  <th>Office</th>
+                 <th>IPCR Ratings</th>
                  <th>Date</th>
                  <th>Type</th>
              </tr>
+             @foreach ($ipcrs as $ipcr)
              <tr>
+                <td>{{ $ipcr->name }}</td>
+                <td>{{ $ipcr->officedepartment }}</td>
+                <td>{{ $ipcr->average }}</td>
+                <td>{{ $ipcr->published_date }}</td>
+                <td>
+                    <button id="download">
+                        <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
+                    </button>
+                    <button id="delete">
+                        <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                    </button>
+                    <button class="view">
+                       <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                   </button>
+                </td>
+             </tr>
+             {{-- <tr>
                  <td>Juan Dela Cruz</td>
                  <td>Office of the Registrar</td>
                  <td>March 10, 2024</td>
@@ -82,13 +101,14 @@
                  </td>
              </tr>
          </table>
-    </div>
+    </div> --}}
         <div class="view-file">
         <div id="view-btns">
             <button id="close">Close</button>
         </div>
-        <iframe src="{{  asset('documents/ipcrFile.pdf') }}" frameborder="0"></iframe>
+        <iframe  src="/display-pdf/{{ $ipcr->id }}" type="application/pdf" width="100%" height="600px" frameborder="0"></iframe>
     </div>
+    @endforeach
  </div>
  
  

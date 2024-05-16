@@ -13,6 +13,7 @@
 
 .ipcr-banner {
     display: flex;
+    margin-top: 15%;
     width: 100%;
     height: 300px;
     align-content: center;
@@ -21,7 +22,7 @@
     
 }
 
-.ipcr-main {
+form .ipcr-main {
     background-color: #FFFFFF;
     width: 100%;
     height: 65%;
@@ -128,29 +129,32 @@
     color: #AB830F;
 }
 
-#ipcr-col3 table{
-    margin: 5%;
+#ipcr-col3 #office{
+    margin-top: 10px;
+    margin-left: 5% ;
 }
 
-#ipcr-col3 table input{
-    margin: 5%;
+#ipcr-col3 #office select{
+    width: 320px;
 }
-
-#ipcr-col3 tr input{
-    font-size: 12px;
-    width: 60%;
-} 
 
 #ipcr-col3 .average {
-    margin-left: 25% ;
+    margin-top: 5px;
+    margin-left: 10% ;
 }
 
-#ipcr-col3 .average input {
+#ipcr-col3 .average input { 
+    margin-left: 10px ;
     width: 30%;
 }
 
+#ipcr-col3 .name{
+    margin-left: 10%;
+    margin-top: 5px;
+}
+
 #ipcr-col3 button {
-    margin-left: 30%;
+    margin-left: 25%;
     margin-top: 5%;
     background-color: rgb(40, 52, 214);
     font-size: 20px;

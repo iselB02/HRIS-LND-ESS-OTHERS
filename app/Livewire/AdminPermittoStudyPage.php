@@ -9,6 +9,11 @@ use Livewire\Component;
 
 class AdminPermittoStudyPage extends Component
 {
+    public $employee;
+
+    public function mount() {
+        #$this->employee = 
+    }
     public function render()
     {
         return view('livewire.admin-permitto-study-page');

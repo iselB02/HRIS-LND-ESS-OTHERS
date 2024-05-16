@@ -135,9 +135,15 @@
             </div>
             <div id="training-body">
                 <label for="description-input">Description</label>
-                <textarea name="description" id="description" cols="90" rows="5"></textarea>
+                <textarea name="description" id="description" cols="50" rows="5"></textarea>
                 <label for="participants-input">Participants</label>
                 <input type="text" name="participants" id="participants-input">
+            </div>
+            <div class="assessment">
+                <label for="pre_test">Pre-Traning Assesment Link</label>
+                <input id="pre_test" type="text">
+                <label for="post_test">Post-Traning Assesment Link</label>
+                <input id="post_test" type="text">
             </div>
             <div id="add-buttons">
                 <button id="cancel">Cancel</button>

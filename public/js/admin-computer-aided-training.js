@@ -5,6 +5,9 @@ var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
+var overlay = document.getElementsByClassName("modal-overlay")[0];
+
+// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 
@@ -12,11 +15,14 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
+  overlay.style.display = "block";
+
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+  overlay.style.display = "none";
 }
 
 // Function to handle form submission
