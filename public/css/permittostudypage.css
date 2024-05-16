@@ -13,24 +13,34 @@
     gap: 10px;
     background: #FFFFFF;
     border-radius: 8px;
-    border: 1px solid;
+    border: 1px solid #ccc; /* Updated border color */
     padding: 20px;
-    grid-template-columns: repeat(3, 0.5fr);
-    grid-template-rows: repeat(3, 0.5fr);
+    grid-template-columns: 1fr; /* Single column */
+    overflow-y: scroll;
 }
 
+.file-name {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+
 .permit_to_study_side {
-    flex-direction: row;
     display: flex;
+    flex-direction: column;
     background: #FFFFFF;
     border-radius: 8px;
     width: 32%;
-    border: 1px solid;
+    border: 1px solid #ccc; /* Updated border color */
+    padding: 20px; /* Added padding for better spacing */
+    overflow-y: scroll;
 }
 
 .permit_to_study_side .checklist {
     margin: 10px;
-    font-size: 25px; /*Adjust the font size as needed */
+    font-size: 25px; /* Adjust the font size as needed */
     line-height: 2.5; /* Adjust the line height as needed */
 }
 
@@ -39,25 +49,149 @@
     padding: 20px; /* Adjust the padding to create square appearance */
     margin-bottom: 10px; /* Adjust the margin as needed */
     border: 1px solid #ccc;
-    height: 170px;
     border-radius: 5px;
     flex-grow: 1; /* Use flex-grow to fill the available space */
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 18px; /* Adjust font size */
+    line-height: 1.5; /* Adjust line height */
+    text-align: center;
+    transition: background-color 0.3s, border-color 0.3s; /* Add transition for smooth hover effect */
+}
 
+.clickable-item:hover {
+    background-color: #f0f0f0; /* Change background color on hover */
+    border-color: #aaa; /* Change border color on hover */
 }
 
 .permit_to_study_main .clickable-item {
+    font-size: 18px; /* Adjust the font size as needed */
+    line-height: 1.5; /* Adjust the line height as needed */
+}
+
+.submitbutton {
+    position: fixed;
+}
+
+
+
+/* Legend styles */
+.legend {
+    margin-bottom: 1px;
+}
+
+.legend p {
+    font-weight: bold;
+    margin-bottom: 1px;
+    font-size: 14px; /* Adjust font size */
+}
+
+.legend ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Remove default margin */
+}
+
+.legend li {
+    font-size: 15px; /* Adjust font size */
+}
+
+/* Status color styles */
+.pending-color,
+.send-again-color,
+.wrong-document-color,
+.accepted-color {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    border: 1px solid #000; /* Optional: Add border for better visibility */
+}
+
+.pending-color { 
+    background-color: yellow; 
+}
+
+.send-again-color { 
+    background-color: orange; 
+}
+
+.wrong-document-color { 
+    background-color: red; 
+}
+
+.accepted-color { 
+    background-color: green; 
+}
+
+/* File Checkbox */
+.file-checkbox button.check {
+    display: none;
+}
+
+.file-checkbox label {
+    position: relative;
+    padding-left: 25px;
     cursor: pointer;
-    padding: 20px; /*Adjust the padding to create square appearance */
-    border: 3px solid;
-    border-radius: 5px;
-    flex-grow: 1; /* Use flex-grow to fill the available space */
+}
+
+.file-checkbox button + label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+.file-checkbox button.wrong-document + label::before {
+    content: "✖";
+    color: white;
+    background-color: red;
+    border-color: red;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px; /* Adjust the font size as needed */
-    text-align: center;
-    font-weight: 500;
-} 
+}
+
+.file-checkbox button.in-process + label::before {
+    content: "✔";
+    color: white;
+    background-color: green;
+    border-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-checkbox button.send-again + label::before {
+    content: "!";
+    color: white;
+    background-color: orange;
+    border-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-checkbox button.check + label::before {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.file-checkbox button.file-uploaded + label::before {
+    background-color: transparent;
+    border-color: yellow;
+    border-top-color: transparent;
+    animation: spin 2s linear infinite;
+    border-width: 3px;
+}
+
+/* Define the spinning animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
