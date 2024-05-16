@@ -5,28 +5,33 @@
     </div>
     <div class="column">
         <div class="option">
-            <button class="button">Fill up Personal Data Sheet (PDS)</button>
+            <a href="{{ asset('documents/Personal-Data-Sheet-File.pdf') }}" class="button" download>Fill up Personal Data Sheet (PDS)</a>
         </div>
 
         <div class="option">
-            <button class="button">Fill up Statement of Assets</button>
+        <a href="{{ asset('documents/SALN-FORM.pdf') }}" class="button" download>Fill up Statement of Assets, Liabilities and Net Worth (SALN)</a>
         </div>
 
         <div class="option">
-            <button class="button">Fill up Liabilities and Net Worth (SALN)</button>
+            <a href="{{ asset('documents/Leave-Form.pdf') }}" class="button" download>Fill up Leave Form</a>
         </div>
 
         <div class="option">
-            <button class="button">Fill up Leave Form</button>
+            <a href="{{ asset('documents/Permit-To-Teach-Form.pdf') }}" class="button" download>Fill up Permit to Teach</a>
         </div>
 
         <div class="option">
-            <button class="button">Fill up Permits</button>
+            <a href="{{ asset('documents/Permit-To-Study-Form.pdf') }}" class="button" download>Fill up Permit to Study</a>
         </div>
 
         <div class="option">
-            <button class="button">Fill up Forms for Travel Abroad</button>
+            <a href="{{ asset('documents/Request-For-Change-Work-Schedule.pdf') }}" class="button" download>Fill up Change in Work Schedule</a>
         </div>
+
+        <div class="option">
+            <a href="{{ asset('documents/Permit-To-Engage-Private-Practice.pdf') }}" class="button" download>Fill up Engage in Private Practice</a>
+        </div>
+
     </div>
 </div>
 
