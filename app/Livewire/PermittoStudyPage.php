@@ -25,36 +25,43 @@ class PermittoStudyPage extends Component
     public $FacultyEvaluation;
     public $RatedIPCR;
 
+    protected $rules = [
+        'CoverMemo' => 'nullable|file|mimes:pdf,doc,docx',
+        'RequestLetter' => 'nullable|file|mimes:pdf,doc,docx',
+        'PermitToStudy' => 'nullable|file|mimes:pdf,doc,docx',
+        'TeachingAssignment' => 'nullable|file|mimes:pdf,doc,docx',
+        'SummaryOfSchedule' => 'nullable|file|mimes:pdf,doc,docx',
+        'CertificationOfGrades' => 'nullable|file|mimes:pdf,doc,docx',
+        'StudyPlan' => 'nullable|file|mimes:pdf,doc,docx',
+        'FacultyEvaluation' => 'nullable|file|mimes:pdf,doc,docx',
+        'RatedIPCR' => 'nullable|file|mimes:pdf,doc,docx',
+    ];
+
     public function submit_pts_forms() //function for submitting forms on Permit to study
     {
-        // $this->validate([
-        //     'CoverMemo'=>'required',
-        //     'RequestLetter'=>'required',
-        //     'PermitToStudy'=>'required',
-        //     'TeachingAssignment'=>'required',
-        //     'SummaryOfSchedule'=>'required',
-        //     'CertificationOfGrades'=>'required',
-        //     'StudyPlan'=>'required',
-        //     'FacultyEvaluation'=>'required',
-        //     'RatedIPCR'=>'required'
-        // ]);
+        // Validate the form inputs against the rules
+        $this->validate();
 
+        // Store the files and create a new record in the database
         PermitToStudyModel::create([
-            'CoverMemo'=>$this->CoverMemo,
-            'RequestLetter'=>$this->RequestLetter,
-            'PermitToStudy'=>$this->PermitToStudy,
-            'TeachingAssignment'=>$this->TeachingAssignment,
-            'SummaryOfSchedule'=>$this->SummaryOfSchedule,
-            'CertificationOfGrades'=>$this->CertificationOfGrades,
-            'StudyPlan'=>$this->StudyPlan,
-            'FacultyEvaluation'=>$this->FacultyEvaluation,
-            'RatedIPCR'=>$this->RatedIPCR,
+            'CoverMemo' => $this->CoverMemo ? $this->CoverMemo->store('CoverMemo') : null,
+            'RequestLetter' => $this->RequestLetter ? $this->RequestLetter->store('RequestLetter') : null,
+            'PermitToStudy' => $this->PermitToStudy ? $this->PermitToStudy->store('PermitToStudy') : null,
+            'TeachingAssignment' => $this->TeachingAssignment ? $this->TeachingAssignment->store('TeachingAssignment') : null,
+            'SummaryOfSchedule' => $this->SummaryOfSchedule ? $this->SummaryOfSchedule->store('SummaryOfSchedule') : null,
+            'CertificationOfGrades' => $this->CertificationOfGrades ? $this->CertificationOfGrades->store('CertificationOfGrades') : null,
+            'StudyPlan' => $this->StudyPlan ? $this->StudyPlan->store('StudyPlan') : null,
+            'FacultyEvaluation' => $this->FacultyEvaluation ? $this->FacultyEvaluation->store('FacultyEvaluation') : null,
+            'RatedIPCR' => $this->RatedIPCR ? $this->RatedIPCR->store('RatedIPCR') : null,
         ]);
     }
 
 
-    
-
+    public $records = [];
+    public function getPermitToStudyRecords()
+    {
+        $this->records = PermitToStudyModel::all();
+    }
 
     public function render()
     {

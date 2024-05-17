@@ -22,5 +22,28 @@ class PermitToStudyModel extends Model
 
     protected $table = 'Permit_To_Study_Table';
 
+    public function getStatusAttribute()
+    {
+        $requiredFiles = [
+            'CoverMemo', 
+            'RequestLetter', 
+            'PermitToStudy', 
+            'TeachingAssignment', 
+            'SummaryOfSchedule', 
+            'CertificationOfGrades', 
+            'StudyPlan', 
+            'FacultyEvaluation', 
+            'RatedIPCR',
+        ];
+
+        foreach ($requiredFiles as $file) {
+            if (empty($this->$file)) {
+                return 'Incomplete';
+            }
+        }
+
+        return 'Complete';
+    }
+
     use HasFactory;
 }
