@@ -15,36 +15,58 @@
                 <th>Name</th>
                 <th>Office</th>
                 <th>Date</th>
-                <th>Status</th> <!-- Changed from Type to Status -->
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
             @foreach($records as $record)
-            <tr>
-                <td>{{ $record->name ?? 'N/A' }}</td> <!-- Adjust according to your model's fields -->
-                <td>{{ $record->office ?? 'N/A' }}</td> <!-- Adjust according to your model's fields -->
+            <tr data-record-id="{{ $record->id }}">
+                <td>{{ $record->name ?? 'N/A' }}</td>
+                <td>{{ $record->office ?? 'N/A' }}</td>
                 <td>{{ $record->created_at->format('F d, Y') }}</td>
-                <td>{{ $record->status }}</td> <!-- Status column -->
+                <td>{{ $record->status }}</td>
                 <td>
+                    <button class="view">
+                        <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                    </button>
                     <button id="download">
                         <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
                     </button>
                     <button id="delete">
                         <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                     </button>
-                    <button class="view">
-                        <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
-                    </button>
                 </td>
             </tr>
             @endforeach
         </table>
     </div>
-    <div class="view-file">
-        <div id="view-btns">
-            <button id="close">Close</button>
+
+    <!-- Files section for each record -->
+    @foreach($records as $record)
+    <div class="view-file" id="view-file-{{ $record->id }}" style="display: none;">
+        <div class="view-btns">
+            <button class="close-btn">Close</button>
+            <p>{{ $record->name ?? 'N/A' }}</p>
         </div>
-        <iframe src="{{ asset('documents/scholarship.pdf') }}" frameborder="0"></iframe>
+        <table>
+            <tr>
+                <th>File Name</th>
+                <th>Actions</th>
+            </tr>
+            @foreach(['CoverMemo', 'RequestLetter', 'PermitToStudy', 'TeachingAssignment', 'SummaryOfSchedule', 'CertificationOfGrades', 'StudyPlan', 'FacultyEvaluation', 'RatedIPCR'] as $fileField)
+                @if($record->$fileField)
+                    <tr>
+                        <td>{{ $fileField }}</td>
+                        <td>
+                            <button class="view-file-btn" data-file-url="{{ asset('storage/' . $record->$fileField) }}">
+                                <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                            </button>
+                        </td>
+                    </tr>
+                @endif
+            @endforeach
+        </table>
     </div>
+    @endforeach
 </div>
 
 @push('styles')

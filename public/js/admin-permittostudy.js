@@ -1,22 +1,45 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var modal = document.querySelector('.view-file'); // Selects the modal element
-    var closeButton = document.getElementById('close'); // Selects the close button within the modal
-
-    // Function to open the modal
-    function openModal() {
-        modal.style.display = 'block'; // Sets the display style of the modal to block to make it visible
+    // Function to open the modal for a specific record
+    function showFiles(recordId) {
+        var modal = document.getElementById('view-file-' + recordId);
+        console.log('Opening modal for record:', recordId); // Debugging log
+        modal.style.display = 'block';
     }
 
-    // Function to close the modal
-    function closeModal() {
-        modal.style.display = 'none'; // Sets the display style of the modal to none to hide it
+    // Function to close the modal for a specific record
+    function hideFiles(recordId) {
+        var modal = document.getElementById('view-file-' + recordId);
+        console.log('Closing modal for record:', recordId); // Debugging log
+        modal.style.display = 'none';
     }
 
-    closeButton.addEventListener('click', closeModal); // Adds a click event listener to the close button to call the closeModal function when clicked
+    // Add logic to open the modal when a view button is clicked
+    var viewButtons = document.querySelectorAll('.view');
+    viewButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var recordId = button.closest('tr').dataset.recordId; // Assuming the tr element has a data-record-id attribute
+            console.log('View button clicked for record:', recordId); // Debugging log
+            showFiles(recordId);
+        });
+    });
 
-    // Add logic to open the modal when an announcement is clicked
-    var announcements = document.querySelectorAll('.view'); // Selects all announcement elements
-    announcements.forEach(function(announcement) {
-        announcement.addEventListener('click', openModal);
+    // Add logic to close the modal when the close button is clicked
+    var closeButtons = document.querySelectorAll('.close-btn');
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var recordId = button.closest('.view-file').id.replace('view-file-', '');
+            console.log('Close button clicked for record:', recordId); // Debugging log
+            hideFiles(recordId);
+        });
+    });
+
+    // Add logic to view the file in a new window when a view-file button is clicked
+    var viewFileButtons = document.querySelectorAll('.view-file-btn');
+    viewFileButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var fileUrl = button.getAttribute('data-file-url');
+            console.log('Opening file URL:', fileUrl); // Debugging log
+            window.open(fileUrl, '_blank'); // Opens the file in a new tab
+        });
     });
 });
