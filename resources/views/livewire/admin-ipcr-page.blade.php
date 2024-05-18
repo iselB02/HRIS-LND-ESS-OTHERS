@@ -1,12 +1,13 @@
 <div class="admin-ipcr-container">
     <div class="top-menu">
-         <input type="search" name="search" id="search-ipcr" placeholder="Search">
-         <button id="print">Print</button>
-         <select name="export-menu" id="export" >
-             <option value="" disabled selected>Export</option>
-             <option value="opt1">.PDF</option>
-             <option value="opt2">.Docs</option>
-             <option value="opt3">.CSV</option>
+        <input type="text" wire:model="search" id="search-ipcr" placeholder="Search Users..." />
+    <button wire:click="search">Search</button>
+         <select wire:model="sortField" name="export-menu" id="export" >
+            <option value="" disabled selected>Sort by</option>
+            <option value="name">Name</option>
+            <option value="officedepartment">Office</option>
+            <option value="average">Ratings</option>
+            <option value="published_date">Date</option>
          </select>
     </div>
     <div class="display-ipcr">
@@ -36,79 +37,18 @@
                    </button>
                 </td>
              </tr>
-             {{-- <tr>
-                 <td>Juan Dela Cruz</td>
-                 <td>Office of the Registrar</td>
-                 <td>March 10, 2024</td>
-                 <td>.PDF
-                     <button id="download">
-                         <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
-                     </button>
-                     <button id="delete">
-                         <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
-                     </button>
-                     <button class="view">
-                        <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
-                    </button>
-                 </td>
-             </tr>
-             <tr>
-                 <td>Mary Anne Ramos</td>
-                 <td>Office of the Executive Preisdent</td>
-                 <td>March 5, 2024</td>
-                 <td>.Docs
-                     <button id="download">
-                         <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
-                     </button>
-                     <button id="delete">
-                         <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
-                     </button>
-                     <button class="view">
-                        <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
-                    </button>
-                 </td>
-             </tr>
-             <tr>
-                 <td>Michael Gervacio</td>
-                 <td>Office of University Legal Council</td>
-                 <td>February 25, 2024</td>
-                 <td>.PDF
-                     <button id="download">
-                         <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
-                     </button>
-                     <button id="delete">
-                         <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
-                     </button>
-                     <button class="view">
-                        <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
-                    </button>
-                 </td>
-             </tr>
-             <tr>
-                 <td>John Lacson</td>
-                 <td>Internal Audit Office</td>
-                 <td>February 10, 2024</td>
-                 <td>.PDF
-                     <button id="download">
-                         <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
-                     </button>
-                     <button id="delete">
-                         <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
-                     </button>
-                     <button id="view">
-                        <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
-                    </button>
-                 </td>
-             </tr>
-         </table>
-    </div> --}}
+
         <div class="view-file">
         <div id="view-btns">
             <button id="close">Close</button>
         </div>
-        <iframe  src="/display-pdf/{{ $ipcr->id }}" type="application/pdf" width="100%" height="600px" frameborder="0"></iframe>
+        <iframe  src="{{ $ipcr->application_form }}}}" type="application/pdf" width="100%" height="600px" frameborder="0"></iframe>
     </div>
     @endforeach
+</table>
+<div id="links">
+   {{ $ipcrs->links() }}
+</div>
  </div>
  
  

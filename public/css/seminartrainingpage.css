@@ -18,7 +18,6 @@
     align-content: center;
     border-radius: 8px;
     background-color: aqua;
-    
 }
 
 .seminartraining-main {
@@ -34,7 +33,6 @@
     height: 300px;
 }
 
-
 .seminartraining-main {
     display: flex;
     padding: 1%;
@@ -44,7 +42,7 @@
 .assessment {
     display: flex;
     background-color: rgb(255, 255, 255);
-    width:50%;
+    width: 50%;
     height: 100%;
     padding: 1%;
     column-gap: 2%;
@@ -54,12 +52,12 @@
 .pre-training {
     text-align: center;
     background-color: rgb(255, 255, 255);
-    width:50%;
+    width: 50%;
     height: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.pre-training button{
+.pre-training button {
     margin-top: 40%;
     font-size: 20px;
 }
@@ -67,26 +65,25 @@
 .post-training {
     text-align: center;
     background-color: rgb(255, 255, 255);
-    width:50%;
+    width: 50%;
     height: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.post-training button{
+.post-training button {
     margin-top: 40%;
     font-size: 20px;
 }
 
 .details-container {
-    width:50%;
+    width: 50%;
     height: 100%;
 }
-
 
 .details {
     background-color: rgb(255, 255, 255);
     padding: 2.5%;
-    width:100%;
+    width: 100%;
     height: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border: 2px solid black;
@@ -101,4 +98,53 @@
     list-style-type: disc;
     margin-left: 3%;
     font-size: 20px;
+}
+
+.seminar_view {
+    display: none;
+}
+
+.admin-serminar-training-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 10px;
+    background: #ffffff;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.display-semiar-training {
+    margin: 1%;
+    height: 80%;
+    width: 95%;
+    padding: 1%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th {
+    border-bottom: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
+    text-align: center;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.top-menu {
+    display: inline;
+    align-self: self-start;
+    margin-left: 45px;
 }

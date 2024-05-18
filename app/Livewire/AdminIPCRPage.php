@@ -5,28 +5,47 @@ namespace App\Livewire;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\IPCRModel;
+use Livewire\WithPagination;
 
 #[Layout("layouts.humanResources")]
 class AdminIPCRPage extends Component
 {
-    public $ipcrs = [];
-    public $pdfBlob;
+    use WithPagination;
 
-    public function mount() {
-        // Fetch all records from the IPCRModel
-        $this->ipcrs = IPCRModel::all();
-        // dd($this->ipcrs);
+    public $search;
+    public $sortField;
+    public $sortDirection = 'asc';
 
-        // Fetch the PDF Blob data from your backend
-        //$this->pdfBlob = IPCRModel::fetchPdfBlob(); // Implement this method in your PdfService
-
-        
-
-    }   
-
-  
     public function render()
     {
-        return view('livewire.admin-ipcr-page');
+        // Ensure $sortField has a valid value before sorting
+        if (!in_array($this->sortField, ['name', 'officedepartment', 'average', 'published_date'])) {
+            $this->sortField = 'name'; // Set a default sorting field
+        }
+
+        // Apply search filter using the LIKE operator
+        $ipcrs = IPCRModel::where('name', 'LIKE', "%{$this->search}%")
+                          ->orderBy($this->sortField, $this->sortDirection)
+                          ->paginate(10); // Adjust the number per page as needed
+
+        // Pass the paginated IPCR records to the Blade view
+        return view('livewire.admin-ipcr-page', [
+            'ipcrs' => $ipcrs,
+        ]);
+    }
+
+    public function search()
+    {
+        $this->resetPage(); // Reset pagination when performing a new search
+    }
+    
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = ! $this->sortDirection;
+        } else {
+            $this->sortField = $field;
+            $this->sortDirection = 'asc'; // Set default direction when changing sorting field
+        }
     }
 }
