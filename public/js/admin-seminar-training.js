@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var trainingForm = document.querySelector('.add-form');
     var addButton = document.getElementById('add-training');
     var cancelButton = document.getElementById('cancel');
-    var editButton = document.getElementById('edit');
+    var editButtons = document.querySelectorAll('.edit');
     var newTrainingButton = document.getElementById('add');
     var viewButtons = document.querySelectorAll('.view');
 
@@ -41,15 +41,10 @@ document.addEventListener('DOMContentLoaded', function () {
     
     function editModal(event) {
         var button = event.target;
-        console.log('Edit button clicked:', button);
         var row = button.closest('tr');
-        console.log('Closest row:', row);
-        if (!row) {
-            console.error('Parent row not found.');
-            return;
-        }
-        // Extract data attributes from the row
+        var id = row.getAttribute('data-id');
         var title = row.getAttribute('data-title');
+        var type = row.getAttribute('data-type');
         var location = row.getAttribute('data-location');
         var startDate = row.getAttribute('data-start_date');
         var endDate = row.getAttribute('data-end_date');
@@ -57,9 +52,13 @@ document.addEventListener('DOMContentLoaded', function () {
         var endTime = row.getAttribute('data-end_time');
         var description = row.getAttribute('data-description');
         var participants = row.getAttribute('data-participants');
+        var pre_test = row.getAttribute('data-pre_test');
+        var post_test = row.getAttribute('data-post_test');
         
         // Update modal inputs with retrieved values
+        var idVal = document.getElementById('id_value');
         var titleInputEdit = document.getElementById('title-edit');
+        var typeInputEdit = document.getElementById('type-edit');
         var locationEdit = document.getElementById('location-edit');
         var startDateEdit = document.getElementById('start-date-edit');
         var endDateEdit = document.getElementById('end-date-edit');
@@ -67,9 +66,12 @@ document.addEventListener('DOMContentLoaded', function () {
         var endTimeEdit = document.getElementById('end-time-edit');
         var descriptionEdit = document.getElementById('description-edit');
         var participantsEdit = document.getElementById('participants-edit');
-        
-        if (titleInputEdit && locationEdit && startDateEdit && endDateEdit && startTimeEdit && endTimeEdit && descriptionEdit && participantsEdit) {
+        var preTestEdit = document.getElementById('pre_test-edit');
+        var postTestEdit = document.getElementById('post_test-edit');
+
+            idVal.value = id;
             titleInputEdit.value = title;
+            typeInputEdit.value = type;
             locationEdit.value = location;
             startDateEdit.value = startDate;
             endDateEdit.value = endDate;
@@ -77,13 +79,13 @@ document.addEventListener('DOMContentLoaded', function () {
             endTimeEdit.value = endTime;
             descriptionEdit.value = description;
             participantsEdit.value = participants;
+            preTestEdit.value = pre_test;
+            postTestEdit.value = post_test
+
     
             // Show modal
             modal1.style.display = 'block';
             overlay.style.display = 'block';
-        } else {
-            console.error('One or more modal elements not found.');
-        }
     }
     
     
@@ -115,11 +117,13 @@ document.addEventListener('DOMContentLoaded', function () {
     if (applyButton) applyButton.addEventListener('click', applyModal);
     if (addButton) addButton.addEventListener('click', addTraining);
     if (cancelButton) cancelButton.addEventListener('click', cancelTraining);
-    if (editButton) editButton.addEventListener('click', editModal);
     if (newTrainingButton) newTrainingButton.addEventListener('click', newTraining);
 
     viewButtons.forEach(button => {
         button.addEventListener('click', openModal);
+    });
+    editButtons.forEach(button => {
+        button.addEventListener('click', editModal);
     });
 
     // Event delegation for dynamically added buttons
