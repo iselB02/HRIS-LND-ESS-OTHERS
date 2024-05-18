@@ -39,7 +39,13 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function() {
             var fileUrl = button.getAttribute('data-file-url');
             console.log('Opening file URL:', fileUrl); // Debugging log
-            window.open(fileUrl, '_blank'); // Opens the file in a new tab
+
+            // Ensure the file URL is correct and accessible
+            if (fileUrl) {
+                window.open(fileUrl, '_blank');
+            } else {
+                console.error('File URL is missing or incorrect');
+            }
         });
     });
 });

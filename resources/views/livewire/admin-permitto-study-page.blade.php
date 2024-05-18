@@ -45,7 +45,7 @@
     <div class="view-file" id="view-file-{{ $record->id }}" style="display: none;">
         <div class="view-btns">
             <button class="close-btn">Close</button>
-            <p>{{ $record->name ?? 'N/A' }}</p>
+            <p>{{ $record->name ?? 'N/A' }}</p> <!-- Displaying the record name or 'N/A' if not available -->
         </div>
         <table>
             <tr>
@@ -53,10 +53,11 @@
                 <th>Actions</th>
             </tr>
             @foreach(['CoverMemo', 'RequestLetter', 'PermitToStudy', 'TeachingAssignment', 'SummaryOfSchedule', 'CertificationOfGrades', 'StudyPlan', 'FacultyEvaluation', 'RatedIPCR'] as $fileField)
-                @if($record->$fileField)
-                    <tr>
-                        <td>{{ $fileField }}</td>
+                @if($record->$fileField) <!-- Checking if the file field has a value -->
+                    <tr data-record-id="{{ $record->id }}">
+                        <td>{{ $fileField }}</td> <!-- Displaying the file field name -->
                         <td>
+                            <!-- Button to view the file, data-file-url contains the file's URL -->
                             <button class="view-file-btn" data-file-url="{{ asset('storage/' . $record->$fileField) }}">
                                 <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                             </button>
@@ -65,8 +66,10 @@
                 @endif
             @endforeach
         </table>
+        <iframe id="file-viewer-{{ $record->id }}" class="file-viewer" style="display: none; width: 100%; height: 500px;"></iframe>
     </div>
     @endforeach
+
 </div>
 
 @push('styles')
