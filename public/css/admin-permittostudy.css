@@ -71,6 +71,12 @@ th, td {
     margin-left: 1px;
 }
 
+.view-file-btn{
+    vertical-align: center;
+    width: 25px;
+    height: 25px;
+}
+
 #download img, #delete img, .view img{
     vertical-align: center;
     width: 25px;
