@@ -17,5 +17,10 @@ class IPCRModel extends Model
 
     protected $table = 'ipcr_infos';
 
+    public function scopeSearch($query, $column, $keyword)
+    {
+        return $query->where($column, 'like', '%' . $keyword . '%');
+    }
+
     use HasFactory;
 }

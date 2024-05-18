@@ -13,7 +13,9 @@
 
 
 .popup-modal {
-    display: flex;
+    display: inline-flex;
+    flex-direction: row;
+    row-gap: 10px;
     position: fixed;
     background-color: #FFFFFF;
     padding: 50px;
@@ -22,6 +24,7 @@
     border: 2px solid black;
     border-radius: 20px;
     display: none;
+    overflow-y: scroll;
     z-index: 100;
 }
 
@@ -36,9 +39,13 @@
     z-index: 99; /* Ensure a higher z-index than the navbar */
 }
 
+.popup-modal::-webkit-scrollbar{
+    display: none;
+}
 
 
-.popup-modal1 {
+
+/* .popup-modal1 {
     display: flex;
     position: fixed;
     background-color: #FFFFFF;
@@ -49,7 +56,7 @@
     border-radius: 20px;
     display: none;
     z-index: 100;
-}
+} */
 
 .modal-overlay1 {
     display: none;
@@ -71,6 +78,8 @@
 }
 
 .description {
+    text-align: justify;
+    text-justify: inter-word;
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -88,6 +97,16 @@
 .location, .start-date, .end-date, .title {
     font-size: 15px;
     font-weight: 400;
+    
+}
+
+#title-input {
+    width: 300px;
+    margin-right: 15px;
+}
+
+#location-input {
+    width: 440px;
 }
 
 .top-menu {
@@ -133,9 +152,37 @@
     padding: 5px;
     padding-left: 25px;
     padding-right: 25px;
-    font-size: 15px;
-    font-weight: 500;
     margin-right: 2%;
+    background-color: #0A66C2;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    touch-action: manipulation;
+    transition: #0A66C2 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+
+#add,
+#add:focus { 
+  background-color: #0A66C2;
+  color: #ffffff;
+}
+
+#add:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+#add:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
 }
 
 #delete {
@@ -144,8 +191,38 @@
     padding-right: 15px;
     font-size: 15px;
     font-weight: 500;
+    background-color: #0A66C2;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    touch-action: manipulation;
+    transition: #0A66C2 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
 }
 
+
+#delete,
+#delete:focus { 
+  background-color: #0A66C2;
+  color: #ffffff;
+}
+
+#delete:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+#delete:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
 
 .display-semiar-training {
     margin: 1%;
@@ -175,7 +252,7 @@ th, td {
 }
 
 
-.add-form {
+.add-form, .popup-modal1 {
     display: flex;
     position: fixed;
     background-color: #FFFFFF;
@@ -194,7 +271,11 @@ th, td {
     display: none;
 }
 
-.add-form label{
+.popup-modal1::-webkit-scrollbar{
+    display: none;
+}
+
+.add-form label, .popup-modal1 label{
     display: block;
     font-weight: 500;
 }
@@ -214,4 +295,27 @@ textarea {
 
 .assesstment {
     display: inline-block;
+}
+
+.dates {
+    display: inline-flex;
+    flex-direction: row;
+    column-gap: 6px;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+}
+
+.time {
+    display: inline-flex;
+    flex-direction: row;
+    column-gap: 6px;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 5px;   
+}
+
+.time input{
+    width: 180px;
 }
