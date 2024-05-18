@@ -12,10 +12,9 @@ class AdminIPCRPage extends Component
 {
     use WithPagination;
 
-    public $search;
-    public $sortField;
-    public $sortDirection = 'asc';
-
+    public $searchQuery;
+    
+    public $ipcrSearch = [];
     public function render()
     {
         // Ensure $sortField has a valid value before sorting
@@ -36,7 +35,12 @@ class AdminIPCRPage extends Component
 
     public function search()
     {
-        $this->resetPage(); // Reset pagination when performing a new search
+        if (!empty($this->searchQuery)) {
+            $this->ipcrSearch = IPCRModel::where('title', 'like', '%' . $this->searchQuery . '%')->get();
+        } else {
+            // Reset trainings if search query is empty
+            $this->reset('trainingSearch');
+        }
     }
     
     public function sortBy($field)

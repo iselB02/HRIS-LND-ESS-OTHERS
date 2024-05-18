@@ -1,8 +1,7 @@
 <div class="admin-serminar-training-container">
     <div class="top-menu">
-        <input type="search" id="search-seminar-training" placeholder="Search">
+        <input wire:model.defer="searchQuery" wire:keydown.enter="search"  type="search" id="search-seminar-training" placeholder="Search">
         <button id="add"> add </button>
-        <button id="delete">delete</button>
     </div>
     <div class="display-semiar-training">
         <table>
@@ -13,8 +12,24 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Type</th>
-                <th></th>
-            </tr>
+                <th>Actions</th>
+            </tr> <!-- Display search results if available -->
+            @if(!empty($trainingSearch))
+                @foreach ($trainingSearch as $training)
+                    <tr>
+                        <!-- Display search result fields -->
+                        <td>{{ $training->id }}</td>
+                        <td>{{ $training->title }}</td>
+                        <td>{{ $training->participants }}</td>
+                        <td>{{ $training->start_date }}</td>
+                        <td>{{ $training->end_date }}</td>
+                        <td>{{ $training->type }}</td>
+                        <td>
+                            <!-- Actions buttons -->
+                        </td>
+                    </tr>
+                @endforeach
+            @else
             @foreach ($trainings as $training)
             <tr data-title="{{ $training->title }}" data-location="{{ $training->location }}" data-start_date="{{ $training->start_date }}" data-end_date="{{ $training->end_date}}" 
                 data-start_time="{{ $training->start_time }}" data-end_time="{{ $training->end_time}}" data-description="{{ $training->description}}" data-type="{{ $training->type}}" 
@@ -25,12 +40,21 @@
                 <td>{{ $training->start_date }}</td>
                 <td>{{ $training->end_date }}</td>
                 <td>{{ $training->type }}</td>
-                <td><button class="view">view</button><button class="edit">Edit</button></td>
+                <td>
+                    <button class="view"><img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon"></button>
+                    <button class="edit" wire:click="edit({{ $training->id }})"><img src="{{ asset('images/edit.png') }}" alt="Delete Icon" class="delete_icon"></button>   
+                    <button class="delete" wire:click="delete({{ $training->id }})"><img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon"></button>
+                </td>
             </tr>
             @endforeach
+            @endif
         </table>
+        <div id="links">
+            {{ $trainings->links() }}
+         </div>
     </div>
     <div class="modal-overlay"></div>
+    <div wire:ignore.self class="modal1-overlay"></div>
     <div class="popup-modal">
         <div class="view">
             <div id="training-title"></div>
@@ -56,8 +80,8 @@
             </div>
         </div>
     </div>
-    <div class="popup-modal1">
-        <form wire:submit.prevent="add_seminarTraining">
+    <div wire:ignore.self class="popup-modal1">
+        <form wire:submit.prevent="update">
             <div id="title-div">
                 <input wire:model="id" name="id_value" id="id_value" >
                 <label for="title-input">Title</label>
@@ -98,8 +122,9 @@
                 <input wire:model="post_training" id="post_test-edit" type="text">
             </div>
             <div id="add-buttons">
-                <button id="cancel">Cancel</button>
-                <button type="submit" id="add-training">Add</button>
+                <button type="submit" id="add-training">Edit</button>
+            </form>
+            <button id="cancel">Cancel</button>
             </div>
         </form>
     </div>
@@ -144,10 +169,10 @@
                 <input wire:model="post_training" id="post_test" type="text">
             </div>
             <div id="add-buttons">
-                <button id="cancel">Cancel</button>
                 <button type="submit" id="add-training">Add</button>
+            </form>
+                <button id="cancel">Cancel</button>
             </div>
-        </form>
     </div>
 </div>
 

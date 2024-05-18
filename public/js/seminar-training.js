@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     var viewButtons = document.querySelectorAll('.view');
-    var closeButton = document.querySelector('.close');
+    var closeButton = document.getElementById('close');
     var info = document.querySelector('.seminar_view');
     var table = document.querySelector('.admin-serminar-training-container');
     var preTestButton = document.getElementById('pre-test-btn');
@@ -15,10 +15,18 @@ document.addEventListener('DOMContentLoaded', function() {
         var location = row.getAttribute('data-location');
         var startDate = row.getAttribute('data-start-date');
         var endDate = row.getAttribute('data-end-date');
+        var startTime = row.getAttribute('data-start-time');
+        var endTime = row.getAttribute('data-end-time');
+        var type = row.getAttribute('data-type');
+        var participants = row.getAttribute('data-participants');
 
         document.getElementById('detail-location').textContent = 'Location: ' + location;
         document.getElementById('detail-topic').textContent = 'Topic: ' + title;
-        document.getElementById('detail-date').textContent = 'Date: ' + startDate + ' - ' + endDate;
+        document.getElementById('detail-date').textContent = 'Date: ' + startDate + ' to ' + endDate;
+        document.getElementById('detail-time').textContent = 'Time: ' + startTime + ' to ' + endTime;
+        document.getElementById('detail-type').textContent = 'Type: ' + type;
+        document.getElementById('detail-participants').textContent = 'Participants: ' + participants;
+        
 
         if (table && info) {
             table.style.display = 'none';

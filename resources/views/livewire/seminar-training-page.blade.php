@@ -11,15 +11,18 @@
                     <th>Participants</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    <th>Type</th>
                     <th></th>
                 </tr>
                 @foreach ($trainings as $training)
-                <tr data-title="{{ $training->title }}" data-location="{{ $training->location }}" data-pre-link="{{ $training->pre_training}}" data-post-link="{{ $training->post_training }}" data-start-date="{{ $training->start_date }}" data-end-date="{{ $training->end_date }}" >
+                <tr data-title="{{ $training->title }}" data-location="{{ $training->location }}" data-pre-link="{{ $training->pre_training}}" data-post-link="{{ $training->post_training }}" data-start-date="{{ $training->start_date }}" data-end-date="{{ $training->end_date }}" data-type="{{ $training->type }}"
+                    data-start-time="{{ $training->start_time }}" data-end-time="{{ $training->end_time }}" data-participants="{{ $training->participants}}">
                     <td>{{ $training->id }}</td>
                     <td>{{ $training->title }}</td>
                     <td>{{ $training->participants }}</td>
                     <td>{{ $training->start_date }}</td>
                     <td>{{ $training->end_date }}</td>
+                    <td>{{ $training->type }}</td>
                     <td><button class="view">View</button></td>
                 </tr>
                 @endforeach
@@ -28,9 +31,10 @@
     </div>
 
     <div class="seminar_view" style="display:none;">
-        <button class="close">Close</button>
+        <button id="close">Close</button>
         <div class="seminartraining-banner">
-            <img id="seminartraining_img" src="{{ asset('images/image.png') }}" alt="plm">
+            <img id="seminartraining_img" src="{{ asset('images/plm_bg.jpg') }}" alt="plm">
+            <h1 class="banner_h1">Seminars and Trainings</h1>
         </div>
         <div class="seminartraining-main">
             <div class="assessment">
@@ -47,7 +51,10 @@
                     <ul>
                         <li id="detail-topic"></li>
                         <li id="detail-date"></li>
+                        <li id="detail-time"></li>
                         <li id="detail-location"></li>
+                        <li id="detail-type"></li>
+                        <li id="detail-participants"></li>
                     </ul>
                 </div>
             </div>

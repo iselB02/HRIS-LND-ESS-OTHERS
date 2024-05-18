@@ -17,7 +17,7 @@
                  <th>Office</th>
                  <th>IPCR Ratings</th>
                  <th>Date</th>
-                 <th>Type</th>
+                 <th>Actions</th>
              </tr>
              @foreach ($ipcrs as $ipcr)
              <tr>

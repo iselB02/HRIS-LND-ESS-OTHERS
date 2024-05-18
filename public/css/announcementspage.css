@@ -95,13 +95,13 @@
     margin-top: 50px;
 }
 
-.announcement-title {
+.announcement-title, #modal-title {
     font-size: 30px;
     font-weight: bold;
     color: #AB830F;
 }
 
-.description {
+.description, #modal-description {
     margin-top: 20px;
     text-align: justify;
 }
@@ -148,7 +148,7 @@
   .announcement-title {
     font-size: 25px;
   }
-  .date1, .time1 {
+  #modal-date, #modal-time {
     font-size: 15px;
   }
   .description {
@@ -182,7 +182,7 @@
     .announcement-title {
         font-size: 25px;
     }
-    .date1, .time1 {
+    #modal-date1, #modal-time {
         font-size: 15px;
     }
     .description {
@@ -217,7 +217,7 @@
       .announcement-title {
         font-size: 23px;
       }
-      .date1, .time1 {
+      #modal-date, #modal-time {
         font-size: 13px;
       }
       .description {
