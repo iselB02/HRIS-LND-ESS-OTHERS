@@ -13,8 +13,14 @@ class AdminScholarshipPage extends Component
     public $selectedScholarshipId;
     public $selectedScholarship;
 
+    public $searchQuery;
+    public $scholarshipSearch = [];
+
     public $status;
     public $remarks;
+
+    public $sortBy = 'first_name'; // Default sort field
+    public $sortDirection = 'asc'; // Default sort direction
 
     public function selectScholarship($id)
     {
@@ -48,7 +54,17 @@ class AdminScholarshipPage extends Component
 
     public function render()
     {
-        $scholars = ScholarshipModel::paginate(10); // Adjust the number as needed
+        $scholars = ScholarshipModel::when($this->searchQuery, function ($query) {
+            $query->where('first_name', 'like', '%' . $this->searchQuery . '%')
+                  ->orwhere('middle_name', 'like', '%' . $this->searchQuery . '%')
+                  ->orwhere('last_name', 'like', '%' . $this->searchQuery . '%')
+                  ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
+                  ->orWhere('type', 'like', '%' . $this->searchQuery . '%')
+                  ->orWhere('status', 'like', '%' . $this->searchQuery . '%')
+                  ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%');
+        })
+        ->orderBy($this->sortBy, $this->sortDirection)
+        ->paginate(10); // Adjust the number as needed
         return view('livewire.admin-scholarship-page', ['scholars' => $scholars]);
     }
 
@@ -56,6 +72,33 @@ class AdminScholarshipPage extends Component
     {
         $item = ScholarshipModel::find($id);
         $item->delete();
+    }
+
+    public function sortData($field, $sortDirection)
+    {
+     if ($this->sortBy === $field) {
+         $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+     } else {
+         $this->sortBy = $field;
+         $this->sortDirection = 'asc';
+        }
+    }
+
+    public function search()
+    {
+        if (!empty($this->searchQuery)) {
+            $this->scholarshipSearch = ScholarshipModel::where('first_name', 'like', '%' . $this->searchQuery . '%')
+                                    ->orwhere('middle_name', 'like', '%' . $this->searchQuery . '%')
+                                    ->orwhere('last_name', 'like', '%' . $this->searchQuery . '%')
+                                    ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
+                                    ->orWhere('type', 'like', '%' . $this->searchQuery . '%')
+                                    ->orWhere('status', 'like', '%' . $this->searchQuery . '%')
+                                    ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%')
+                                    ->get();
+        } else {
+            // Reset ipcrSearch if search query is empty
+            $this->reset('scholarshipSearch');
+        }
     }
 
 }

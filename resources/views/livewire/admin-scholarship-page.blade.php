@@ -1,17 +1,83 @@
 <div class="admin-scholarship-container">
     <div class="top-menu">
-        <input type="search" name="search" id="search-scholarship-request" placeholder="Search">
+        <input wire:model.defer="searchQuery" wire:keydown.enter="search" type="search" name="search" id="search-scholarship-request" placeholder="Search">
 
     </div>
     <div class="display-scholarship-request">
         <table>
             <tr>
-                <th>Name</th>
-                <th>Office</th>
-                <th>Type</th>
-                <th>Date</th>
+                <th>
+                    <span>Name</span>
+                    <span>
+                        <button wire:click="sortData('first_name', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                     </span>
+                     <span>
+                         <button wire:click="sortData('first_name', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                     </span>
+                </th>
+                
+                <th>
+                    <span>Office</span>
+                    <span>
+                       <button wire:click="sortData('officedepartment', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                    </span>
+                    <span>
+                        <button wire:click="sortData('officedepartment', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                    </span>
+                </th>
+
+                <th>
+                    <span>Type</span>
+                    <span>
+                        <button wire:click="sortData('type', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                     </span>
+                     <span>
+                         <button wire:click="sortData('type', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                     </span>
+                </th>
+
+                <th>
+                    <span>Date</span>
+                    <span>
+                        <button wire:click="sortData('published_date', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                     </span>
+                     <span>
+                         <button wire:click="sortData('published_date', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                     </span>
+                </th>
+                <th>
+                    <span>Status</span>
+                    <span>
+                        <button wire:click="sortData('status', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                     </span>
+                     <span>
+                         <button wire:click="sortData('status', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                     </span>
+                </th>
                 <th>Actions</th>
             </tr>
+            @if (!empty($searchQuery) && $scholarshipSearch->isNotEmpty())
+                @foreach ($scholarshipSearch as $scholar)
+                <tr id="{{ $scholar->id }}" fname="{{ $scholar->first_name }}" mname="{{ $scholar->middle_name }}" lname="{{ $scholar->last_name }}"
+                    address="{{ $scholar->address }}" postal="{{ $scholar->postal_code }}" civil-status="{{ $scholar->civil_status }}" position="{{ $scholar->position }}"
+                    course="{{ $scholar->course }}" start="{{ $scholar->start_date }}" end="{{ $scholar->end_date }}" school="{{ $scholar->school_name }}"
+                    school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->officedepartment }}" remarks="{{ $scholar->remarks }}">
+                    <td>{{ $scholar->first_name }} {{ $scholar->middle_name }} {{ $scholar->last_name }}</td>
+                    <td>{{ $scholar->officedepartment }}</td>
+                    <td>{{ $scholar->type }}%</td>
+                    <td>{{ $scholar->published_date }}</td>
+                    <td>{{ $scholar->status}}</td>
+                    <td>
+                        <button id="delete">
+                            <img wire:click="delete({{ $scholar->id }})"  src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                        </button>
+                        <button class="view">
+                            <img wire:click="edit({{ $scholar->id }})" src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                        </button>
+                    </td>
+                </tr>
+            @endforeach
+            @else
             @foreach ($scholars as $scholar)
             <tr id="{{ $scholar->id }}" fname="{{ $scholar->first_name }}" mname="{{ $scholar->middle_name }}" lname="{{ $scholar->last_name }}"
                 address="{{ $scholar->address }}" postal="{{ $scholar->postal_code }}" civil-status="{{ $scholar->civil_status }}" position="{{ $scholar->position }}"
@@ -21,6 +87,7 @@
                 <td>{{ $scholar->officedepartment }}</td>
                 <td>{{ $scholar->type }}%</td>
                 <td>{{ $scholar->published_date }}</td>
+                <td>{{ $scholar->status}}</td>
                 <td>
                     <button id="delete">
                         <img wire:click="delete({{ $scholar->id }})"  src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
@@ -32,6 +99,7 @@
             </tr>
             @endforeach
         </table>
+        @endif
     </div>
     <div wire:ignore id="modal-overlay"></div>
     <div wire:ignore class="view-file">

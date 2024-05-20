@@ -48,10 +48,30 @@
             </tr>
 
             </tr>
+            @if (!empty($searchQuery) && $permitToStudySearch->isNotEmpty())
+                @foreach ($permitToStudySearch as $record)
+                <tr data-record-id="{{ $record->id }}">
+                    <td>{{ $record->name ?? 'N/A' }}</td>
+                    <td>{{ $record->officedepartment ?? 'N/A' }}</td>
+                    <td>{{ $record->created_at->format('F d, Y') }}</td>
+                    <td>{{ $record->status }}</td>
+                    <td>
+                        <button class="view">
+                            <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                        </button>
+                        <button id="download">
+                            <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
+                        </button>
+                        <button id="delete">
+                            <img wire:click.prevent="delete({{ $record->id }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                        </button>
+                    </td>
+                @endforeach
+            @else
             @foreach($records as $record)
             <tr data-record-id="{{ $record->id }}">
                 <td>{{ $record->name ?? 'N/A' }}</td>
-                <td>{{ $record->office ?? 'N/A' }}</td>
+                <td>{{ $record->officedepartment ?? 'N/A' }}</td>
                 <td>{{ $record->created_at->format('F d, Y') }}</td>
                 <td>{{ $record->status }}</td>
                 <td>
@@ -65,8 +85,9 @@
                         <img wire:click.prevent="delete({{ $record->id }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                     </button>
                 </td>
+                @endforeach
             </tr>
-            @endforeach
+            @endif
         </table>
     </div>
 

@@ -209,3 +209,14 @@ textarea {
     color: #333;
     margin: 5px 0;
 }
+
+span {
+    display: inline-flex;
+}
+
+span img {
+    width: 10px;
+    margin-left: 5px;
+}
+
+    

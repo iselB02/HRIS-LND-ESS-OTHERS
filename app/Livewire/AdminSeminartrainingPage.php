@@ -114,10 +114,16 @@ class AdminSeminartrainingPage extends Component
     public function search()
     {
         if (!empty($this->searchQuery)) {
-            $this->trainingSearch = SeminarTrainingModel::where('title', 'like', '%' . $this->searchQuery . '%')->get();
+            $this->trainingSearch = SeminarTrainingModel::where('title', 'like', '%' . $this->searchQuery . '%')
+            ->orwhere('participants', 'like', '%' . $this->searchQuery . '%')
+            ->orwhere('start_date', 'like', '%' . $this->searchQuery . '%')
+            ->orwhere('end_date', 'like', '%' . $this->searchQuery . '%')
+            ->orwhere('type', 'like', '%' . $this->searchQuery . '%')
+            ->get();
         } else {
             // Reset trainings if search query is empty
             $this->reset('trainingSearch');
+            $this->render(); 
         }
     }
     public function render()
