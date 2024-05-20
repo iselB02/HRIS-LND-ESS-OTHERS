@@ -34,13 +34,13 @@
     border-radius: 8px;
     width: 32%;
     border: 1px solid #ccc; /* Updated border color */
-    padding: 20px; /* Added padding for better spacing */
+    padding: 2px; /* Added padding for better spacing */
     overflow-y: scroll;
 }
 
 .permit_to_study_side .checklist {
     margin: 10px;
-    font-size: 25px; /* Adjust the font size as needed */
+    font-size: 22px; /* Adjust the font size as needed */
     line-height: 2.5; /* Adjust the line height as needed */
 }
 
@@ -79,6 +79,7 @@
 /* Legend styles */
 .legend {
     margin-bottom: 1px;
+    padding: 10px;
 }
 
 .legend p {
@@ -126,6 +127,10 @@
 }
 
 /* File Checkbox */
+.file-checkbox{
+    border-bottom: solid 1px; 
+}
+
 .file-checkbox button.check {
     display: none;
 }
@@ -194,4 +199,28 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+@media screen and (max-width: 800px) {
+    .permit_to_study_main_container {   
+        flex-wrap: wrap;
+        row-gap: 10px;
+        font-size: 2vw;
+    }
+
+    .permit_to_study_main {
+        overflow-y: hidden;
+    }
+
+    .page_container {
+        overflow-y: scroll;
+    }
+
+    .permit_to_study_side {
+        flex-wrap: wrap;
+        row-gap: 10px;
+        font-size: 2vw;
+        width: 100%;
+        overflow-y: hidden;
+        }
 }

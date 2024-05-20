@@ -205,7 +205,7 @@
 }
 
 /* Responsive */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {     
     .my_profile_container {
         flex-wrap: wrap;
         row-gap: 10px;

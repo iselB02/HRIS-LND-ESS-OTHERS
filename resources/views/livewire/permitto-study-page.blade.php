@@ -55,9 +55,8 @@
     </div>
 
     <div class="permit_to_study_side">
-        <div class="checklist">
-            <!-- Legend -->
-            <div class="legend">
+              <!-- Legend -->
+              <div class="legend">
                 <p>Legend:</p>
                 <ul>
                     <li><span class="pending-color"></span> Pending</li>
@@ -66,6 +65,8 @@
                     <li><span class="accepted-color"></span> Accepted</li>
                 </ul>
             </div>
+        <div class="checklist">
+      
 
             <!-- Checklist Items -->
             <div class="file-checkbox">

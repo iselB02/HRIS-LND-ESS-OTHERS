@@ -51,6 +51,7 @@
             <tr>
                 <th>File Name</th>
                 <th>Actions</th>
+                <th>Remarks</th>
             </tr>
             @foreach(['CoverMemo', 'RequestLetter', 'PermitToStudy', 'TeachingAssignment', 'SummaryOfSchedule', 'CertificationOfGrades', 'StudyPlan', 'FacultyEvaluation', 'RatedIPCR'] as $fileField)
                 @if($record->$fileField) <!-- Checking if the file field has a value -->
@@ -62,6 +63,15 @@
                                 <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                             </button>
                         </td>
+                        <td>
+                            <select name="remarks" class="remarks-dropdown">
+                                <option value="None">None</option>
+                                <option value="Accepted">Accepted</option>
+                                <option value="Rejected">Rejected</option>
+                                <option value="Send Again">Send Again</option>
+                            </select>
+                        </td>
+
                     </tr>
                 @endif
             @endforeach
