@@ -36,6 +36,7 @@
     display: flex;
     padding: 1%;
     column-gap: 1%;
+    height: 305px;
 }
 
 .assessment {
@@ -79,6 +80,7 @@
     height: 100%;
 }
 
+
 .details {
     background-color: rgb(255, 255, 255);
     padding: 2.5%;
@@ -86,11 +88,21 @@
     height: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border: 2px solid black;
+    overflow-y: scroll;
+}
+
+.details::-webkit-scrollbar{
+    display: none;
 }
 
 .details h1 {
     font-size: 25px;
     font-weight: 500;
+}
+
+.details p {
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .details ul {

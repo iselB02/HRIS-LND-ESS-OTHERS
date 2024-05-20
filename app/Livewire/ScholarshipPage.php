@@ -13,6 +13,7 @@ class ScholarshipPage extends Component
     public $last_name;
     public $first_name;
     public $middle_name;
+    public $type;
     public $address;
     public $postal_code;
     public $civil_status;
@@ -23,12 +24,16 @@ class ScholarshipPage extends Component
     public $school_name;
     public $school_address;
 
+    public $status = 'Pending for Approval';
+    public $remarks;
+
     public function submit_scholarship() {
         $this->validate([
             'officedepartment' => 'required',
             'last_name' => 'required',
             'first_name' => 'required',
             'middle_name' => 'required',
+            'type' => 'required',
             'address' => 'required',
             'postal_code' => 'required',
             'civil_status' => 'required',        
@@ -45,6 +50,7 @@ class ScholarshipPage extends Component
             'last_name' => $this->last_name,
             'first_name' => $this->first_name,
             'middle_name' => $this->middle_name,
+            'type' => $this->type,
             'address' => $this->address,
             'postal_code' => $this->postal_code,
             'civil_status'=> $this->civil_status,        
@@ -54,12 +60,15 @@ class ScholarshipPage extends Component
             'end_date' => $this->end_date,
             'school_name' => $this->school_name,
             'school_address' => $this->school_address,
+            'status' => $this->status,
+            'remarks' => $this->remarks,
         ]);
         $this->reset();
     }
 
     public function render()
     {
-        return view('livewire.scholarship-page');
+        $scholars = ScholarshipModel::paginate(10); // Adjust the number as needed
+        return view('livewire.scholarship-page', ['scholars' => $scholars]);
     }
 }

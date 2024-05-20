@@ -16,7 +16,7 @@
                 </tr>
                 @foreach ($trainings as $training)
                 <tr data-title="{{ $training->title }}" data-location="{{ $training->location }}" data-pre-link="{{ $training->pre_training}}" data-post-link="{{ $training->post_training }}" data-start-date="{{ $training->start_date }}" data-end-date="{{ $training->end_date }}" data-type="{{ $training->type }}"
-                    data-start-time="{{ $training->start_time }}" data-end-time="{{ $training->end_time }}" data-participants="{{ $training->participants}}">
+                    data-start-time="{{ $training->start_time }}" data-end-time="{{ $training->end_time }}" data-participants="{{ $training->participants}}"  data-descriptions="{{ $training->description}}">
                     <td>{{ $training->id }}</td>
                     <td>{{ $training->title }}</td>
                     <td>{{ $training->participants }}</td>
@@ -56,6 +56,7 @@
                         <li id="detail-type"></li>
                         <li id="detail-participants"></li>
                     </ul>
+                    <p id="detail-description"></p>
                 </div>
             </div>
         </div>
