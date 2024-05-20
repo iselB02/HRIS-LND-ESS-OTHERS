@@ -53,7 +53,7 @@
                             <button id="delete">
                                 <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                             </button>
-                            <button class="view">
+                            <button class="view-file-btn" data-file-url="{{ asset('storage/' . $ipcr->application_form) }}">
                                 <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                             </button>
                         </td>
@@ -64,13 +64,6 @@
         <div id="links">
             {{ $ipcrs->links() }}
         </div>
-    </div>
-
-    <div class="view-file">
-        <div id="view-btns">
-            <button id="close">Close</button>
-        </div>
-        <iframe  type="application/pdf" width="100%" height="600px" frameborder="0"></iframe>
     </div>
 </div>
 

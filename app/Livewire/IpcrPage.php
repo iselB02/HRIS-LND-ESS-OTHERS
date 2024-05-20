@@ -30,7 +30,7 @@ class IpcrPage extends Component
             'officedepartment' => $this->officedepartment,
             'average' => $this->average,
             'name' => $this->name,
-            'application_form' => $this->application_form,
+            'application_form' => $this->application_form ? $this->application_form->store('IPCR Form') : null,
         ]);
 
         $this->reset();
