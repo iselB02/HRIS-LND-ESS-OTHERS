@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
+            $table->integer('type')->nullable();
             $table->text('address')->nullable();
             $table->integer('postal_code')->nullable();
             $table->string('civil_status')->nullable();
@@ -26,6 +27,9 @@ return new class extends Migration
             $table->date('end_date')->nullable();
             $table->string('school_name')->nullable();
             $table->string('school_address')->nullable();
+            $table->date('published_date')->default(DB::raw('CURRENT_DATE'));
+            $table->string('status')->nullable();
+            $table->text('remarks')->nullable();
             $table->timestamps();
         });
     }

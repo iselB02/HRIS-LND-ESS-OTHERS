@@ -12,6 +12,7 @@ class ScholarshipModel extends Model
         'last_name',
         'first_name',
         'middle_name' ,
+        'type',
         'address',
         'postal_code',
         'civil_status',        
@@ -20,7 +21,10 @@ class ScholarshipModel extends Model
         'start_date',
         'end_date',
         'school_name',
-        'school_address'
+        'school_address',
+        'remarks',
+        'status'
+
     ];
 
     protected $table = 'scholarship_infos';

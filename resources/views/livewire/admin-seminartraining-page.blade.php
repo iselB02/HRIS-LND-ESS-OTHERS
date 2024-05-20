@@ -6,7 +6,6 @@
     <div class="display-semiar-training">
         <table>
             <tr>
-                <th>Module</th>
                 <th>Program</th>
                 <th>Participants</th>
                 <th>Start Date</th>
@@ -18,14 +17,15 @@
                 @foreach ($trainingSearch as $training)
                     <tr>
                         <!-- Display search result fields -->
-                        <td>{{ $training->id }}</td>
                         <td>{{ $training->title }}</td>
                         <td>{{ $training->participants }}</td>
                         <td>{{ $training->start_date }}</td>
                         <td>{{ $training->end_date }}</td>
                         <td>{{ $training->type }}</td>
                         <td>
-                            <!-- Actions buttons -->
+                            <button class="view"><img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon"></button>
+                            <button class="edit" wire:click="edit({{ $training->id }})"><img src="{{ asset('images/edit.png') }}" alt="Delete Icon" class="delete_icon"></button>   
+                            <button class="delete" wire:click="delete({{ $training->id }})"><img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon"></button>
                         </td>
                     </tr>
                 @endforeach
@@ -34,7 +34,6 @@
             <tr data-title="{{ $training->title }}" data-location="{{ $training->location }}" data-start_date="{{ $training->start_date }}" data-end_date="{{ $training->end_date}}" 
                 data-start_time="{{ $training->start_time }}" data-end_time="{{ $training->end_time}}" data-description="{{ $training->description}}" data-type="{{ $training->type}}" 
                 data-participants="{{ $training->participants}}" data-pre_test="{{ $training->pre_training}}" data-post_test="{{ $training->post_training}}">
-                <td>{{ $training->id }}</td>
                 <td>{{ $training->title }}</td>
                 <td>{{ $training->participants }}</td>
                 <td>{{ $training->start_date }}</td>
@@ -82,7 +81,7 @@
     </div>
     <div wire:ignore.self class="popup-modal1">
         <form wire:submit.prevent="update">
-            <div id="title-div">
+            <div  id="title-div">
                 <input wire:model="id" name="id_value" id="id_value" >
                 <label for="title-input">Title</label>
                 <input wire:model="title" type="text" name="title" id="title-edit">

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var table = document.querySelector('.admin-serminar-training-container');
     var preTestButton = document.getElementById('pre-test-btn');
     var postTestButton = document.getElementById('post-test-btn');
+    
     var row; // Define row outside the openInfo function
 
     function openInfo(event) {
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var endTime = row.getAttribute('data-end-time');
         var type = row.getAttribute('data-type');
         var participants = row.getAttribute('data-participants');
+        var descriptions = row.getAttribute('data-descriptions');
 
         document.getElementById('detail-location').textContent = 'Location: ' + location;
         document.getElementById('detail-topic').textContent = 'Topic: ' + title;
@@ -26,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('detail-time').textContent = 'Time: ' + startTime + ' to ' + endTime;
         document.getElementById('detail-type').textContent = 'Type: ' + type;
         document.getElementById('detail-participants').textContent = 'Participants: ' + participants;
+        document.getElementById('detail-description').textContent = descriptions;
         
 
         if (table && info) {

@@ -1,96 +1,81 @@
 <div class="admin-scholarship-container">
-   <div class="top-menu">
+    <div class="top-menu">
         <input type="search" name="search" id="search-scholarship-request" placeholder="Search">
         <button id="print">Print</button>
-        <select name="export-menu" id="export" >
+        <select name="export-menu" id="export">
             <option value="" disabled selected>Export</option>
             <option value="opt1">.PDF</option>
             <option value="opt2">.Docs</option>
             <option value="opt3">.CSV</option>
         </select>
-   </div>
-   <div class="display-scholarship-request">
+    </div>
+    <div class="display-scholarship-request">
         <table>
             <tr>
                 <th>Name</th>
                 <th>Office</th>
-                <th>Date</th>
                 <th>Type</th>
+                <th>Date</th>
+                <th>Actions</th>
             </tr>
-            <tr>
-                <td>Juan Dela Cruz</td>
-                <td>Office of the Registrar</td>
-                <td>March 10, 2024</td>
-                <td>.PDF
-                    <button id="download">
-                        <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
-                    </button>
+            @foreach ($scholars as $scholar)
+            <tr id="{{ $scholar->id }}" fname="{{ $scholar->first_name }}" mname="{{ $scholar->middle_name }}" lname="{{ $scholar->last_name }}"
+                address="{{ $scholar->address }}" postal="{{ $scholar->postal_code }}" civil-status="{{ $scholar->civil_status }}" position="{{ $scholar->position }}"
+                course="{{ $scholar->course }}" start="{{ $scholar->start_date }}" end="{{ $scholar->end_date }}" school="{{ $scholar->school_name }}"
+                school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->officedepartment }}" remarks="{{ $scholar->remarks }}">
+                <td>{{ $scholar->first_name }} {{ $scholar->middle_name }} {{ $scholar->last_name }}</td>
+                <td>{{ $scholar->officedepartment }}</td>
+                <td>{{ $scholar->type }}%</td>
+                <td>{{ $scholar->published_date }}</td>
+                <td>
                     <button id="delete">
-                        <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                        <img wire:click="delete({{ $scholar->id }})"  src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                     </button>
                     <button class="view">
-                        <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                        <img wire:click="edit({{ $scholar->id }})" src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                     </button>
                 </td>
             </tr>
-            <tr>
-                <td>Mary Anne Ramos</td>
-                <td>Office of the Executive Preisdent</td>
-                <td>March 5, 2024</td>
-                <td>.Docs
-                    <button id="download">
-                        <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
-                    </button>
-                    <button id="delete">
-                        <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
-                    </button>
-                    <button class="view">
-                        <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>Michael Gervacio</td>
-                <td>Office of University Legal Council</td>
-                <td>February 25, 2024</td>
-                <td>.PDF
-                    <button id="download">
-                        <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
-                    </button>
-                    <button id="delete">
-                        <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
-                    </button>
-                    <button class="view">
-                        <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>John Lacson</td>
-                <td>Internal Audit Office</td>
-                <td>February 10, 2024</td>
-                <td>.PDF
-                    <button id="download">
-                        <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
-                    </button>
-                    <button id="delete">
-                        <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
-                    </button>
-                    <button class="view">
-                        <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
-                    </button>
-                </td>
-            </tr>
+            @endforeach
         </table>
-   </div>
-   <div class="view-file">
-    <div id="view-btns">
-        <button id="close">Close</button>
     </div>
-    <iframe src="{{  asset('documents/scholarship.pdf') }}" frameborder="0"></iframe>
+    <div wire:ignore id="modal-overlay"></div>
+    <div wire:ignore class="view-file">
+        <div  wire:ignore.self class="scholarship-view">
+            <h1 class="form-heading">Scholarship Application</h1>
+            <div id="personal-info">
+                <h2>Personal Information</h2>
+                <h3 id="detail-name"></h3>
+                <h3 id="detail-address"></h3>
+                <h3 id="detail-civilStatus"></h3>
+            </div>
+            <div id="application-info">
+                <h2>Application Details</h2>
+                <h3 id="detail-office"></h3>
+                <h3 id="detail-position"></h3>
+                <h3 id="detail-type"></h3>
+                <h3 id="detail-course"></h3>  
+                <h3 id="detail-duration"></h3> 
+                <h3 id="detail-school"></h3>  
+                <h3 id="detail-schoolAddress"></h3> 
+            </div> 
+            <form wire:submit.prevent="updateStatus" id="edit-info">
+                <h2>Edit Information</h2>
+                <label for="edit-remarks">Remarks:</label>
+                <textarea wire:model="remarks" id="edit-remarks" name="remarks" rows="4" placeholder="Enter remarks here..."></textarea>
+                <label for="edit-status">Status:</label>
+                <select wire:model="status" id="edit-status" name="status">
+                    <option value="pending">Pending</option>
+                    <option value="compliance">For Compliance</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+                <button type="submit" id="apply">Apply</button>
+                <button type="button" id="close">Close</button>
+            </form>
+        </div>
+    </div>
 </div>
-</div>
-
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/admin-scholarship.css') }}">

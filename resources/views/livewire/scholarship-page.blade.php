@@ -8,12 +8,25 @@
             <tr>
                 <th>Application Date</th>
                 <th>Application status</th>
+                <th>Actions</th>
             </tr>
-            <tr>
-                <td>21 April 2023</td>
-                <td>Pending for Approval</td>
-                <td><button>View</button></td>
+            @foreach ($scholars as $scholar)
+            <tr id="{{ $scholar->id }}" fname="{{ $scholar->first_name }}" mname="{{ $scholar->middle_name }}" lname="{{ $scholar->last_name }}"
+                address="{{ $scholar->address }}" postal="{{ $scholar->postal_code }}" civil-status="{{ $scholar->civil_status }}" position="{{ $scholar->position }}"
+                course="{{ $scholar->course }}" start="{{ $scholar->start_date }}" end="{{ $scholar->end_date }}" school="{{ $scholar->school_name }}"
+                school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->officedepartment }}" remarks="{{ $scholar->remarks }}">
+                <td>{{ $scholar->published_date }}</td>
+                <td>{{ $scholar->status }}</td>
+                <td>
+                    <button id="delete">
+                        <img wire:click="delete({{ $scholar->id }})"  src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                    </button>
+                    <button class="view">
+                        <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                    </button>
+                </td>
             </tr>
+            @endforeach
         </table>
     </div>
     <div id="scholarship-form-container">
@@ -82,8 +95,15 @@
                     <option value="School of Government">School of Government</option>
                 </select>
                 <input wire:model="position" type="text" name="position" id="position">
+                <select wire:model="type" name="type" id="type">
+                    <option value="" disabled selected>Type of Scholarship</option>
+                    <option value="25" >25%</option>
+                    <option value="50" >50%</option>
+                    <option value="100" >100%</option>
+                </select>
                 <label for="office" id="office-label">Office</label>
                 <label for="position" id="position-label">Position</label>
+                <label for="type" id="type-label">Type of Scholarship</label>
             </div>
             <div id="section4">
                 <input wire:model="course" type="text" name="crs-title" id="crs-title">
@@ -104,8 +124,29 @@
             </div>
         </form>        
     </div>
-
-    <div class="modal-overlay"></div>
+    <div wire:ignore id="modal-overlay"></div>
+    <div wire:ignore class="view-file">
+        <div  wire:ignore.self class="scholarship-view">
+            <h1 class="form-heading">Scholarship Application</h1>
+            <div id="personal-info">
+                <h2>Personal Information</h2>
+                <h3 id="detail-name"></h3>
+                <h3 id="detail-address"></h3>
+                <h3 id="detail-civilStatus"></h3>
+            </div>
+            <div id="application-info">
+                <h2>Application Details</h2>
+                <h3 id="detail-office"></h3>
+                <h3 id="detail-position"></h3>
+                <h3 id="detail-type"></h3>
+                <h3 id="detail-course"></h3>  
+                <h3 id="detail-duration"></h3> 
+                <h3 id="detail-school"></h3>  
+                <h3 id="detail-schoolAddress"></h3> 
+            </div> 
+                <button type="button" id="close">Close</button>
+        </div>
+    </div>
 </div>
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/scholarshippage.css') }}">

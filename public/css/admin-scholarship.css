@@ -62,35 +62,25 @@ th, td {
     vertical-align: middle;
     text-align: center;
     border-bottom: 1px solid black;
-    
 }
 
-#download, #delete, .view {
+ #delete, .view {
     background-color: #FFFFFF;
     border: none;
     margin-left: 1px;
 }
 
-#download img, #delete img, .view img{
+#delete img, .view img {
     vertical-align: center;
     width: 25px;
     height: 25px;
 }
 
-.view-file{
-    display: none;
-    position: fixed;
-    align-items: end;
-    background-color: #ffffff;
-    width: 80%;
-    height: 85%;
-}
-
 iframe {
-
     width: 100%;
     height: 93%;
 }
+
 #view-btns {
     display: inline-flex;
     padding: 5px;
@@ -98,7 +88,124 @@ iframe {
     height: 7%;
 }
 
-#view-btns button {
-    width: 90px;
-    height: 30px;
+#modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 1; /* Ensure a higher z-index than the navbar */
+}
+
+.view-file {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    max-width: 800px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    overflow-y: auto;
+    max-height: 80%;
+    display: none;
+}.scholarship-view {
+    width: 100%;
+}
+
+#personal-info, #application-info, #edit-info {
+    margin-bottom: 20px;
+}
+
+#personal-info h2, #application-info h2, #edit-info h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    color: #555;
+}
+
+#personal-info h3, #application-info h3 {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+}
+
+#edit-info label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+#edit-info textarea {
+    width: 100%;
+    height: 100px;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: none;
+}
+
+#edit-info select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#apply, #close {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#close {
+    background-color: #ff4d4d;
+}
+
+.scholarship-view h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.scholarship-view h2 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.scholarship-view h3 {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    margin: 5px 0;
 }

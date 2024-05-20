@@ -149,11 +149,20 @@ th, td {
 
 #section3 #position {
     margin-left: 20px;
-    width: 46.5%;
+    width: 22%;
+}
+
+#section3 #type {
+    margin-left: 20px;
+    width: 22%;
 }
 
 #section3 #position-label {
-    margin-left: 44.5%;
+    margin-left: 45%;
+}
+
+#section3 #type-label {
+    margin-left: 19%;
 }
 
 #section4 #crs-title {
@@ -219,4 +228,128 @@ th, td {
 #buttons #submit {
     margin-left: 32%;
     margin-right: 10px;
+}
+
+#delete, .view {
+    background-color: #FFFFFF;
+    border: none;
+    margin-left: 1px;
+}
+
+#delete img, .view img {
+    vertical-align: center;
+    width: 25px;
+    height: 25px;
+}
+
+
+.view-file {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    max-width: 800px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    overflow-y: auto;
+    max-height: 80%;
+    display: none;
+}.scholarship-view {
+    width: 100%;
+}
+
+#personal-info, #application-info, #edit-info {
+    margin-bottom: 20px;
+}
+
+#personal-info h2, #application-info h2, #edit-info h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    color: #555;
+}
+
+#personal-info h3, #application-info h3 {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+}
+
+#edit-info label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+#edit-info textarea {
+    width: 100%;
+    height: 100px;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: none;
+}
+
+#edit-info select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#apply, #close {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#close {
+    background-color: #ff4d4d;
+}
+
+.scholarship-view h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.scholarship-view h2 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.scholarship-view h3 {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    margin: 5px 0;
 }
