@@ -66,9 +66,16 @@ class ScholarshipPage extends Component
         $this->reset();
     }
 
+    public function delete($id)
+    {
+        $item = ScholarshipModel::find($id);
+        $item->delete();
+    }
+
     public function render()
     {
         $scholars = ScholarshipModel::paginate(10); // Adjust the number as needed
         return view('livewire.scholarship-page', ['scholars' => $scholars]);
     }
 }
+

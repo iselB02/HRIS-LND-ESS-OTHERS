@@ -16,26 +16,32 @@ class AdminIPCRPage extends Component
     public $ipcrSearch = [];
     public $sortBy = 'name'; // Default sort field
     public $sortDirection = 'asc'; // Default sort direction
-
-    protected $updatesQueryString = ['sortBy', 'sortDirection'];
     public function render()
     {
-        $query = IPCRModel::query();
-
-        if (!empty($this->searchQuery)) {
+        $ipcrs = IPCRModel::when($this->searchQuery, function ($query) {
             $query->where('name', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('average', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%');
-        }
-
-        $query->orderBy($this->sortBy, $this->sortDirection);
-        $ipcrs = $query->paginate(10);
-
+        })
+        ->orderBy($this->sortBy, $this->sortDirection)
+        ->paginate(10); // Adjust the pagination count as needed
+        
         return view('livewire.admin-ipcr-page', [
             'ipcrs' => $ipcrs,
         ]);
     }
+
+       // Method to handle sorting
+    public function sortData($field, $sortDirection)
+       {
+        if ($this->sortBy === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortBy = $field;
+            $this->sortDirection = 'asc';
+           }
+       }
 
     public function search()
     {
@@ -43,7 +49,7 @@ class AdminIPCRPage extends Component
             $this->ipcrSearch = IPCRModel::where('name', 'like', '%' . $this->searchQuery . '%')
                                          ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
                                          ->orWhere('average', 'like', '%' . $this->searchQuery . '%')
-                                         ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%')
+                                         ->orWhere('published_date', 'like', '%' . strval($this->searchQuery) . '%')
                                          ->get();
         } else {
             // Reset ipcrSearch if search query is empty
@@ -51,6 +57,11 @@ class AdminIPCRPage extends Component
         }
     }
     
+    public function delete($id)
+    {
+        $item = IPCRModel::find($id);
+        $item->delete();
+    }
 }
 
 

@@ -1,7 +1,7 @@
 <div class="dashboard_container">
     <div id="applications">
         <div id="top-section">
-            <h2>Scholarship Application</h2>
+            <h2 id="title-h2">Scholarship Application</h2>
             <button id="apply">New Application</button>
         </div>
         <table>
@@ -29,6 +29,7 @@
             @endforeach
         </table>
     </div>
+
     <div id="scholarship-form-container">
         <h1 class="form-heading">Scholarship Application</h1>
         <form wire:submit.prevent="submit_scholarship">
@@ -53,7 +54,7 @@
             <h3>Details of Application</h3>
             <div id="section3">
                 <select wire:model="officedepartment" name="office" id="office" >   
-                    <option value="" disabled selected>Select Office</option>
+                    <option value="">Select Office</option>
                     <option value="Board of Regents">Board of Regents</option>
                     <option value="PLM office of the President">PLM office of the President</option>
                     <option value="Office of the Registrar">Office of the Registrar</option>
@@ -96,7 +97,7 @@
                 </select>
                 <input wire:model="position" type="text" name="position" id="position">
                 <select wire:model="type" name="type" id="type">
-                    <option value="" disabled selected>Type of Scholarship</option>
+                    <option value="">Type of Scholarship</option>
                     <option value="25" >25%</option>
                     <option value="50" >50%</option>
                     <option value="100" >100%</option>
@@ -142,7 +143,8 @@
                 <h3 id="detail-course"></h3>  
                 <h3 id="detail-duration"></h3> 
                 <h3 id="detail-school"></h3>  
-                <h3 id="detail-schoolAddress"></h3> 
+                <h3 id="detail-schoolAddress"></h3>
+                <h3 id="detail-remarks"></h3>  
             </div> 
                 <button type="button" id="close">Close</button>
         </div>
