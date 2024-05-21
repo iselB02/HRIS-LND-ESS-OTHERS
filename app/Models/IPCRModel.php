@@ -11,6 +11,7 @@ class IPCRModel extends Model
         'officedepartment',
         'average',
         'name',
+        'position',
         'application_form',
         
     ];

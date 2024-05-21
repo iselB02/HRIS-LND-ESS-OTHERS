@@ -59,7 +59,7 @@
             </div>
             <div class="details-container">
                 <div class="details">
-                    <h1>Details</h1>
+                    <h1>Details </h1>
                     <ul>
                         <li id="detail-topic"></li>
                         <li id="detail-date"></li>

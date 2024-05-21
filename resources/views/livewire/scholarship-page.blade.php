@@ -14,7 +14,8 @@
             <tr id="{{ $scholar->id }}" fname="{{ $scholar->first_name }}" mname="{{ $scholar->middle_name }}" lname="{{ $scholar->last_name }}"
                 address="{{ $scholar->address }}" postal="{{ $scholar->postal_code }}" civil-status="{{ $scholar->civil_status }}" position="{{ $scholar->position }}"
                 course="{{ $scholar->course }}" start="{{ $scholar->start_date }}" end="{{ $scholar->end_date }}" school="{{ $scholar->school_name }}"
-                school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->officedepartment }}" remarks="{{ $scholar->remarks }}">
+                school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->officedepartment }}" remarks="{{ $scholar->remarks }}"
+                unit="{{ $scholar->units }}" term="{{ $scholar->term}}">
                 <td>{{ $scholar->published_date }}</td>
                 <td>{{ $scholar->status }}</td>
                 <td>
@@ -108,9 +109,18 @@
             </div>
             <div id="section4">
                 <input wire:model="course" type="text" name="crs-title" id="crs-title">
+                <select wire:model="term" name="term" id="term">
+                    <option value="">School Term</option>
+                    <option value="First Semester" >First Semester</option>
+                    <option value="Second Semester" >Second Semester</option>
+                    <option value="Third Semester" >Third Semester</option>
+                </select>
+                <input wire:model="units" type="text" name="units" id="units">
                 <input wire:model="start_date" type="date" name="duration" id="start-date">
                 <input wire:model="end_date" type="date" name="duration" id="end-date">
                 <label for="crs-title" id="crs-label">Course Title</label>
+                <label for="term" id="term-label">School Term</label>
+                <label for="units" id="units-label">Total Units </label>
                 <label for="start-date" id="duration-label">Course Duration</label>
             </div>
             <div id="section5">
@@ -141,6 +151,8 @@
                 <h3 id="detail-position"></h3>
                 <h3 id="detail-type"></h3>
                 <h3 id="detail-course"></h3>  
+                <h3 id="detail-term"></h3>  
+                <h3 id="detail-units"></h3>
                 <h3 id="detail-duration"></h3> 
                 <h3 id="detail-school"></h3>  
                 <h3 id="detail-schoolAddress"></h3>

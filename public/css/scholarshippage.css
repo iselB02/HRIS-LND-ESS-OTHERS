@@ -166,11 +166,22 @@ th, td {
 }
 
 #section4 #crs-title {
-    width: 46.5%;
+    width: 27%;
+}
+
+#section4 #units {
+    margin-left: 35px;
+    width: 10.5%;
+}
+
+#section4 #term {
+    width: 17%;
+    border: none;
+    border-bottom:1px solid black ;
 }
 
 #section4 #start-date, #section4 #end-date {
-    width: 21.5%;
+    width: 15%;
     margin-left: 10px
 }
 
@@ -186,8 +197,16 @@ th, td {
     margin-left: 15px;
 }
 
+#section4 #term-label {
+    margin-left: 20%;
+}
+
+#section4 #units-label {
+    margin-left: 11%;
+}
+
 #section4 #duration-label {
-    margin-left: 40%;
+    margin-left: 16%;
 }
 
 #section5 input {

@@ -21,6 +21,7 @@ class AdminIPCRPage extends Component
         $ipcrs = IPCRModel::when($this->searchQuery, function ($query) {
             $query->where('name', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
+                  ->orWhere('position', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('average', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%');
         })
@@ -48,6 +49,7 @@ class AdminIPCRPage extends Component
         if (!empty($this->searchQuery)) {
             $this->ipcrSearch = IPCRModel::where('name', 'like', '%' . $this->searchQuery . '%')
                                          ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
+                                         ->orWhere('position', 'like', '%' . $this->searchQuery . '%')
                                          ->orWhere('average', 'like', '%' . $this->searchQuery . '%')
                                          ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%')
                                          ->get();

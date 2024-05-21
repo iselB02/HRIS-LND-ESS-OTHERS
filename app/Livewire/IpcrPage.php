@@ -17,12 +17,15 @@ class IpcrPage extends Component
     Public $average;
 
     public $name;
+
+    public $position;
     Public $application_form;
     public function submit_ipcrForm() {
         $this->validate([
             'officedepartment' => 'required',
             'average' => 'required',
             'name' => 'required',
+            'position' => 'required',
             'application_form' => 'required',
         ]);
 
@@ -30,6 +33,7 @@ class IpcrPage extends Component
             'officedepartment' => $this->officedepartment,
             'average' => $this->average,
             'name' => $this->name,
+            'position' => $this->position,
             'application_form' => $this->application_form,
         ]);
 

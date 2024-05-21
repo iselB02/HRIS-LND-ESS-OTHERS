@@ -25,7 +25,15 @@
                         <button wire:click="sortData('officedepartment', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
                     </span>
                 </th>
-
+                <th>
+                    <span>Position</span>
+                    <span>
+                        <button wire:click="sortData('type', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                     </span>
+                     <span>
+                         <button wire:click="sortData('type', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                     </span>
+                </th>
                 <th>
                     <span>Type</span>
                     <span>
@@ -62,8 +70,9 @@
                     address="{{ $scholar->address }}" postal="{{ $scholar->postal_code }}" civil-status="{{ $scholar->civil_status }}" position="{{ $scholar->position }}"
                     course="{{ $scholar->course }}" start="{{ $scholar->start_date }}" end="{{ $scholar->end_date }}" school="{{ $scholar->school_name }}"
                     school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->officedepartment }}" remarks="{{ $scholar->remarks }}">
-                    <td>{{ $scholar->first_name }} {{ $scholar->middle_name }} {{ $scholar->last_name }}</td>
+                    <td>{{ $scholar->first_name }} {{ $scholar->middle_name }} {{ $scholar->last_name }} unit="{{ $scholar->units }}" term="{{ $scholar->term}}"</td>
                     <td>{{ $scholar->officedepartment }}</td>
+                    <td>{{ $scholar->position }}</td>
                     <td>{{ $scholar->type }}%</td>
                     <td>{{ $scholar->published_date }}</td>
                     <td>{{ $scholar->status}}</td>
@@ -82,9 +91,11 @@
             <tr id="{{ $scholar->id }}" fname="{{ $scholar->first_name }}" mname="{{ $scholar->middle_name }}" lname="{{ $scholar->last_name }}"
                 address="{{ $scholar->address }}" postal="{{ $scholar->postal_code }}" civil-status="{{ $scholar->civil_status }}" position="{{ $scholar->position }}"
                 course="{{ $scholar->course }}" start="{{ $scholar->start_date }}" end="{{ $scholar->end_date }}" school="{{ $scholar->school_name }}"
-                school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->officedepartment }}" remarks="{{ $scholar->remarks }}">
-                <td>{{ $scholar->first_name }} {{ $scholar->middle_name }} {{ $scholar->last_name }}</td>
+                school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->officedepartment }}" remarks="{{ $scholar->remarks }}"
+                unit="{{ $scholar->units }}" term="{{ $scholar->term}}">
+                <td>{{ $scholar->first_name }} {{ $scholar->middle_name }} {{ $scholar->last_name }} </td>
                 <td>{{ $scholar->officedepartment }}</td>
+                <td>{{ $scholar->position }}</td>
                 <td>{{ $scholar->type }}%</td>
                 <td>{{ $scholar->published_date }}</td>
                 <td>{{ $scholar->status}}</td>
@@ -117,6 +128,8 @@
                 <h3 id="detail-position"></h3>
                 <h3 id="detail-type"></h3>
                 <h3 id="detail-course"></h3>  
+                <h3 id="detail-term"></h3>  
+                <h3 id="detail-units"></h3>
                 <h3 id="detail-duration"></h3> 
                 <h3 id="detail-school"></h3>  
                 <h3 id="detail-schoolAddress"></h3> 

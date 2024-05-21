@@ -19,6 +19,8 @@ class ScholarshipPage extends Component
     public $civil_status;
     public $position;
     public $course;
+    public $term;
+    public $units;
     public $start_date;
     public $end_date;
     public $school_name;
@@ -40,6 +42,8 @@ class ScholarshipPage extends Component
             'position' => 'required',
             'course' => 'required',
             'start_date' => 'required',
+            'term' => 'required',
+            'units' => 'required',
             'end_date' => 'required',
             'school_name' => 'required',
             'school_address' => 'required',
@@ -56,6 +60,8 @@ class ScholarshipPage extends Component
             'civil_status'=> $this->civil_status,        
             'position'=> $this->position,
             'course'=> $this->course,
+            'term'=> $this->term,
+            'units' => $this->units,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'school_name' => $this->school_name,

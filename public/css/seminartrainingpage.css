@@ -39,6 +39,11 @@
     height: 305px;
 }
 
+#buttons {
+    margin-left: 100px;
+    font-size: 12px;
+}
+
 .assessment {
     display: flex;
     background-color: rgb(255, 255, 255);

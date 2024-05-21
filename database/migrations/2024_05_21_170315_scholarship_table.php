@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('civil_status')->nullable();
             $table->string('position')->nullable();
             $table->string('course')->nullable();
+            $table->string('term')->nullable();
+            $table->integer('units')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->string('school_name')->nullable();

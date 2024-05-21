@@ -60,6 +60,8 @@ class AdminScholarshipPage extends Component
                   ->orwhere('last_name', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('type', 'like', '%' . $this->searchQuery . '%')
+                  ->orWhere('term', 'like', '%' . $this->searchQuery . '%')
+                  ->orWhere('units', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('status', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%');
         })
@@ -91,6 +93,8 @@ class AdminScholarshipPage extends Component
                                     ->orwhere('middle_name', 'like', '%' . $this->searchQuery . '%')
                                     ->orwhere('last_name', 'like', '%' . $this->searchQuery . '%')
                                     ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
+                                    ->orWhere('term', 'like', '%' . $this->searchQuery . '%')
+                                    ->orWhere('units', 'like', '%' . $this->searchQuery . '%')
                                     ->orWhere('type', 'like', '%' . $this->searchQuery . '%')
                                     ->orWhere('status', 'like', '%' . $this->searchQuery . '%')
                                     ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%')

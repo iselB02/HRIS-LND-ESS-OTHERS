@@ -18,6 +18,8 @@ class ScholarshipModel extends Model
         'civil_status',        
         'position',
         'course',
+        'term',
+        'units',
         'start_date',
         'end_date',
         'school_name',

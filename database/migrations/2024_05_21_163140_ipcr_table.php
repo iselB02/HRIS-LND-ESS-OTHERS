@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('officedepartment')->nullable();
+            $table->string('position')->nullable();
             $table->integer('average')->nullable();
             $table->binary('application_form')->nullable();
             $table->date('published_date')->default(DB::raw('CURRENT_DATE'));

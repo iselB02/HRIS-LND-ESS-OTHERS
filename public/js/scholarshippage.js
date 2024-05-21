@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var type_scholarship = row.getAttribute('type');
         var office = row.getAttribute('office');
         var remarks = row.getAttribute('remarks');
+        var term = row.getAttribute('term');
+        var units = row.getAttribute('unit');
 
         document.getElementById('detail-name').textContent = 'Full Name: ' + fname + ' ' + mname + ' ' + lname;
         document.getElementById('detail-address').textContent = 'Home Address: ' + address;
@@ -48,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('detail-position').textContent = 'Position: ' + position;
         document.getElementById('detail-type').textContent = 'Scholarship Type: ' + type_scholarship + '% Scholarship grant';
         document.getElementById('detail-course').textContent = 'Course: ' + course;
+        document.getElementById('detail-term').textContent = 'School Term: ' + term;
+        document.getElementById('detail-units').textContent = 'Total Units: ' + units;
         document.getElementById('detail-duration').textContent = 'Duration: ' + start + ' to ' + end;
         document.getElementById('detail-school').textContent = 'College/University: ' + school;
         document.getElementById('detail-schoolAddress').textContent = 'School Address: ' + school_address;

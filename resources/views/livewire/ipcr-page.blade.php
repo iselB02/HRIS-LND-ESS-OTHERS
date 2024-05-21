@@ -75,9 +75,13 @@
             <div class="name">
                 <label >Full Name: <input wire:model="name" type="text"></label>
             </div>
+            <div class="position">
+                <label >Position: <input wire:model="position" type="text"></label>
+            </div>
             <div class="average">
                 <label >Average: <input wire:model="average" type="text"></label>
             </div>
+            
             <div><button type="submit">Submit</button></div>
         </div>
         

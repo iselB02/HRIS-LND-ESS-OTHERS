@@ -144,9 +144,19 @@ form .ipcr-main {
 }
 
 #ipcr-col3 .average input { 
-    margin-left: 10px ;
+    margin-left: 12px ;
     width: 30%;
 }
+
+#ipcr-col3 .position {
+    margin-left: 10%;
+    margin-top: 5px;
+}
+
+#ipcr-col3 .position input { 
+    margin-left: 17px ;
+}
+
 
 #ipcr-col3 .name{
     margin-left: 10%;
