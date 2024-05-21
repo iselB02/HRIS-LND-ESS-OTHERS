@@ -1,22 +1,52 @@
 <div class="admin-permittostudy-container">
     <div class="top-menu">
-        <input type="search" name="search" id="search-permittostudy-request" placeholder="Search">
-        <button id="print">Print</button>
-        <select name="export-menu" id="export">
-            <option value="" disabled selected>Export</option>
-            <option value="opt1">.PDF</option>
-            <option value="opt2">.Docs</option>
-            <option value="opt3">.CSV</option>
-        </select>
+        <input wire:model.defer="searchQuery" wire:keydown.enter="search" type="search" id="search-ipcr" placeholder="Search ...">  
     </div>
     <div class="display-permit-to-study">
         <table>
             <tr>
-                <th>Name</th>
-                <th>Office</th>
-                <th>Date</th>
-                <th>Status</th>
+                <th>
+                    <span>Name</span>
+                    <span>
+                        <button wire:click="sortData('name', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                     </span>
+                     <span>
+                         <button wire:click="sortData('name', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                     </span>
+                </th>
+                
+                <th>
+                    <span>Office</span>
+                    <span>
+                       <button wire:click="sortData('officedepartment', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                    </span>
+                    <span>
+                        <button wire:click="sortData('officedepartment', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                    </span>
+                </th>
+
+                <th>
+                    <span>Date</span>
+                    <span>
+                        <button wire:click="sortData('average', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                     </span>
+                     <span>
+                         <button wire:click="sortData('average', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                     </span>
+                </th>
+
+                <th>
+                    <span>Status</span>
+                    <span>
+                        <button wire:click="sortData('status', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                     </span>
+                     <span>
+                         <button wire:click="sortData('status', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                     </span>
+                </th>
                 <th>Actions</th>
+            </tr>
+
             </tr>
             @foreach($records as $record)
             <tr data-record-id="{{ $record->id }}">
@@ -32,7 +62,7 @@
                         <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
                     </button>
                     <button id="delete">
-                        <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                        <img wire:click.prevent="delete({{ $record->id }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                     </button>
                 </td>
             </tr>
@@ -51,7 +81,6 @@
             <tr>
                 <th>File Name</th>
                 <th>Actions</th>
-                <th>Remarks</th>
             </tr>
             @foreach(['CoverMemo', 'RequestLetter', 'PermitToStudy', 'TeachingAssignment', 'SummaryOfSchedule', 'CertificationOfGrades', 'StudyPlan', 'FacultyEvaluation', 'RatedIPCR'] as $fileField)
                 @if($record->$fileField) <!-- Checking if the file field has a value -->
@@ -63,15 +92,6 @@
                                 <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                             </button>
                         </td>
-                        <td>
-                            <select name="remarks" class="remarks-dropdown">
-                                <option value="None">None</option>
-                                <option value="Accepted">Accepted</option>
-                                <option value="Rejected">Rejected</option>
-                                <option value="Send Again">Send Again</option>
-                            </select>
-                        </td>
-
                     </tr>
                 @endif
             @endforeach
@@ -81,6 +101,8 @@
     @endforeach
 
 </div>
+
+
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/admin-permittostudy.css') }}">

@@ -107,3 +107,13 @@ iframe {
 #links {
     margin-top: 10px;
 }
+
+span {
+    display: inline-flex;
+}
+
+span img {
+    width: 10px;
+    margin-left: 5px;
+}
+

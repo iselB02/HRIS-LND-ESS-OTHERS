@@ -1,13 +1,7 @@
 <div class="admin-scholarship-container">
     <div class="top-menu">
         <input type="search" name="search" id="search-scholarship-request" placeholder="Search">
-        <button id="print">Print</button>
-        <select name="export-menu" id="export">
-            <option value="" disabled selected>Export</option>
-            <option value="opt1">.PDF</option>
-            <option value="opt2">.Docs</option>
-            <option value="opt3">.CSV</option>
-        </select>
+
     </div>
     <div class="display-scholarship-request">
         <table>
