@@ -69,6 +69,7 @@ class ScholarshipPage extends Component
             'status' => $this->status,
             'remarks' => $this->remarks,
         ]);
+        session()->flash('message', 'Form submitted successfully!');
         $this->reset();
     }
 
@@ -76,6 +77,7 @@ class ScholarshipPage extends Component
     {
         $item = ScholarshipModel::find($id);
         $item->delete();
+        session()->flash('message', 'Form deletedsuccessfully!');
     }
 
     public function render()

@@ -33,10 +33,11 @@
 
     <div id="scholarship-form-container">
         <h1 class="form-heading">Scholarship Application</h1>
+
         <form wire:submit.prevent="submit_scholarship">
             <h3>Personal Information</h3>
             <div id="section1">
-                <input wire:model="first_name" type="text" name="Fname" id="Fname">
+                <input wire:model="first_name" type="text" name="Fname" id="Fname" >
                 <input wire:model="middle_name" type="text" name="Mname" id="Mname">
                 <input wire:model="last_name" type="text" name="Lname" id="Lname">
                 <label for="Fname" id="Fname-label">First Name</label>
