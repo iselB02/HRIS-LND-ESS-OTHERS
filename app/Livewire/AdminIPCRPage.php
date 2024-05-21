@@ -49,7 +49,7 @@ class AdminIPCRPage extends Component
             $this->ipcrSearch = IPCRModel::where('name', 'like', '%' . $this->searchQuery . '%')
                                          ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
                                          ->orWhere('average', 'like', '%' . $this->searchQuery . '%')
-                                         ->orWhere('published_date', 'like', '%' . strval($this->searchQuery) . '%')
+                                         ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%')
                                          ->get();
         } else {
             // Reset ipcrSearch if search query is empty

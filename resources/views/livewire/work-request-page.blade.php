@@ -4,17 +4,18 @@
         <h1 class="banner_h1">Work Request Service</h1>
     </div>
     <div class="button-container">
-        <div class="col1">
-            <div id="leaveRequest">
+        {{-- <div class="col1"> --}}
+            {{-- <div id="leaveRequest">
                 <img src="{{ asset('images/calendar.png') }}" alt="calendar_icon">
                 <h1>Leave Request</h1>
-            </div>
+            </div> --}}
+            
+        {{-- </div> --}}
+        <div class="col2">
             <div id="overTime">
                 <img src="{{ asset('images/wall-clock.png') }}" alt="wall_clock_icon">
                 <h1>Over Time</h1>
             </div>
-        </div>
-        <div class="col2">
             <div id="officialBusiness">
                 <img src="{{ asset('images/paperwork.png') }}" alt="paperwork_icon">
                 <h1>Official Business</h1>
@@ -24,7 +25,7 @@
                 <h1>Travel Order</h1>
             </div>
         </div>
-    </div>
+    {{-- </div>
 <!--Leave form-->
     <div id="leave-form">
         <h1 class="form-heading">Application for Leave</h1>
@@ -117,7 +118,7 @@
                 <button type="button" id="cancel1">Cancel</button>
             </div>
         </form>
-    </div>
+    </div> --}}
 <!--Overtime form-->
     <div id="overtime-form">
         <h1 class="form-heading">Application for Overtime</h1>

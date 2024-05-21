@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('Permit_To_Study_Table', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('officedepartment')->nullable();
             $table->binary('CoverMemo')->nullable();
             $table->binary('RequestLetter')->nullable();
             $table->binary('PermitToStudy')->nullable();
@@ -22,6 +24,7 @@ return new class extends Migration
             $table->binary('StudyPlan')->nullable();
             $table->binary('FacultyEvaluation')->nullable();
             $table->binary('RatedIPCR')->nullable();
+            $table->date('published_date')->default(DB::raw('CURRENT_DATE'));
             $table->timestamps();
         });
     }
