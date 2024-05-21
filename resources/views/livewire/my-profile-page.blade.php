@@ -6,7 +6,7 @@
             <div id="cover-photo">
                 <img id="cover" alt="Cover Photo" class="cover_photo" src="{{ $profile->cover_photo ? Storage::url($profile->cover_photo) : 'default-cover.jpg' }}">
                 <div class="side_edit">
-                    <button class="edit_info" onclick="openModal()"><img src="{{ asset('images/edit.png') }}" alt="EditIcon" id="edit"></button>
+                    <button class="edit_info"><img src="{{ asset('images/edit.png') }}" alt="EditIcon" id="edit"></button>
                 </div>
             </div>
             <div class="user_info">
@@ -22,54 +22,15 @@
             <p>{{ $profile->bio }}</p>
         </div>
         <div class="main_seminars_tag">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Organization</th>
-                        <th>Date</th>
-                        <th>Location</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Example seminar data -->
-                    <tr>
-                        <td>Effective Leadership</td>
-                        <td>Leadership Institute</td>
-                        <td>January 10, 2023</td>
-                        <td>Conference Room A</td>
-                    </tr>
-                    <tr>
-                        <td>Digital Marketing Trends</td>
-                        <td>Marketing Pro</td>
-                        <td>February 5, 2023</td>
-                        <td>Virtual Event</td>
-                    </tr>
-                    <tr>
-                        <td>Project Management Basics</td>
-                        <td>Project Masters</td>
-                        <td>January 10, 2023</td>
-                        <td>Training Center B</td>
-                    </tr>
-                    <tr>
-                        <td>Communication Skills</td>
-                        <td>Communication Hub</td>
-                        <td>April 15, 2023</td>
-                        <td>Seminar Hall</td>
-                    </tr>
-                    <tr>
-                        <td>Data Analytics Workshop</td>
-                        <td>Data Insights</td>
-                        <td>May 8, 2023</td>
-                        <td>Innovation Lab</td>
-                    </tr>
-                </tbody>
-            </table>
+            @livewire('training')
+            <div class="add_button"> 
+                <button id="add_training">Add</button>
+            </div>
         </div>
     </div>
 
     <div wire:ignore id="editProfileModal" class="edit_profile_modal">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close" >&times;</span>
         <div class="modal_content">
             <form wire:submit.prevent="updateProfile">            
                 <div class="current_image">

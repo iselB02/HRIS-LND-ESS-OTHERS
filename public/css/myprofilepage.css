@@ -247,6 +247,92 @@ table {
     color: white;
 }
 
+#add_training {
+    width: 100px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; /* Add margin to create space between the button and the form */
+    align-self: flex-end; /* Align the button to the end of the flex container */
+}
+
+.add_button {
+    margin-left: 90%;
+}
+
+/* Style for the form */
+#form_add {
+    
+    position: fixed;
+    top: 55%; /* Center the form vertically */
+    left: 60%; /* Center the form horizontally */
+    transform: translate(-50%, -50%); /* Center the form both vertically and horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px; /* Adjust width as needed */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: none;
+
+}
+/* 
+display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 60%;
+    background-color: #FFFFFF;
+    overflow-y: scroll;
+    padding: 10px;
+    z-index: 2;
+    display: none; */
+
+#form_add div {
+    margin-bottom: 15px;
+}
+
+#form_add label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#form_add  input[type="text"],
+#form_add  input[type="date"] {
+    width: 100%; /* Adjust width as needed */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#form_add  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#form_add  button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
 
 /* Responsive */
 @media screen and (max-width: 800px) {
