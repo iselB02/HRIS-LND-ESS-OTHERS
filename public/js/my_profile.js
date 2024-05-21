@@ -1,21 +1,27 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var modal = document.getElementById('editProfileModal');
-    var closeButton = modal.querySelector('.close');
-    var cancelButton = modal.querySelector('.cancel_btn');
-    var editInfoButton = document.querySelector('.edit_info');
+// public/js/my_profile.js
 
-    // Function to open the modal
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('editProfileModal');
+    const closeModalBtn = document.querySelector('.close');
+    const cancelBtn = document.querySelector('.cancel_btn');
+    const openModalBtn = document.querySelector('.edit_info');
+
     function openModal() {
-        modal.style.display = 'flex';
+        modal.style.display = 'block';
     }
 
-    // Function to close the modal
     function closeModal() {
         modal.style.display = 'none';
     }
 
-    // Event listeners for opening and closing the modal
-    editInfoButton.addEventListener('click', openModal);
-    closeButton.addEventListener('click', closeModal);
-    cancelButton.addEventListener('click', closeModal);
+    openModalBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    window.addEventListener('click', (event) => {
+        if (event.target == modal) {
+            closeModal();
+        }
+    });
 });
+    

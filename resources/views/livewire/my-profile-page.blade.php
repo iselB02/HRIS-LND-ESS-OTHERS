@@ -1,10 +1,12 @@
+<!-- resources/views/livewire/profile.blade.php -->
+
 <div class="my_profile_container">
     <div class="my_profile_main">
         <div class="main_user_details">
             <div id="cover-photo">
-                <img alt="Cover Photo" class="cover_photo">
+                <img alt="Cover Photo" class="cover_photo" src="{{ $profile->cover_photo ? Storage::url($profile->cover_photo) : 'default-cover.jpg' }}">
                 <div class="side_edit">
-                    <button class="edit_info">Edit Info</button>
+                    <button class="edit_info" onclick="openModal()"><img src="{{ asset('images/edit.png') }}" alt="EditIcon"></button>
                 </div>
             </div>
             <div class="user_info">
@@ -13,7 +15,7 @@
                 <p class="info">{{ $profile->phone_number }}</p>
             </div>
             <div id="profile-photo">
-                <img alt="Profile Picture" class="profile_picture">
+                <img alt="Profile Picture" class="profile_picture" src="{{ $profile->profile_photo ? Storage::url($profile->profile_photo) : 'default-profile.jpg' }}">
             </div>
         </div>
         <div class="main_about">
@@ -22,12 +24,15 @@
         <div class="main_seminars_tag">
             <table>
                 <thead>
-                    <th>Title</th>
-                    <th>Organization</th>
-                    <th>Date</th>
-                    <th>Location</th>
+                    <tr>
+                        <th>Title</th>
+                        <th>Organization</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                    </tr>
                 </thead>
                 <tbody>
+                    <!-- Example seminar data -->
                     <tr>
                         <td>Effective Leadership</td>
                         <td>Leadership Institute</td>
@@ -66,10 +71,10 @@
     <div wire:ignore id="editProfileModal" class="edit_profile_modal">
         <div class="modal_content">
             <form wire:submit.prevent="updateProfile">
-                <span class="close">&times;</span>
+                <span class="close" onclick="closeModal()">&times;</span>
                 
                 <div class="current_image">
-                    <img alt="Current Profile Picture" id="currentProfilePic">
+                    <img alt="Current Profile Picture" id="currentProfilePic" src="{{ $profile->profile_photo ? Storage::url($profile->profile_photo) : 'default-profile.jpg' }}">
                 </div>
 
                 <div class="edit_field">
@@ -77,7 +82,7 @@
                 </div>
 
                 <div class="current_image">
-                    <img   alt="Current Cover Photo" id="currentCoverPhoto">
+                    <img alt="Current Cover Photo" id="currentCoverPhoto" src="{{ $profile->cover_photo ? Storage::url($profile->cover_photo) : 'default-cover.jpg' }}">
                 </div>
 
                 <div class="edit_field">
@@ -96,7 +101,7 @@
 
                 <div class="modal_actions">
                     <button type="submit" class="save_btn">Save</button>
-                    <button type="button" class="cancel_btn">Cancel</button>
+                    <button type="button" class="cancel_btn" onclick="closeModal()">Cancel</button>
                 </div>
             </form>
         </div>
@@ -106,7 +111,7 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/myprofilepage.css') }}">
 @endpush
+
 @push('scripts')
     <script src="{{ asset('js/my_profile.js') }}" defer></script>
 @endpush
-
