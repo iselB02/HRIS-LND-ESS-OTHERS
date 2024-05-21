@@ -4,17 +4,18 @@
         <h1 class="banner_h1">Work Request Service</h1>
     </div>
     <div class="button-container">
-        <div class="col1">
+        {{-- <div class="col1"> --}}
             {{-- <div id="leaveRequest">
                 <img src="{{ asset('images/calendar.png') }}" alt="calendar_icon">
                 <h1>Leave Request</h1>
             </div> --}}
+            
+        {{-- </div> --}}
+        <div class="col2">
             <div id="overTime">
                 <img src="{{ asset('images/wall-clock.png') }}" alt="wall_clock_icon">
                 <h1>Over Time</h1>
             </div>
-        </div>
-        <div class="col2">
             <div id="officialBusiness">
                 <img src="{{ asset('images/paperwork.png') }}" alt="paperwork_icon">
                 <h1>Official Business</h1>
