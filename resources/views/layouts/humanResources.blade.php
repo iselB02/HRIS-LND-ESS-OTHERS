@@ -63,12 +63,12 @@
                       <span>Seminars and Training</span>
                     </a>
                   </li>
-                  <li class="item">
+                  {{-- <li class="item">
                     <a href="{{ route('adminComputerAidedTraining.index') }}" class="link flex">
                       <i class='bx bxs-spreadsheet'></i>
                       <span>Computer Aided</span>
                     </a>
-                  </li>
+                  </li> --}}
                 </ul>
               </div>
             </div>
