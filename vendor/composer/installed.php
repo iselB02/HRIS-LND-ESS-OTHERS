@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '022eba3b7320b0f9b8c6ebc50e5fdbf3abb8b7d4',
+        'reference' => '0b6f56a201fe8c8a37e99de1e77cab0de013dc3b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -418,7 +418,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '022eba3b7320b0f9b8c6ebc50e5fdbf3abb8b7d4',
+            'reference' => '0b6f56a201fe8c8a37e99de1e77cab0de013dc3b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -524,9 +524,9 @@
             'dev_requirement' => false,
         ),
         'livewire/livewire' => array(
-            'pretty_version' => 'v3.2.3',
-            'version' => '3.2.3.0',
-            'reference' => '724e712cac25c40455102f0b5abd002fd269433b',
+            'pretty_version' => 'v3.4.12',
+            'version' => '3.4.12.0',
+            'reference' => '54dd265c17f7b5200627eb9690590e7cbbad1027',
             'type' => 'library',
             'install_path' => __DIR__ . '/../livewire/livewire',
             'aliases' => array(),
@@ -829,8 +829,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '3.0.0',
+                0 => '3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(
