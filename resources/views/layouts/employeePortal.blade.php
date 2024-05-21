@@ -145,92 +145,13 @@
           <nav class="navbar flex">
             <i class="bx bx-menu" id="sidebar-open"></i>
             <div class="notifications-container">
-              <i class='bx bxs-bell' id="notifications-icon"></i> 
-              <!-- Dropdown for notifications -->
-              <ul class="notifications-dropdown">
-                <li class="dropdown-title">Notifications</li>
-                <li class="divider"></li>
-                <li>
-                  <div class="scroll-container">
-                    <a href="#" class="notification-link">
-                      <div class="notification-content">
-                        <div class="notification-icon">
-                          <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
-                        </div>
-                        <div class="notification-text">
-                          <span class="notification-title">Leadership Seminar</span> <!-- Notification Title -->
-                          <span class="notification-body">We are pleased to announce a Leadership Training session scheduled for December 15, 2023. This training is a part of our commitment to fostering an inclusive and respectful workplace environment.</span> <!-- Notification Body -->
-                          <span class="notification-time">2 days ago</span> <!-- Time Sent -->
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div class="scroll-container">
-                    <a href="#" class="notification-link">
-                      <div class="notification-content">
-                        <div class="notification-icon">
-                          <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
-                        </div>
-                        <div class="notification-text">
-                          <span class="notification-title">Gender Sensitivity Seminar</span> <!-- Notification Title -->
-                          <span class="notification-body">We are pleased to announce a Gender Sensitivity Training session scheduled for November 15, 2023. This training is a part of our commitment to fostering an inclusive and respectful workplace environment.</span> <!-- Notification Body -->
-                          <span class="notification-time">November 05, 2023</span> <!-- Time Sent -->
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div class="scroll-container">
-                    <a href="#" class="notification-link">
-                      <div class="notification-content">
-                        <div class="notification-icon">
-                          <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
-                        </div>
-                        <div class="notification-text">
-                          <span class="notification-title">Digital Marketing Mastery Seminar</span> <!-- Notification Title -->
-                          <span class="notification-body">Exciting news for marketing enthusiasts! Our "Digital Marketing Mastery Seminar" is just around the corner. </span> <!-- Notification Body -->
-                          <span class="notification-time">September 29, 2023</span> <!-- Time Sent -->
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div class="scroll-container">
-                    <a href="#" class="notification-link">
-                      <div class="notification-content">
-                        <div class="notification-icon">
-                          <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
-                        </div>
-                        <div class="notification-text">
-                          <span class="notification-title">Unlocking Creativity Workshop</span> <!-- Notification Title -->
-                          <span class="notification-body">Join us for an immersive workshop on "Unlocking Creativity" where we'll explore techniques to unleash your creative potential.</span> <!-- Notification Body -->
-                          <span class="notification-time">September 10, 2023</span> <!-- Time Sent -->
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div class="scroll-container">
-                    <a href="#" class="notification-link">
-                      <div class="notification-content">
-                        <div class="notification-icon">
-                          <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
-                        </div>
-                        <div class="notification-text">
-                          <span class="notification-title">Data Science Bootcamp</span> <!-- Notification Title -->
-                          <span class="notification-body">Dive into the world of data science with our comprehensive "Data Science Bootcamp." Whether you're a beginner or a seasoned professional, this intensive week-long program covers everything from fundamental concepts to advanced analytics. </span> <!-- Notification Body -->
-                          <span class="notification-time">June 1, 2023</span> <!-- Time Sent -->
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-              </ul>
+                <i class='bx bxs-bell' id="notifications-icon"></i> 
+                <!-- Dropdown for notifications -->
+                <ul class="notifications-dropdown">
+                    <li class="dropdown-title">Notifications</li>
+                    <li class="divider"></li>
+                    @livewire('notifications')
+                </ul>
             </div>
             <div class="user-profile" id="user-profile">
               <!-- User Profile Picture -->

@@ -1,7 +1,7 @@
 <div class="seminartraining-container">
     <div class="admin-serminar-training-container">
         <div class="top-menu">
-            <input type="search" id="search-seminar-training" placeholder="Search">
+            <input wire:model.defer="searchQuery" wire:keydown.enter="search"  type="search" id="search-seminar-training" placeholder="Search">
         </div>
         <div class="display-semiar-training">
             <table>
@@ -12,7 +12,20 @@
                     <th>End Date</th>
                     <th>Type</th>
                     <th></th>
-                </tr>
+                </tr> </tr> <!-- Display search results if available -->
+                @if(!empty($trainingSearch))
+                    @foreach ($trainingSearch as $training)
+                    <tr data-title="{{ $training->title }}" data-location="{{ $training->location }}" data-pre-link="{{ $training->pre_training}}" data-post-link="{{ $training->post_training }}" data-start-date="{{ $training->start_date }}" data-end-date="{{ $training->end_date }}" data-type="{{ $training->type }}"
+                        data-start-time="{{ $training->start_time }}" data-end-time="{{ $training->end_time }}" data-participants="{{ $training->participants}}"  data-descriptions="{{ $training->description}}">
+                        <td>{{ $training->title }}</td>
+                        <td>{{ $training->participants }}</td>
+                        <td>{{ $training->start_date }}</td>
+                        <td>{{ $training->end_date }}</td>
+                        <td>{{ $training->type }}</td>
+                        <td><button class="view">View</button></td>
+                    </tr>
+                    @endforeach
+                @else
                 @foreach ($trainings as $training)
                 <tr data-title="{{ $training->title }}" data-location="{{ $training->location }}" data-pre-link="{{ $training->pre_training}}" data-post-link="{{ $training->post_training }}" data-start-date="{{ $training->start_date }}" data-end-date="{{ $training->end_date }}" data-type="{{ $training->type }}"
                     data-start-time="{{ $training->start_time }}" data-end-time="{{ $training->end_time }}" data-participants="{{ $training->participants}}"  data-descriptions="{{ $training->description}}">
@@ -25,6 +38,7 @@
                 </tr>
                 @endforeach
             </table>
+            @endif
         </div>
     </div>
 

@@ -77,44 +77,13 @@
           <nav class="navbar flex">
             <i class="bx bx-menu" id="sidebar-open"></i>
             <div class="notifications-container">
-              <i class='bx bxs-bell' id="notifications-icon"></i> 
-              <!-- Dropdown for notifications -->
-              <ul class="notifications-dropdown">
-                <li class="dropdown-title">Notifications</li>
-                <li class="divider"></li>
-                <li>
-                  <div class="scroll-container">
-                    <a href="#" class="notification-link">
-                      <div class="notification-content">
-                        <div class="notification-icon">
-                          <i class='bx bxs-book-reader'></i> <!-- Boxicon for notification -->
-                        </div>
-                        <div class="notification-text">
-                          <span class="notification-title">Permit to Study</span> <!-- Notification Title -->
-                          <span class="notification-body">Application for Permit to Study has been approved.</span> <!-- Notification Body -->
-                          <span class="notification-time">10 minutes ago</span> <!-- Time Sent -->
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div class="scroll-container">
-                    <a href="#" class="notification-link">
-                      <div class="notification-content">
-                        <div class="notification-icon">
-                          <i class='bx bxs-megaphone'></i> <!-- Boxicon for notification -->
-                        </div>
-                        <div class="notification-text">
-                          <span class="notification-title">Announcements</span> <!-- Notification Title -->
-                          <span class="notification-body">We are pleased to announce a Gender Sensitivity Training session scheduled for November 25, 2023. This training is a part of our commitment to fostering an inclusive and respectful workplace environment.</span> <!-- Notification Body -->
-                          <span class="notification-time">2 days ago</span> <!-- Time Sent -->
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-              </ul>
+                <i class='bx bxs-bell' id="notifications-icon"></i> 
+                <!-- Dropdown for notifications -->
+                <ul class="notifications-dropdown">
+                    <li class="dropdown-title">Notifications</li>
+                    <li class="divider"></li>
+                    @livewire('notifications')
+                </ul>
             </div>
             <div class="user-profile" id="user-profile">
               <!-- User Profile Picture -->
