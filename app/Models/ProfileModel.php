@@ -9,6 +9,7 @@ class ProfileModel extends Model
 {
 
     protected $fillable = [
+        'name',
         'school',
         'phone_number',
         'profile_photo',

@@ -77,12 +77,12 @@
                       <span>Leave Management</span>
                     </a>
                   </li>
-                  <li class="item">
+                  {{-- <li class="item">
                     <a href="{{ route('work_request.index') }}" class="link flex">
                       <i class='bx bxs-notepad' ></i>
                       <span>Work Requests</span>
                     </a>
-                  </li>
+                  </li> --}}
                   <li class="item">
                     <a href="{{ route('hrforms.index') }}" class="link flex">
                       <i class='bx bxs-file-find' ></i>

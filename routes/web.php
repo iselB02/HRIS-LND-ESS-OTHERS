@@ -44,8 +44,8 @@ Route::get("/", function () {
 Route::middleware([])->group(function () {
     // Change the 'dashboard' route to redirect to 'emp_dashboard'
     Route::get('/dashboard', function () {
-        return redirect()->route('my_profile.index');
-    })->name('my_profile.index');
+        return redirect()->route('dashboard.index');
+    })->name('dashboard.redirect');
 
     Route::get('/emp_dashboard', DashboardPage::class)->name('dashboard.index');
     Route::get('/emp_my_profile', MyProfilePage::class)->name('my_profile.index');

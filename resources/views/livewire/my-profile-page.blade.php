@@ -4,7 +4,7 @@
     <div class="my_profile_main">
         <div class="main_user_details">
             <div id="cover-photo">
-                <img id="cover" alt="Cover Photo" class="cover_photo" src="{{ $profile->cover_photo ? Storage::url($profile->cover_photo) : 'default-cover.jpg' }}">
+                <img id="cover" alt="Cover Photo" class="cover_photo" src="{{ $profile->cover_photo ? Storage::url($profile->cover_photo) : asset('images/default-cover.jpg') }}">
                 <div class="side_edit">
                     <button class="edit_info"><img src="{{ asset('images/edit.png') }}" alt="EditIcon" id="edit"></button>
                 </div>
@@ -15,7 +15,7 @@
                 <p class="info">{{ $profile->phone_number }}</p>
             </div>
             <div id="profile-photo">
-                <img alt="Profile Picture" class="profile_picture" src="{{ $profile->profile_photo ? Storage::url($profile->profile_photo) : 'default-profile.jpg' }}">
+                <img alt="Profile Picture" class="profile_picture" src="{{ $profile->profile_photo ? Storage::url($profile->profile_photo) : asset('images/default-profile.jpg') }}">
             </div>
         </div>
         <div class="main_about">
@@ -30,11 +30,11 @@
     </div>
 
     <div wire:ignore id="editProfileModal" class="edit_profile_modal">
-        <span class="close" >&times;</span>
+        <span class="close">&times;</span>
         <div class="modal_content">
             <form wire:submit.prevent="updateProfile">            
                 <div class="current_image">
-                    <img alt="Current Profile Picture" id="currentProfilePic" src="{{ $profile->profile_photo ? Storage::url($profile->profile_photo) : 'default-profile.jpg' }}">
+                    <img alt="Current Profile Picture" id="currentProfilePic" src="{{ $profile->profile_photo ? Storage::url($profile->profile_photo) : asset('images/default-profile.jpg') }}">
                 </div>
 
                 <div class="edit_field">
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="current_image">
-                    <img alt="Current Cover Photo" id="currentCoverPhoto" src="{{ $profile->cover_photo ? Storage::url($profile->cover_photo) : 'default-cover.jpg' }}">
+                    <img alt="Current Cover Photo" id="currentCoverPhoto" src="{{ $profile->cover_photo ? Storage::url($profile->cover_photo) : asset('images/default-cover.jpg') }}">
                 </div>
 
                 <div class="edit_field">
