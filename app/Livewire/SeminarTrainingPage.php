@@ -13,13 +13,6 @@ class SeminarTrainingPage extends Component
     public $searchQuery;
     
     public $trainingSearch = [];
-    public $trainings=[];
-
-    public function mount()
-    {
-        // Fetch all users from the database
-        $this->trainings = SeminarTrainingModel::all();
-    }
 
     public function search()
     {
@@ -38,6 +31,7 @@ class SeminarTrainingPage extends Component
     }
     public function render()
     {
-        return view('livewire.seminar-training-page');
+        $trainings = SeminarTrainingModel::paginate(10); 
+        return view('livewire.seminar-training-page',  ['trainings' => $trainings]);
     }
 }

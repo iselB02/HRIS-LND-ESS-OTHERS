@@ -38,6 +38,9 @@
                 </tr>
                 @endforeach
             </table>
+            <div id="links">
+                {{ $trainings->links() }}
+            </div>
             @endif
         </div>
     </div>

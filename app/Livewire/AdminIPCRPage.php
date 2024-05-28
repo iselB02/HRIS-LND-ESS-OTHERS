@@ -26,7 +26,7 @@ class AdminIPCRPage extends Component
                   ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%');
         })
         ->orderBy($this->sortBy, $this->sortDirection)
-        ->paginate(10); // Adjust the pagination count as needed
+        ->paginate(6); // Adjust the pagination count as needed
         
         return view('livewire.admin-ipcr-page', [
             'ipcrs' => $ipcrs,

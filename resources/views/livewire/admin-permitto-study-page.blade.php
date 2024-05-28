@@ -89,6 +89,9 @@
             </tr>
             @endif
         </table>
+        <div id="links">
+            {{ $records->links() }}
+        </div>
     </div>
 
   <!-- Files section for each record -->
@@ -135,6 +138,9 @@
               @endforeach
           @endif
       </table>
+      <div id="links">
+        {{ $records->links() }}
+    </div>
       <iframe id="file-viewer-{{ $record->id }}" class="file-viewer" style="display: none; width: 100%; height: 500px;"></iframe>
   </div>
   @endforeach

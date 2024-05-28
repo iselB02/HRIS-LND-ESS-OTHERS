@@ -110,6 +110,9 @@
             </tr>
             @endforeach
         </table>
+        <div id="links">
+            {{ $scholars->links() }}
+        </div>
         @endif
     </div>
     <div wire:ignore id="modal-overlay"></div>

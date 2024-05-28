@@ -43,53 +43,53 @@
                   </li>
                 </ul> --}}
                 <ul class="menu_item">
-                  <div class="menu_title flex">
+                  {{-- <div class="menu_title flex">
                     <span class="title">Employee Self Service</span>
                     <span class="line"></span>
-                  </div>
-                  <li class="item {{ request()-> is('emp_my_profile*') ? 'active' : '' }}">
+                  </div> --}}
+                  {{-- <li class="item {{ request()-> is('emp_my_profile*') ? 'active' : '' }}">
                     <a href="{{ route('my_profile.index') }}" class="link flex">
                       <i class='bx bxs-happy'></i>
                       <span>My Profile</span>
                     </a>
-                  </li>
-                  <li class="item {{ request()->is('attendance*') ? 'active' : '' }}">
+                  </li> --}}
+                  {{-- <li class="item {{ request()->is('attendance*') ? 'active' : '' }}">
                     <a href="{{ route('attendance.index') }}" class="link flex">
                       <i class='bx bxs-calendar-check'></i>
                       <span>Attendance</span>
                     </a>
-                  </li>
-                  <li class="item">
+                  </li> --}}
+                  {{-- <li class="item">
                     <a href="{{ route('benefitsdeductions.index') }}" class="link flex">
                       <i class='bx bxs-wallet'></i>
                       <span>Benefits & Deductions</span>
                     </a>
-                  </li>
-                  <li class="item">
+                  </li> --}}
+                  {{-- <li class="item">
                     <a href="{{ route('announcements.index') }}" class="link flex">
                       <i class='bx bxs-megaphone'></i>
                       <span>Announcements</span>
                     </a>
-                  </li>
-                  <li class="item">
+                  </li> --}}
+                  {{-- <li class="item">
                     <a href="{{ route('leave_management.index') }}" class="link flex">
                       <i class='bx bxs-briefcase' ></i>
                       <span>Leave Management</span>
                     </a>
-                  </li>
+                  </li> --}}
                   {{-- <li class="item">
                     <a href="{{ route('work_request.index') }}" class="link flex">
                       <i class='bx bxs-notepad' ></i>
                       <span>Work Requests</span>
                     </a>
                   </li> --}}
-                  <li class="item">
+                  {{-- <li class="item">
                     <a href="{{ route('hrforms.index') }}" class="link flex">
                       <i class='bx bxs-file-find' ></i>
                       <span>HR Forms</span>
                     </a>
                   </li>
-                </ul>
+                </ul> --}}
                 <ul class="menu_item">
                   <div class="menu_title flex">
                     <span class="title">Learning and Development</span>
@@ -101,12 +101,12 @@
                       <span>Individual Performance</span>
                     </a>
                   </li>
-                  {{-- <li class="item">
+                  <li class="item">
                     <a href="{{ route('opcr.index') }}" class="link flex">
                       <i class='bx bxs-business'></i>
                       <span>Office Performance</span>
                     </a>
-                  </li> --}}
+                  </li>
                   <li class="item">
                     <a href="{{ route('permittostudy.index') }}" class="link flex">
                       <i class='bx bxs-book-reader'></i>

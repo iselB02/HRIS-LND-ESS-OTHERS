@@ -29,6 +29,9 @@
             </tr>
             @endforeach
         </table>
+        <div id="links">
+            {{ $scholars->links() }}
+        </div>
     </div>
 
     <div id="scholarship-form-container">
