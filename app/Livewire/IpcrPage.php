@@ -12,34 +12,6 @@ use Livewire\WithFileUploads;
 class IpcrPage extends Component
 
 {
-    use WithFileUploads;
-    Public $officedepartment;
-    Public $average;
-
-    public $name;
-
-    public $position;
-    Public $application_form;
-    public function submit_ipcrForm() {
-        $this->validate([
-            'officedepartment' => 'required',
-            'average' => 'required',
-            'name' => 'required',
-            'position' => 'required',
-            'application_form' => 'required',
-        ]);
-
-        IPCRModel::create([
-            'officedepartment' => $this->officedepartment,
-            'average' => $this->average,
-            'name' => $this->name,
-            'position' => $this->position,
-            'application_form' => $this->application_form,
-        ]);
-
-        $this->reset();
-
-    }
 
     public function render()
     {

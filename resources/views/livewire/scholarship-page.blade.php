@@ -5,11 +5,14 @@
             <button id="apply">New Application</button>
         </div>
         <table>
-            <tr>
-                <th>Application Date</th>
-                <th>Application status</th>
-                <th>Actions</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Application Date</th>
+                    <th>Application status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+           <tbody>
             @foreach ($scholars as $scholar)
             <tr id="{{ $scholar->id }}" fname="{{ $scholar->first_name }}" mname="{{ $scholar->middle_name }}" lname="{{ $scholar->last_name }}"
                 address="{{ $scholar->address }}" postal="{{ $scholar->postal_code }}" civil-status="{{ $scholar->civil_status }}" position="{{ $scholar->position }}"
@@ -28,6 +31,8 @@
                 </td>
             </tr>
             @endforeach
+           </tbody>
+    
         </table>
         <div id="links">
             {{ $scholars->links() }}

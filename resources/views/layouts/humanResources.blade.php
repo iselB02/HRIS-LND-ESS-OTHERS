@@ -109,12 +109,12 @@
                         <span>Settings</span>
                       </a>
                     </li>
-                    <li class="item">
+                    {{-- <li class="item">
                       <a href="{{ route('my_profile.index') }}" class="link">
                         <i class='bx bxs-paste'></i></i>
                         <span>Employee Portal</span>
                       </a>
-                    </li>
+                    </li> --}}
                   </div>
                   <li class="divider"></li>
                   <div class="item-container">

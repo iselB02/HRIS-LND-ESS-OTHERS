@@ -29,6 +29,8 @@ class ScholarshipPage extends Component
     public $status = 'Pending for Approval';
     public $remarks;
 
+    public $id = 2;
+
     public function submit_scholarship() {
         $this->validate([
             'officedepartment' => 'required',
@@ -50,6 +52,7 @@ class ScholarshipPage extends Component
         ]);
         
         ScholarshipModel::create([
+            'id' => $this->id,  
             'officedepartment' => $this->officedepartment,
             'last_name' => $this->last_name,
             'first_name' => $this->first_name,

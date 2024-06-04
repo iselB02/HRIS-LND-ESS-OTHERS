@@ -1,92 +1,156 @@
-<div class="ipcr-container">
-    <div class="ipcr-banner">
-        <img id="ipcr_img" src="{{ asset('images/plm_bg.jpg') }}" alt="plm">
-        <h1 id="ipcr-h1">Individual Performance Commitment and Review</h1>
-    </div>
-    <form wire:submit.prevent="submit_ipcrForm">
-    <div class="ipcr-main">
-        <div id="ipcr-col1">
-            <h2>Attach IPCR File</h2>
-            <img id="fileattach-icon" src="{{ asset('images/attach-file.png') }}" alt="plm">
-            <label ><input wire:model="application_form" type="file"></label>
+<div class="main_ipcr">
+        <div class="opcr-banner">
+            <img id="opcr_img" src="{{ asset('images/plm_bg.jpg') }}" alt="plm">
+            <h1 id="opcr-h1">Individual Performance Commitment and Review</h1>
         </div>
-        <div id="ipcr-col2">
-            <h2>Encode IPCR Targets</h2>
-            <table>
+        <div class="ipcr_table">
+            <div id="top_menu">
+                <button id="new_ipcr">Add IPCR</button>
+            </div>
+            <table id="submission_table">
+                <thead>
+                    <tr>
+                        <th>Submission Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
                     <tr>
-                        <td><h3>Distribution/dissemination and discussion of syllabus with the students by the end of the first week of classes</h3></td>
-                        <td><h3>100% distribution/
-                            dissemination and discussion of the syllabus with the students by the end of the first week of classes in all assigned subjects.</h3></td>
-                    </tr>
-                    <tr>
-                        <td><h3>Application of various teaching methods/style relevant in teaching the assigned subject based on the OBTL Plan.</h3></td>
-                        <td><h3>50% application of the identified teaching methods/style relevant in teaching the assigned subject based on the OBTL Plan.</h3></td>
+                        <td>June 02, 2024</td>
+                        <td>Pending</td>
+                        <td>
+                            <button id="delete">
+                                <img  src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                            </button>
+                            <button class="view">
+                                <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div id="ipcr-col3">
-            <h2>Encode IPCR ratings</h2>
-            <div id="office">
-                    <select wire:model="officedepartment" name="office" id="office" >   
-                        <option value="" >Select Office/Department</option>
-                        <option value="Board of Regents">Board of Regents</option>
-                        <option value="PLM office of the President">PLM office of the President</option>
-                        <option value="Office of the Registrar">Office of the Registrar</option>
-                        <option value="Admission">Admission</option>
-                        <option value="Office of the Executive Preisdent">Office of the Executive Preisdent</option>
-                        <option value="Office of the Vice President for Academic Support Units">Office of the Vice President for Academic Support Units</option>
-                        <option value="Office of University Legal Council">Office of University Legal Council</option>
-                        <option value="Office of the Vice President for Information and Communications">Office of the Vice President for Information and Communications</option>
-                        <option value="Office of the Vice President for Administration">Office of the Vice President for Administration</option>
-                        <option value="Office of the Vice President for Finance">Office of the Vice President for Finance</option>
-                        <option value="Cash Office/Treasury">Cash Office/Treasury</option>
-                        <option value="Budget Office">Budget Office</option>
-                        <option value="Internal Audit Office">Internal Audit Office</option>
-                        <option value="Information and Communications Technology Office">Information and Communications Technology Office</option>
-                        <option value="Office of Guidance and Testing Services">Office of Guidance and Testing Services</option>
-                        <option value="Office of Student and Development Services">Office of Student and Development Services</option>
-                        <option value="University Library">University Library</option>
-                        <option value="University Research Center">University Research Center</option>
-                        <option value="Center for University Extension Service">Center for University Extension Service</option>
-                        <option value="University Health Service">University Health Service</option>
-                        <option value="National Service Training Program">National Service Training Program</option>
-                        <option value="Human Resource Development Office">Human Resource Development Office</option>
-                        <option value="Procurement Office">Procurement Office</option>
-                        <option value="Property and Supplies Office">Property and Supplies Office</option>
-                        <option value="Physical Facilities Management Office">Physical Facilities Management Office</option>
-                        <option value="University Security Office">University Security Office</option>
-                        <option value="College of Architecture and Urban Planning">College of Architecture and Urban Planning</option>
-                        <option value="College of Engineering and Technology">College of Engineering and Technology</option>
-                        <option value="College of Education">College of Education</option>
-                        <option value="College of Humanities, Arts and Social Science">College of Humanities, Arts and Social Science </option>
-                        <option value="College of Nursing">College of Nursing</option>
-                        <option value="College of Physical Therapy">College of Physical Therapy</option>
-                        <option value="College of Science">College of Science</option>
-                        <option value="College of Law">College of Law</option>
-                        <option value="College of Medicine">College of Medicine</option>
-                        <option value="PLM Business School">PLM Business School</option>
-                        <option value="Graduate School of Law">Graduate School of Law</option>
-                        <option value="School of Public Health">School of Public Health</option>
-                        <option value="School of Government">School of Government</option>
-                    </select>
-            </div>
-            <div class="name">
-                <label >Full Name: <input wire:model="name" type="text"></label>
-            </div>
-            <div class="position">
-                <label >Position: <input wire:model="position" type="text"></label>
-            </div>
-            <div class="average">
-                <label >Average: <input wire:model="average" type="text"></label>
-            </div>
-            
-            <div><button type="submit">Submit</button></div>
+    <form action="" id="ipcr_view">
+        <div id="title">
+            <h1>INDIVIDUAL PERFORMANCE COMMITMENT FORM (IPCR) PERFORMANCE MEASURES</h1>
         </div>
-        
-    </div>
-</form>
+        <div id="ipcr_form">
+            <div id="personal_info">
+                <label for="emp_name">Name:</label>
+                <input type="text" name="employee_name" id="emp_name">
+                <label for="colDept">College/Department:</label>
+                <input type="text" name="collegeDepartment" id="colDept">
+                <label for="position">Position:</label>
+                <input type="text" name="position" id="position">
+                <label for="startPrd">Start Period:</label>
+                <input type="date" name="start_period" id="startPrd">
+                <label for="endPrd">End Period:</label>
+                <input type="date" name="end_period" id="endPrd">
+            </div>
+            <div id="rating_basis">
+                <h3>5-Outstanding, 4-Very Satisfactory, 3-Satisfactory, 2-Unsatisfactory, 1-Poor</h3>
+            </div>
+            <div id="rating">
+                <table id="core_funct">
+                    <thead>
+                        <tr>
+                            <th>OUTPUT</th>
+                            <th>SUCCESS INDICATORS (TARGETS + MEASURES)</th>
+                            <th>ACTUAL ACCOMPLISHMENTS</th>
+                            <th colspan="4">RATING</th>
+                        </tr>
+                        <tr>
+                            <th colspan="3"></th>
+                            <th>Q</th>
+                            <th>E</th>
+                            <th>T</th>
+                            <th>A</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="7" class="section-title">I. CORE FUNCTIONS 80%</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="output" class="output"></td>
+                            <td><input type="text" name="success_indicators" class="success_indicators"></td>
+                            <td><input type="text" name="actual_accomplishments" class="actual_accomplishments"></td>
+                            <td><input type="text" name="rating_q" class="rating_q"></td>
+                            <td><input type="text" name="rating_e" class="rating_e"></td>
+                            <td><input type="text" name="rating_t" class="rating_t"></td>
+                            <td><input type="text" name="rating_a" class="rating_a"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" id="addRowCore">Add</button>
+                <table id="sup_func">
+                    <tbody>
+                        <tr>
+                            <td colspan="7" class="section-title">I. SUPPORT TO FUNCTIONS 20%</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="sup_output" class="sup_output"></td>
+                            <td><input type="text" name="sup_sucInd" class="sup_success_sucInd"></td>
+                            <td><input type="text" name="sup_actAccomp" class="sup_actAccomp"></td>
+                            <td><input type="text" name="sup_rating_q" class="sup_rating_q"></td>
+                            <td><input type="text" name="sup_rating_e" class="sup_rating_e"></td>
+                            <td><input type="text" name="sup_rating_t" class="sup_rating_t"></td>
+                            <td><input type="text" name="sup_rating_a" class="sup_rating_a"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" id="addRowSup">Add</button>
+                <h3 id="legends">Legend: Q - Quality   E - Effiency/Quantity   T - Time Standard   A - Average</h3>
+            </div>
+            <div id="approval_details">
+                <table>
+                    <tbody>
+                        <tr >
+                            <td >
+                                <label for="filing_date">Filing Date</label>
+                            </td>
+                            <td>
+                                <input type="date" name="filing_date" id="filing_date">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="certBy">Certified By</label>
+                            </td>
+                            <td>
+                                <input type="text" name="certBy" id="certBy">
+                            </td>
+                            <td>
+                                <label for="cert_date">Certification Date</label>
+                            </td>
+                            <td>
+                                <input type="date" name="cert_date" id="cert_date">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="appBy">Approved By</label>
+                            </td>
+                            <td>
+                                <input type="text" name="appBy" id="appBy">
+                            </td>
+                            <td>
+                                <label for="app_date">Approval Date</label>
+                            </td>
+                            <td>
+                                <input type="date" name="app_date" id="app_date">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="bottom_menu">
+                <button type="submit">Submit</button>
+                <button type="button" id="cancel">Cancel</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 @push('styles')
