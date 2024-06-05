@@ -7,6 +7,7 @@ use App\Livewire\DashboardPage;
 use App\Livewire\HrFormsPage;
 use App\Livewire\IpcrPage;
 use App\Livewire\IpcrPdf;
+use App\Livewire\OpcrPdf;
 use App\Livewire\LeaveManagementPage;
 use App\Livewire\MyProfilePage;
 use App\Livewire\OpcrPage;
@@ -19,6 +20,7 @@ use App\Livewire\EmployeeCourses;
 use App\Livewire\CourseVideo;
 use App\Livewire\AdminView;
 use App\Livewire\AdminIPCRPage;
+use App\Livewire\AdminOPCR;
 use App\Livewire\AdminPermittoStudyPage;
 use App\Livewire\AdminScholarshipPage;
 use App\Livewire\AdminSeminartrainingPage;
@@ -57,6 +59,7 @@ Route::middleware([])->group(function () {
     // Route::get('/emp_leave_management', LeaveManagementPage::class)->name('leave_management.index');
     // Route::get('/emp_hr_forms', HrFormsPage::class)->name('hrforms.index');
     Route::get('/emp_ipcr-pdf', IpcrPdf::class)->name('ipcr-pdf.index');
+    Route::get('/emp_opcr-pdf', OpcrPdf::class)->name('opcr-pdf.index');
     Route::get('/emp_ipcr', IpcrPage::class)->name('ipcr.index');
     Route::get('/emp_opcr', OpcrPage::class)->name('opcr.index');
     Route::get('/emp_permit_to_study', PermittoStudyPage::class)->name('permittostudy.index');
@@ -67,12 +70,14 @@ Route::middleware([])->group(function () {
     Route::get('/emp_course-video', CourseVideo::class)->name('coursevideo.index');
     Route::get('/admin_myprofile', AdminView::class)->name('adminView.index');
     Route::get('/admin_ipcr', AdminIPCRPage::class)->name('adminIPCR.index');
+    Route::get('/admin_opcr', AdminOPCR::class)->name('adminOPCR.index');
     Route::get('/admin_permittostudy', AdminPermittoStudyPage::class)->name('adminPermittoStudy.index');
     Route::get('/admin_scholarship', AdminScholarshipPage::class)->name('adminScholarship.index');
     Route::get('/admin_seminarsandtraining', AdminSeminartrainingPage::class)->name('adminSeminarsandTraining.index');
     Route::get('/admin_computeraidedtraining', AdminComputerAidedTraining::class)->name('adminComputerAidedTraining.index');
     Route::get('/admin_courses', AdminCourses::class)->name('adminCourses.index');
     Route::get('/download-ipcr', [IpcrPage::class, 'download'])->name('ipcr.download');
+    Route::get('/download-opcr', [OpcrPage::class, 'download'])->name('opcr.download');
 
 
 

@@ -4,35 +4,34 @@ namespace App\Livewire;
 
 use Livewire\Attributes\Layout;
 use Livewire\Component;
-use App\Models\IPCRModel;
+use App\Models\OPCRModel;
 use Livewire\WithPagination;
-use App\Livewire\IpcrPdf;
+use App\Livewire\OpcrPdf;
 use Illuminate\Support\Facades\Storage;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
 #[Layout("layouts.humanResources")]
-class AdminIPCRPage extends Component
+class AdminOPCR extends Component
 {
     use WithPagination;
 
     public $searchQuery;
-    public $ipcrSearch = [];
-    public $sortBy = 'employee_name'; // Default sort field
+    public $opcrSearch = [];
+    public $sortBy = 'created_at'; // Default sort field
     public $sortDirection = 'asc'; // Default sort direction
     public function render()
     {
-        $ipcrs = IPCRModel::when($this->searchQuery, function ($query) {
-            $query->where('employee_name', 'like', '%' . $this->searchQuery . '%')
-                  ->orWhere('position', 'like', '%' . $this->searchQuery . '%')
+        $opcrs = OPCRModel::when($this->searchQuery, function ($query) {
+            $query->Where('position', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('average', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('date_of_filing', 'like', '%' . $this->searchQuery . '%');
         })
         ->orderBy($this->sortBy, $this->sortDirection)
         ->paginate(6); // Adjust the pagination count as needed
         
-        return view('livewire.admin-ipcr-page', [
-            'ipcrs' => $ipcrs,
+        return view('livewire.admin-o-p-c-r', [
+            'opcrs' => $opcrs,
         ]);
     }
 
@@ -50,28 +49,25 @@ class AdminIPCRPage extends Component
     public function search()
     {
         if (!empty($this->searchQuery)) {
-            $this->ipcrSearch = IPCRModel::where('employee_name', 'like', '%' . $this->searchQuery . '%')
-                                         ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
-                                         ->orWhere('position', 'like', '%' . $this->searchQuery . '%')
+            $this->opcrSearch = OPCRModel::Where('position', 'like', '%' . $this->searchQuery . '%')
                                          ->orWhere('average', 'like', '%' . $this->searchQuery . '%')
                                          ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%')
                                          ->get();
         } else {
-            // Reset ipcrSearch if search query is empty
-            $this->reset('ipcrSearch');
+            // Reset opcrSearch if search query is empty
+            $this->reset('opcrSearch');
         }
     }
     
     public function download()
     {
-        // Instantiate the IpcrPdf component to get its content
-        $pdfComponent = new IpcrPdf();
+        // Instantiate the OpcrPdf component to get its content
+        $pdfComponent = new OpcrPdf();
         $pdfComponent->mount();
 
-        // Get the HTML content of the IpcrPdf component
-        $pdfHtml = view('livewire.ipcr-pdf', [
-            'ipcrs' => $pdfComponent->ipcrs,
-            'employee' => $pdfComponent->employee,
+        // Get the HTML content of the OpcrPdf component
+        $pdfHtml = view('livewire.opcr-pdf', [
+            'opcrs' => $pdfComponent->opcrs,
             'department' => $pdfComponent->department,
             'college' => $pdfComponent->college,
             'core_func' => $pdfComponent->core_func,
@@ -90,7 +86,7 @@ class AdminIPCRPage extends Component
         $pdfContent = $dompdf->output();
 
         // Save the PDF content to a temporary file
-        $fileName = 'ipcr_pdf_' . time() . '.pdf';
+        $fileName = 'opcr_pdf_' . time() . '.pdf';
         Storage::put($fileName, $pdfContent);
 
         // Download the generated PDF
@@ -98,7 +94,7 @@ class AdminIPCRPage extends Component
     }
     public function delete($id)
     {
-        $item = IPCRModel::find($id);
+        $item = OPCRModel::find($id);
         $item->delete();
     }
 }

@@ -1,0 +1,88 @@
+.main_opcr-pdf {
+    display: flex;
+    position: relative;
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-grow: 1;
+    margin: 10px;
+    background: #FFFFFF;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+table {
+    border: 2px solid black;
+    
+}
+
+th, td {
+    padding: 10px;
+    border: 2px solid black;
+}
+
+#employee_name {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 180px;
+}
+
+#cert_by {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+#main-table {
+    margin-bottom: 50px;
+}
+
+#secondary-table {
+    margin-bottom: 50px;
+}
+
+h1 {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+#main-para {
+    text-align: justify;
+    text-justify: inter-word;
+    margin-bottom: 50px;
+}
+
+#input-para {
+    display: inline-flex;
+    margin-left:60%;
+    flex-direction: row;
+    column-gap: 150px;
+}
+
+#under-para{
+    display: inline-flex;
+    margin-left:63%;
+    flex-direction: row;
+    column-gap: 210px;
+    margin-bottom: 20px;
+}
+
+#grading-basis {
+    font-weight: 600;
+    margin-bottom: 20px;
+    
+}

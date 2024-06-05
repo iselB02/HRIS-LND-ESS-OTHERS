@@ -16,23 +16,14 @@
                           <button wire:click="sortData('name', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
                       </span>
                  </th>
-                 
-                 <th>
-                     <span>Office</span>
-                     <span>
-                        <button wire:click="sortData('officedepartment', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
-                     </span>
-                     <span>
-                         <button wire:click="sortData('officedepartment', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
-                     </span>
-                 </th>
+            
                  <th>
                     <span>Position</span>
                     <span>
-                       <button wire:click="sortData('officedepartment', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                       <button wire:click="sortData('position', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
                     </span>
                     <span>
-                        <button wire:click="sortData('officedepartment', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                        <button wire:click="sortData('position', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
                     </span>
                 </th>
 
@@ -60,11 +51,10 @@
              @if (!empty($searchQuery) && $ipcrSearch->isNotEmpty())
                  @foreach ($ipcrSearch as $ipcr)
                      <tr>
-                         <td>{{ $ipcr->name }}</td>
-                         <td>{{ $ipcr->officedepartment }}</td>
+                         <td>{{ $ipcr->employee_name }}</td>
                          <td>{{ $ipcr->position }}</td>
-                         <td>{{ $ipcr->average }}</td>
-                         <td>{{ $ipcr->published_date }}</td>
+                         <td>{{ $ipcr->final_average_rating }}</td>
+                         <td>{{ $ipcr->created_at }}</td>
                          <td>
                              <button id="download">
                                  <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
@@ -72,7 +62,7 @@
                              <button id="delete">
                                  <img wire:click.prevent="delete({{ $ipcr->id }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                              </button>
-                             <button class="view">
+                             <button class="view" wire:click="download">
                                  <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                              </button>
                          </td>
@@ -81,16 +71,15 @@
              @else
                  @foreach ($ipcrs as $ipcr)
                      <tr>
-                         <td>{{ $ipcr->name }}</td>
-                         <td>{{ $ipcr->officedepartment }}</td>
+                         <td>{{ $ipcr->employee_name }}</td>
                          <td>{{ $ipcr->position }}</td>
-                         <td>{{ $ipcr->average }}</td>
-                         <td>{{ $ipcr->published_date }}</td>
+                         <td>{{ $ipcr->final_average_rating}}</td>
+                         <td>{{ $ipcr->created_at }}</td>
                          <td>
                              <button id="delete">
                                  <img wire:click.prevent="delete({{ $ipcr->id }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                              </button>
-                             <button class="view">
+                             <button class="view" wire:click="download">
                                  <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                              </button>
                          </td>

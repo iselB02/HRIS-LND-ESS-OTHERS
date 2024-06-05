@@ -178,7 +178,7 @@
                       </a>
                     </li>
                     <li class="item">
-                      <a href="{{ route('adminView.index') }}" class="link">
+                      <a href="{{ route('adminIPCR.index') }}" class="link">
                         <i class='bx bxs-paste'></i></i>
                         <span>Human Resources</span>
                       </a>

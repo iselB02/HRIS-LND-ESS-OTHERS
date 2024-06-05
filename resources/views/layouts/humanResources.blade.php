@@ -46,6 +46,12 @@
                     </a>
                   </li>
                   <li class="item">
+                    <a href="{{ route('adminOPCR.index') }}" class="link flex">
+                      <i class='bx bxs-user'></i>
+                      <span>Office Performance</span>
+                    </a>
+                  </li>
+                  <li class="item">
                     <a href="{{ route('adminPermittoStudy.index') }}" class="link flex">
                       <i class='bx bxs-book-reader'></i>
                       <span>Permit to Study</span>
@@ -109,12 +115,12 @@
                         <span>Settings</span>
                       </a>
                     </li>
-                    {{-- <li class="item">
-                      <a href="{{ route('my_profile.index') }}" class="link">
+                    <li class="item">
+                      <a href="{{ route('ipcr.index') }}" class="link">
                         <i class='bx bxs-paste'></i></i>
                         <span>Employee Portal</span>
                       </a>
-                    </li> --}}
+                    </li>
                   </div>
                   <li class="divider"></li>
                   <div class="item-container">
