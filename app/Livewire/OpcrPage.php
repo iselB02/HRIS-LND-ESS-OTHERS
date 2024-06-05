@@ -47,6 +47,7 @@ class OpcrPage extends Component
     public $emp_id = 202410000;
 
     public $opcrs;
+    
 
     public function mount()
     {
@@ -60,6 +61,37 @@ class OpcrPage extends Component
         
     }
 
+    public function calculateRating()
+    {
+        $coreA = 0;
+        $supA = 0;
+        $totalCore = count($this->coreFunctionRows);
+        $totalSup = count($this->supFunctionRows);
+
+        foreach ($this->coreFunctionRows as $row) {
+            $coreA += $row['a'];
+        }
+
+        foreach ($this->supFunctionRows as $row) {
+            $supA += $row['a'];
+        }
+
+        $averageCore = $totalCore > 0 ? ($coreA / $totalCore) * 0.80 : 0;
+        $averageSup = $totalSup > 0 ? ($supA / $totalSup) * 0.20 : 0;
+        $this->total = $averageCore + $averageSup;
+
+        if ($this->total >= 4.5) {
+            $this->rating = 'Outstanding';
+        } elseif ($this->total >= 3.5) {
+            $this->rating = 'Very Satisfactory';
+        } elseif ($this->total >= 2.5) {
+            $this->rating = 'Satisfactory';
+        } elseif ($this->total >= 1.5) {
+            $this->rating = 'Unsatisfactory';
+        } else {
+            $this->rating = 'Poor';
+        }
+    }
     public function generateReferenceNumber()
     {
         // Get current date in Ymd format
@@ -109,11 +141,15 @@ class OpcrPage extends Component
             OpcrFunctionsModel::create($this->prepareRowForSaving($row, $type='sup'));
         }
 
+        // Calculate rating and total
+        $this->calculateRating();
+
         // Save the main OPCR data
         OPCRModel::create([
             'employee_id' => 20218939,
             'reference_num' => $this->referenceNumber,
             'status' => $this->status,
+            'final_average_rating' =>$this->total,
             'opcr_type' => $this->type,
             'date_of_filling' => $this->filing_date,
             'start_period' => $this->start_period,

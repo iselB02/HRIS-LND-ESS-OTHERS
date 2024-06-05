@@ -51,6 +51,11 @@ class IpcrPage extends Component
     public $comments_reco;
     public $emp_id = 202410000;
 
+    public $total;
+    public $rating;
+
+    public $core_func = [];
+    public $sup_func = [];
     public $ipcrs;
 
     public function mount()
@@ -62,6 +67,38 @@ class IpcrPage extends Component
         // dd($this->ipcrs);
 
         $this->ipcrs = IPCRModel::where('employee_id', $this->emp_id)->get();
+    }
+
+    public function calculateRating()
+    {
+        $coreA = 0;
+        $supA = 0;
+        $totalCore = count($this->coreFunctionRows);
+        $totalSup = count($this->supFunctionRows);
+
+        foreach ($this->coreFunctionRows as $row) {
+            $coreA += $row['a'];
+        }
+
+        foreach ($this->supFunctionRows as $row) {
+            $supA += $row['a'];
+        }
+
+        $averageCore = $totalCore > 0 ? ($coreA / $totalCore) * 0.80 : 0;
+        $averageSup = $totalSup > 0 ? ($supA / $totalSup) * 0.20 : 0;
+        $this->total = $averageCore + $averageSup;
+
+        if ($this->total >= 4.5) {
+            $this->rating = 'Outstanding';
+        } elseif ($this->total >= 3.5) {
+            $this->rating = 'Very Satisfactory';
+        } elseif ($this->total >= 2.5) {
+            $this->rating = 'Satisfactory';
+        } elseif ($this->total >= 1.5) {
+            $this->rating = 'Unsatisfactory';
+        } else {
+            $this->rating = 'Poor';
+        }
     }
 
     public function generateReferenceNumber()
@@ -113,11 +150,15 @@ class IpcrPage extends Component
             IpcrFunctionsModel::create($this->prepareRowForSaving($row, $type='sup'));
         }
 
+        // Calculate rating and total
+        $this->calculateRating();
+
         // Save the main IPCR data
         IPCRModel::create([
             'employee_id' => 20218939,
             'reference_num' => $this->referenceNumber,
             'status' => $this->status,
+            'final_average_rating' =>$this->total,
             'ipcr_type' => $this->type,
             'employee_name' => $this->emp_name,
             'date_of_filling' => $this->filing_date,
