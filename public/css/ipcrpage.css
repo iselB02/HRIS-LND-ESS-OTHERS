@@ -85,9 +85,18 @@
 }
 
 #personal_info #startPrd, #personal_info #endPrd {
+    width: 155px;
+}
+
+#personal_info #deptHead {
     width: 205px;
 }
 
+#personal_info select {
+    border: none;
+    border-bottom: 1px solid black;
+    margin-left: 5px;
+}
 
 #approval_details table{
     border: none; /* Remove border from the table */
@@ -99,6 +108,7 @@
     border-bottom: 1px solid black;
     margin-left: 5px;
 }
+
 
 #approval_details table label {
     font-weight: 500;
@@ -157,6 +167,9 @@
     text-align: center;
 }
 
+.removeBtn {
+    border: none;
+} 
 
 #delete, .view {
     background-color: #FFFFFF;
@@ -276,6 +289,14 @@ input {
 
 .rating_q, .rating_e, .rating_t, .rating_a, .sup_rating_q, .sup_rating_e, .sup_rating_t, .sup_rating_a {
     width: 45px;
+}
+
+textarea {
+    resize: none;
+}
+
+#comRecoLabel{
+    font-weight: 600;
 }
 
 #addRowSup, #addRowCore{

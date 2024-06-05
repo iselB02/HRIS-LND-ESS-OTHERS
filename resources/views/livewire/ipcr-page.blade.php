@@ -23,9 +23,10 @@
                         <button id="delete">
                             <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                         </button>
-                        <button class="view">
+                        <button class="view"  wire:click="download">
                             <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                         </button>
+                    
                     </td>
                 </tr>
             </tbody>
@@ -47,6 +48,8 @@
                 <input wire:model="start_period" type="date" name="start_period" id="startPrd">
                 <label for="endPrd">End Period:</label>
                 <input wire:model="end_period" type="date" name="end_period" id="endPrd">
+                <label for="deptHead">Department Head:</label>
+                <input wire:model="department_head" type="text" name="deptHead" id="deptHead">
                 <label for="type">Type:</label>
                 <select wire:model="type" name="type" id="type">
                     <option value="">IPCR type</option>
@@ -125,6 +128,9 @@
                                     <option value="1">1</option>
                                 </select>
                             </td>
+                            <td class="removeBtn" >
+                                <button type="button" wire:click="removeSupRow({{ $index }})"><img src="{{ asset('images/deleteBtn.png') }}" alt="View Icon" class="view_icon"></button>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -181,7 +187,7 @@
                                     <option value="1">1</option>
                                 </select>
                             </td>
-                            <td><button type="button" wire:click="removeSupRow({{ $index }})">Remove</button></td>
+                            <td  class="removeBtn" ><button type="button" wire:click="removeSupRow({{ $index }})"><img src="{{ asset('images/deleteBtn.png') }}" alt="View Icon" class="view_icon"></button></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -197,13 +203,13 @@
                                 <label for="filing_date">Filing Date</label>
                             </td>
                             <td>
-                                <input type="date" name="filing_date" id="filing_date">
+                                <input wire:model="filing_date" type="date" name="filing_date" id="filing_date">
                             </td>
                             <td>
-                                <label for="application_form">Application Form</label>
+                                <label for="signature">Signature:</label>
                             </td>
                             <td>
-                                <input type="file" name="application_form" id="application_form">
+                                <input wire:model="signature" type="file" name="signature" id="signature">
                             </td>
                         </tr>
                         <tr>
@@ -211,13 +217,13 @@
                                 <label for="certBy">Certified By</label>
                             </td>
                             <td>
-                                <input type="text" name="certBy" id="certBy">
+                                <input wire:model="certified_by" type="text" name="certBy" id="certBy">
                             </td>
                             <td>
                                 <label for="cert_date">Certification Date</label>
                             </td>
                             <td>
-                                <input type="date" name="cert_date" id="cert_date">
+                                <input wire:model="certification_date" type="date" name="cert_date" id="cert_date">
                             </td>
                         </tr>
                         <tr>
@@ -225,17 +231,27 @@
                                 <label for="appBy">Approved By</label>
                             </td>
                             <td>
-                                <input type="text" name="appBy" id="appBy">
+                                <input wire:model="appBy" type="text" name="appBy" id="appBy">
                             </td>
                             <td>
                                 <label for="app_date">Approval Date</label>
                             </td>
                             <td>
-                                <input type="date" name="app_date" id="app_date">
+                                <input wire:model="app_date" type="date" name="app_date" id="app_date">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="application_form">Application Form:</label>
+                            </td>
+                            <td>
+                                <input wire:model="application_form" type="file" name="application_form" id="application_form">
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <label id="comRecoLabel" for="comments_reco">Comments and Recommendations:</label>
+                <textarea wire:model="comments_reco" name="comments_reco" id="comments_reco" cols="130" rows="5"></textarea>
             </div>
             <div id="bottom_menu">
                 <button type="submit">Submit</button>
@@ -244,6 +260,7 @@
         </div>
     </form>
 </div>
+
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/ipcrpage.css') }}">

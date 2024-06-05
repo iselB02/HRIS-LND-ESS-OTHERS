@@ -9,7 +9,9 @@ class IpcrFunctionsModel extends Model
 {
 
     protected $fillable = [
+        'type',
         'ipcr_id',
+        'output',
         'success_indicators',
         'actual_accomplishments',
         'q',

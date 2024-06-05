@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ipcr_functions', function (Blueprint $table) {
-            $table->integer('ipcr_id')->nullable(); 
+            $table->bigInteger('ipcr_id')->nullable(); 
+            $table->text('output')->nullable();
             $table->text('success_indicators')->nullable();
             $table->text('actual_accomplishments')->nullable();
             $table->integer('q')->nullable();
