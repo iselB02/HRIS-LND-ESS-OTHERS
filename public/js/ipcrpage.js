@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var addRowCoreButton = document.getElementById('addRowCore');
     var addRowSupButton = document.getElementById('addRowSup');
     var addIPCR = document.getElementById('new_ipcr');
+    var submit = document.getElementById('submit');
     var formIPCR = document.getElementById('ipcr_view');
     var close = document.getElementById('cancel');
     var coreCount = 1;
@@ -34,6 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (close)  {
         close.addEventListener('click', closeForm);
     }
+
+    if (submit)  {
+        submit.addEventListener('click', closeForm);
+    }
+
 
 //     // Attach event listener for row deletion to the table body
 //     var coreTableBody = document.querySelector("#core_funct");

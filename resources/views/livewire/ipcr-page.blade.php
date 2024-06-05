@@ -256,7 +256,7 @@
                 <textarea wire:model="comments_reco" name="comments_reco" id="comments_reco" cols="130" rows="5"></textarea>
             </div>
             <div id="bottom_menu">
-                <button type="submit">Submit</button>
+                <button id="submit" type="submit">Submit</button>
                 <button type="button" id="cancel">Cancel</button>
             </div>
         </div>

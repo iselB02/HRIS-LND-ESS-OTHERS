@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         close.addEventListener('click', closeForm);
     }
     if (submit)  {
-        close.addEventListener('click', closeForm);
+        submit.addEventListener('click', closeForm);
     }
 
 //     // Attach event listener for row deletion to the table body
