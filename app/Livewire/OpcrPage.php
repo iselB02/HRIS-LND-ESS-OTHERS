@@ -51,13 +51,12 @@ class OpcrPage extends Component
     public function mount()
     {
 
-        //  // Fetch IPCR data for the specified employee ID
-        // $this->opcrs = OPCRModel::where('employee_id', $this->emp_id)->get();
-
         // Initialize with one empty row
         $this->coreFunctionRows[] = $this->createEmptyRow();
         $this->supFunctionRows[] = $this->createEmptyRow();
         $this->generateReferenceNumber();
+
+        $this->opcrs = OPCRModel::where('employee_id', $this->emp_id)->get();
         
     }
 

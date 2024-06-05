@@ -49,7 +49,9 @@ class IpcrPage extends Component
     public $application_form;
     public $final_rating;
     public $comments_reco;
-    public $emp_id = 20218939;
+    public $emp_id = 202410000;
+
+    public $ipcrs;
 
     public function mount()
     {
@@ -57,6 +59,9 @@ class IpcrPage extends Component
         $this->coreFunctionRows[] = $this->createEmptyRow();
         $this->supFunctionRows[] = $this->createEmptyRow();
         $this->generateReferenceNumber();
+        // dd($this->ipcrs);
+
+        $this->ipcrs = IPCRModel::where('employee_id', $this->emp_id)->get();
     }
 
     public function generateReferenceNumber()

@@ -16,19 +16,21 @@
                 </tr>
             </thead>
             <tbody>
-
+                @foreach ($opcrs as $opcr)
                 <tr>
-                    <td>June 02, 2024</td>
-                    <td>Pending</td>
+                    <td>{{ $opcr->created_at->format('F j, Y') }}</td>
+                    <td>{{ $opcr->status }}</td>
                     <td>
                         <button id="delete">
                             <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                         </button>
-                        <button class="view" wire:click="download">
+                        <button class="view"  wire:click="download">
                             <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                         </button>
+                    
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

@@ -26,5 +26,6 @@ class OPCRModel extends Model
     ];
 
     protected $table = 'opcrs';
+    protected $primaryKey = 'employee_id';
     use HasFactory;
 }

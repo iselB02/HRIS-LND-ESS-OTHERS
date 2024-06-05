@@ -16,9 +16,10 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($ipcrs as $ipcr)
                 <tr>
-                    <td>June 02, 2024</td>
-                    <td>Pending</td>
+                    <td>{{ $ipcr->created_at->format('F j, Y') }}</td>
+                    <td>{{ $ipcr->status }}</td>
                     <td>
                         <button id="delete">
                             <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
@@ -29,6 +30,7 @@
                     
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

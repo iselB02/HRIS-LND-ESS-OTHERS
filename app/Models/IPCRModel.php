@@ -26,6 +26,7 @@ class IPCRModel extends Model
     ];
 
     protected $table = 'ipcrs';
+    protected $primaryKey = 'employee_id';
 
     // public function scopeSearch($query, $column, $keyword)
     // {
