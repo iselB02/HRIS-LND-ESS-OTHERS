@@ -8,6 +8,7 @@ use App\Models\OpcrFunctionsModel;
 use App\Models\EmployeeModel;
 use App\Models\CollegeModel;
 use App\Models\DepartmentModel;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 
 #[Layout("layouts.employeePortal")]
@@ -19,12 +20,13 @@ class OpcrPdf extends Component
     public $employee;
     public $department;
     public $college;
-
+    public $emp_id;
     public $core_func;
     public $sup_func;
 
     public function mount()
     {
+        $this->emp_id = Auth::id();
         $this->opcrs = OPCRModel::where('employee_id', 202410000)->first();
         
         if ($this->opcrs) {

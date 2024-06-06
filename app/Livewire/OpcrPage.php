@@ -9,6 +9,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use App\Livewire\OpcrPdf;
 use Illuminate\Support\Facades\Storage;
 use Dompdf\Dompdf;
@@ -44,19 +45,19 @@ class OpcrPage extends Component
     public $app_date;
     public $final_rating;
     public $comments_reco;
-    public $emp_id = 202410000;
+    public $emp_id ;
 
     public $opcrs;
     
 
     public function mount()
     {
-
+        $this->emp_id = Auth::id();
         // Initialize with one empty row
         $this->coreFunctionRows[] = $this->createEmptyRow();
         $this->supFunctionRows[] = $this->createEmptyRow();
         $this->generateReferenceNumber();
-
+        
         $this->opcrs = OPCRModel::where('employee_id', $this->emp_id)->get();
         
     }
@@ -146,8 +147,9 @@ class OpcrPage extends Component
 
         // Save the main OPCR data
         OPCRModel::create([
-            'employee_id' => 20218939,
+            'employee_id' => $this->emp_id,
             'reference_num' => $this->referenceNumber,
+            'college' => $this->collegeDepartment,
             'status' => $this->status,
             'final_average_rating' =>$this->total,
             'opcr_type' => $this->type,
@@ -159,9 +161,10 @@ class OpcrPage extends Component
             'discussed_with' => $this->signature,
             'disscused_with_date' => $this->filing_date,
         ]);
-
         // Reset form fields
         $this->resetFields();
+        $this->mount();
+
     }
 
     private function resetFields()
@@ -266,6 +269,22 @@ class OpcrPage extends Component
         // Download the generated PDF
         return response()->download(storage_path('app/' . $fileName))->deleteFileAfterSend();
     }
+
+    public function delete()
+    {
+        // Find the OPCRModel by emp_id
+        $item = OPCRModel::find($this->emp_id);
+
+        // Check if the OPCRModel exists
+        if ($item) {
+            // Delete the OPCRModel
+            $item->delete();
+
+            // Reload the component data
+            $this->mount();
+        }
+    }
+
     public function render()
     {
         return view('livewire.opcr-page');

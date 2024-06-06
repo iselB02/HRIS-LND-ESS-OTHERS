@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ScholarshipModel extends Model
 {
     protected $fillable = [
+        'employee_id',
         'officedepartment',
         'last_name',
         'first_name',

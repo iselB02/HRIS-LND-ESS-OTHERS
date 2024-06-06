@@ -8,6 +8,7 @@ use App\Models\OPCRModel;
 use Livewire\WithPagination;
 use App\Livewire\OpcrPdf;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -16,12 +17,14 @@ class AdminOPCR extends Component
 {
     use WithPagination;
 
+    public $employee_id;
     public $searchQuery;
     public $opcrSearch = [];
     public $sortBy = 'created_at'; // Default sort field
     public $sortDirection = 'asc'; // Default sort direction
     public function render()
     {
+        $this->emp_id = Auth::id();
         $opcrs = OPCRModel::when($this->searchQuery, function ($query) {
             $query->Where('position', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('average', 'like', '%' . $this->searchQuery . '%')
@@ -30,6 +33,7 @@ class AdminOPCR extends Component
         ->orderBy($this->sortBy, $this->sortDirection)
         ->paginate(6); // Adjust the pagination count as needed
         
+
         return view('livewire.admin-o-p-c-r', [
             'opcrs' => $opcrs,
         ]);
@@ -92,10 +96,16 @@ class AdminOPCR extends Component
         // Download the generated PDF
         return response()->download(storage_path('app/' . $fileName))->deleteFileAfterSend();
     }
-    public function delete($id)
+    public function delete($reference_num)
     {
-        $item = OPCRModel::find($id);
-        $item->delete();
+        $item = OPCRModel::where('reference_num', $reference_num)->first();
+
+        if ($item) {
+            // If the record exists, delete it
+            $item->delete();
+        }
+
+        dd($reference_num);
     }
 }
 

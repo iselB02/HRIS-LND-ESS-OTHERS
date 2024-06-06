@@ -20,6 +20,7 @@ class AdminIPCRPage extends Component
     public $ipcrSearch = [];
     public $sortBy = 'employee_name'; // Default sort field
     public $sortDirection = 'asc'; // Default sort direction
+
     public function render()
     {
         $ipcrs = IPCRModel::when($this->searchQuery, function ($query) {
@@ -96,11 +97,15 @@ class AdminIPCRPage extends Component
         // Download the generated PDF
         return response()->download(storage_path('app/' . $fileName))->deleteFileAfterSend();
     }
-    public function delete($id)
+    public function delete($reference_num)
     {
-        $item = IPCRModel::find($id);
-        $item->delete();
+        $item = IPCRModel::where('reference_num', $reference_num);
+        if ($item) {
+            $item->delete();
+        }
+
     }
+
 }
 
 

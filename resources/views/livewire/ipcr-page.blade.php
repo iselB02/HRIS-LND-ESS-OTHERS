@@ -21,13 +21,9 @@
                     <td>{{ $ipcr->created_at->format('F j, Y') }}</td>
                     <td>{{ $ipcr->status }}</td>
                     <td>
-                        <button id="delete">
-                            <img src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
-                        </button>
                         <button class="view"  wire:click="download">
-                            <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                            <img src="{{ asset('images/downloadBtn.png') }}" alt="View Icon" class="view_icon">
                         </button>
-                    
                     </td>
                 </tr>
                 @endforeach

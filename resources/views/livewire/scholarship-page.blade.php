@@ -22,9 +22,6 @@
                 <td>{{ $scholar->published_date }}</td>
                 <td>{{ $scholar->status }}</td>
                 <td>
-                    <button id="delete">
-                        <img wire:click="delete({{ $scholar->id }})"  src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
-                    </button>
                     <button class="view">
                         <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                     </button>

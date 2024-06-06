@@ -78,10 +78,10 @@
                     <td>{{ $scholar->status}}</td>
                     <td>
                         <button id="delete">
-                            <img wire:click="delete({{ $scholar->id }})"  src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                            <img wire:click="delete({{ $scholar->employee_id }})"  src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                         </button>
                         <button class="view">
-                            <img wire:click="edit({{ $scholar->id }})" src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                            <img wire:click="edit({{ $scholar->employee_id }})" src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                         </button>
                     </td>
                 </tr>
@@ -101,10 +101,10 @@
                 <td>{{ $scholar->status}}</td>
                 <td>
                     <button id="delete">
-                        <img wire:click="delete({{ $scholar->id }})"  src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                        <img wire:click="delete({{ $scholar->employee_id }})"  src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                     </button>
                     <button class="view">
-                        <img wire:click="edit({{ $scholar->id }})" src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                        <img wire:click="edit({{ $scholar->employee_id }})" src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                     </button>
                 </td>
             </tr>

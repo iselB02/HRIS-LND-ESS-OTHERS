@@ -26,38 +26,31 @@ use App\Livewire\AdminScholarshipPage;
 use App\Livewire\AdminSeminartrainingPage;
 use App\Livewire\AdminComputerAidedTraining;
 use App\Livewire\AdminCourses;
-
+use App\Http\Controllers\VerifyController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get("/", function () {
-    return redirect()->route('ipcr.index');
+    return redirect()->route('login');
 });
 
 Route::middleware([])->group(function () {
-    // Change the 'dashboard' route to redirect to 'emp_dashboard'
     Route::get('/dashboard', function () {
         return redirect()->route('dashboard.index');
     })->name('dashboard.redirect');
 
-    // Route::get('/emp_dashboard', DashboardPage::class)->name('dashboard.index');
-    // Route::get('/emp_my_profile', MyProfilePage::class)->name('my_profile.index');
-    // Route::get('/emp_attendance', AttendancePage::class)->name('attendance.index');
-    // Route::get('/emp_benefits_deduction', BenefitsDeductionsPage::class)->name('benefitsdeductions.index');
-    // Route::get('/emp_announcements', AnnouncementsPage::class)->name('announcements.index');
-    // Route::get('/emp_work_request', WorkRequestPage::class)->name('work_request.index');
-    // Route::get('/emp_leave_management', LeaveManagementPage::class)->name('leave_management.index');
-    // Route::get('/emp_hr_forms', HrFormsPage::class)->name('hrforms.index');
+    
+    Route::post('/verify', [VerifyController::class, 'verify'])->name('verify');
+    Route::get('/login', [VerifyController::class, 'showLoginForm'])->name('login');
+    Route::get('/emp_dashboard', DashboardPage::class)->name('dashboard.index');
+    Route::get('/emp_my_profile', MyProfilePage::class)->name('my_profile.index');
+    Route::get('/emp_attendance', AttendancePage::class)->name('attendance.index');
+    Route::get('/emp_benefits_deduction', BenefitsDeductionsPage::class)->name('benefitsdeductions.index');
+    Route::get('/emp_announcements', AnnouncementsPage::class)->name('announcements.index');
+    Route::get('/emp_work_request', WorkRequestPage::class)->name('work_request.index');
+    Route::get('/emp_leave_management', LeaveManagementPage::class)->name('leave_management.index');
+    Route::get('/emp_hr_forms', HrFormsPage::class)->name('hrforms.index');
     Route::get('/emp_ipcr-pdf', IpcrPdf::class)->name('ipcr-pdf.index');
     Route::get('/emp_opcr-pdf', OpcrPdf::class)->name('opcr-pdf.index');
     Route::get('/emp_ipcr', IpcrPage::class)->name('ipcr.index');
@@ -78,7 +71,4 @@ Route::middleware([])->group(function () {
     Route::get('/admin_courses', AdminCourses::class)->name('adminCourses.index');
     Route::get('/download-ipcr', [IpcrPage::class, 'download'])->name('ipcr.download');
     Route::get('/download-opcr', [OpcrPage::class, 'download'])->name('opcr.download');
-
-
-
 });

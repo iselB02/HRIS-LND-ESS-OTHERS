@@ -9,6 +9,7 @@ use App\Models\EmployeeModel;
 use App\Models\CollegeModel;
 use App\Models\DepartmentModel;
 use Livewire\Attributes\Layout;
+use Illuminate\Support\Facades\Auth;
 
 #[Layout("layouts.employeePortal")]
 
@@ -19,18 +20,21 @@ class IpcrPdf extends Component
     public $department;
     public $college;
 
+    public $emp_id;
+
     public $core_func;
     public $sup_func;
 
     public function mount()
     {
-        $this->ipcrs = IPCRModel::where('employee_id', 202410000)->first();
+        $this->emp_id = Auth::id();
+        $this->ipcrs = IPCRModel::where('employee_id', $this->emp_id)->first();
         
         if ($this->ipcrs) {
             $this->core_func = IpcrFunctionsModel::where('ipcr_id', $this->ipcrs->reference_num)->where('type', 'core')->get();
             $this->sup_func = IpcrFunctionsModel::where('ipcr_id', $this->ipcrs->reference_num)->where('type', 'sup')->get();
             
-            $this->employee = EmployeeModel::where('employee_id', 202410000)->first();
+            $this->employee = EmployeeModel::where('employee_id', $this->emp_id)->first();
             if ($this->employee) {
                 $departmentIdString = trim($this->employee->department_id, "[]");
                 $extractedDepartmentId = (int) $departmentIdString;
@@ -41,6 +45,7 @@ class IpcrPdf extends Component
                 $this->college = CollegeModel::where('id', $extractedCollegeId)->first();
             }
         }
+    
     }
     
 

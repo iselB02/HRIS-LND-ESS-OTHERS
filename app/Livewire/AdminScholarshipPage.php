@@ -22,35 +22,35 @@ class AdminScholarshipPage extends Component
     public $sortBy = 'first_name'; // Default sort field
     public $sortDirection = 'asc'; // Default sort direction
 
-    public function selectScholarship($id)
-    {
-        $this->selectedScholarshipId = $id;
-        $this->selectedScholarship = ScholarshipModel::findOrFail($id);
-    }
+    public function selectScholarship($employee_id)
+        {
+            $this->selectedScholarshipId = $employee_id;
+            $this->selectedScholarship = ScholarshipModel::where('employee_id', $employee_id)->first();
+        }
 
-    public function edit($id)
-    {
-        // Set the selected scholarship ID
-        $this->selectedScholarshipId = $id;
+    public function edit($employee_id)
+        {
+            // Set the selected scholarship ID
+            $this->selectedScholarshipId = $employee_id;
 
-        // Optionally, you can load the existing status and remarks from the database
-        $scholarship = ScholarshipModel::findOrFail($id);
-        $this->status = $scholarship->status;
-        $this->remarks = $scholarship->remarks;
-    }
+            // Optionally, you can load the existing status and remarks from the database
+            $this->selectedScholarship = ScholarshipModel::where('employee_id', $employee_id)->first();
+            $this->status = $this->selectedScholarship->status;
+            $this->remarks = $this->selectedScholarship->remarks;
+        }
 
     public function updateStatus()
     {
         // Update the status and remarks
-        ScholarshipModel::where('id', $this->selectedScholarshipId)
-            ->update([
-                'status' => $this->status,
-                'remarks' => $this->remarks,
-            ]);
-
+        ScholarshipModel::where('employee_id',$this->selectedScholarshipId)->update([
+            'status' => $this->status,
+            'remarks' => $this->remarks,
+        ]);
+    
         // Clear the selected scholarship ID after updating
         $this->selectedScholarshipId = null;
     }
+    
 
     public function render()
     {
@@ -70,10 +70,13 @@ class AdminScholarshipPage extends Component
         return view('livewire.admin-scholarship-page', ['scholars' => $scholars]);
     }
 
-    public function delete($id)
+    public function delete($employee_id)
     {
-        $item = ScholarshipModel::find($id);
-        $item->delete();
+        $item = ScholarshipModel::where('employee_id', $employee_id)->first();
+        if ($item) {
+            $item->delete();
+        }
+
     }
 
     public function sortData($field, $sortDirection)
@@ -103,6 +106,8 @@ class AdminScholarshipPage extends Component
             // Reset ipcrSearch if search query is empty
             $this->reset('scholarshipSearch');
         }
+
     }
+    
 
 }

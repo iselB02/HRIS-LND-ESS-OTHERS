@@ -33,40 +33,39 @@
                  <th>Actions</th>
              </tr>
              @if (!empty($searchQuery) && $opcrSearch->isNotEmpty())
-                 @foreach ($opcrSearch as $opcr)
-                     <tr>
-                         <td>{{ $opcr->status }}</td>
-                         <td>{{ $opcr->final_average_rating }}</td>
-                         <td>{{ $opcr->created_at }}</td>
-                         <td>
-                             <button id="download">
-                                 <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
-                             </button>   
-                             <button id="delete">
-                                 <img wire:click.prevent="delete({{ $opcr->id }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
-                             </button>
-                             <button class="view" wire:click="download">
-                                 <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
-                             </button>
-                         </td>
-                     </tr>
-                 @endforeach
+                @foreach ($opcrs as $opcr)
+                    <tr>
+                        <td>{{ $opcr->status }}</td>
+                        <td>{{ $opcr->final_average_rating }}</td>
+                        <td>{{ $opcr->created_at->format('Y-m-d') }}</td>
+                        <td>
+                            <button class="delete-btn" >
+                                <img wire:click.prevent="delete({{ $opcr->reference_num }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                            </button>
+                            <button class="view-btn" wire:click="download">
+                                <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
+            
              @else
-                 @foreach ($opcrs as $opcr)
-                     <tr>
-                         <td>{{ $opcr->status }}</td>
-                         <td>{{ $opcr->final_average_rating}}</td>
-                         <td>{{ $opcr->created_at->format('Y-m-d') }}</td>
-                         <td>
-                             <button id="delete">
-                                 <img wire:click.prevent="delete({{ $opcr->id }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
-                             </button>
-                             <button class="view" wire:click="download">
-                                 <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
-                             </button>
-                         </td>
-                     </tr>
-                 @endforeach
+                @foreach ($opcrs as $opcr)
+                    <tr>
+                        <td>{{ $opcr->status }}</td>
+                        <td>{{ $opcr->final_average_rating }}</td>
+                        <td>{{ $opcr->created_at->format('Y-m-d') }}</td>
+                        <td>
+                            <button class="delete-btn" >
+                                <img wire:click.prevent="delete({{ $opcr->reference_num }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                            </button>
+                            <button class="view-btn" wire:click="download">
+                                <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
+         
              @endif
          </table>
          <div id="links">

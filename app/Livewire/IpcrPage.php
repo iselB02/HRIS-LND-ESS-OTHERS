@@ -9,6 +9,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use App\Livewire\IpcrPdf;
 use Illuminate\Support\Facades\Storage;
 use Dompdf\Dompdf;
@@ -49,7 +50,7 @@ class IpcrPage extends Component
     public $application_form;
     public $final_rating;
     public $comments_reco;
-    public $emp_id = 202410000;
+    public $emp_id;
 
     public $total;
     public $rating;
@@ -60,12 +61,13 @@ class IpcrPage extends Component
 
     public function mount()
     {
+        $this->emp_id = Auth::id();
         // Initialize with one empty row
         $this->coreFunctionRows[] = $this->createEmptyRow();
         $this->supFunctionRows[] = $this->createEmptyRow();
         $this->generateReferenceNumber();
         // dd($this->ipcrs);
-
+        
         $this->ipcrs = IPCRModel::where('employee_id', $this->emp_id)->get();
     }
 
@@ -155,7 +157,7 @@ class IpcrPage extends Component
 
         // Save the main IPCR data
         IPCRModel::create([
-            'employee_id' => 20218939,
+            'employee_id' => $this->emp_id,
             'reference_num' => $this->referenceNumber,
             'status' => $this->status,
             'final_average_rating' =>$this->total,

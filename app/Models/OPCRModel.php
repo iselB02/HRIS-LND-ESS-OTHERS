@@ -10,8 +10,10 @@ class OPCRModel extends Model
     protected $fillable = [
         'reference_num',
         'status',
+        'college',
         'opcr_type',
         'employee_name',
+        'employee_id',
         'date_of_filling',
         'position',
         'start_period',

@@ -16,6 +16,7 @@ class IPCRModel extends Model
         'position',
         'start_period',
         'end_period',
+        'employee_id',
         'ratee',
         'final_average_rating',
         'comments_and_reco',

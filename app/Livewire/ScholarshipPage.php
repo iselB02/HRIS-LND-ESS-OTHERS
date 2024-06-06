@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Attributes\Layout;
 use App\Models\ScholarshipModel;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 #[Layout("layouts.employeePortal")]
@@ -25,11 +26,10 @@ class ScholarshipPage extends Component
     public $end_date;
     public $school_name;
     public $school_address;
+    public $emp_id;
 
     public $status = 'Pending for Approval';
     public $remarks;
-
-    public $id = 2;
 
     public function submit_scholarship() {
         $this->validate([
@@ -52,7 +52,8 @@ class ScholarshipPage extends Component
         ]);
         
         ScholarshipModel::create([
-            'id' => $this->id,  
+            'employee_id'=>$this->emp_id,
+            'employee' => $this->emp_id,  
             'officedepartment' => $this->officedepartment,
             'last_name' => $this->last_name,
             'first_name' => $this->first_name,
@@ -74,18 +75,21 @@ class ScholarshipPage extends Component
         ]);
         session()->flash('message', 'Form submitted successfully!');
         $this->reset();
+        $this->mount();
     }
 
-    public function delete($id)
+    public function delete()
     {
-        $item = ScholarshipModel::find($id);
+        
+        $item = ScholarshipModel::find($this->emp_id);
         $item->delete();
         session()->flash('message', 'Form deletedsuccessfully!');
     }
 
     public function render()
     {
-        $scholars = ScholarshipModel::paginate(10); // Adjust the number as needed
+        $this->emp_id = Auth::id();
+        $scholars = ScholarshipModel::where('employee_id', $this->emp_id    )->paginate(10); // Adjust the number as needed
         return view('livewire.scholarship-page', ['scholars' => $scholars]);
     }
 }

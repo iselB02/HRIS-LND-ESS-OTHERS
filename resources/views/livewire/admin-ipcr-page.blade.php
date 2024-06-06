@@ -57,10 +57,10 @@
                          <td>{{ $ipcr->created_at }}</td>
                          <td>
                              <button id="download">
-                                 <img src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
+                                 <img wire:click.prevent="delete({{ $ipcr->reference_num }})" src="{{ asset('images/downloadBtn.png') }}" alt="Download Icon" class="download_icon">
                              </button>   
                              <button id="delete">
-                                 <img wire:click.prevent="delete({{ $ipcr->id }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                                 <img wire:click="delete('{{ $ipcr->reference_num }}')")" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                              </button>
                              <button class="view" wire:click="download">
                                  <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
@@ -77,7 +77,7 @@
                          <td>{{ $ipcr->created_at }}</td>
                          <td>
                              <button id="delete">
-                                 <img wire:click.prevent="delete({{ $ipcr->id }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
+                                 <img wire:click.prevent="delete({{ $ipcr->reference_num }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                              </button>
                              <button class="view" wire:click="download">
                                  <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
