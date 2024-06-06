@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get("/", function () {
-    return redirect()->route('login');
+    return redirect()->route('ipcr.index');
 });
 
 Route::middleware([])->group(function () {
