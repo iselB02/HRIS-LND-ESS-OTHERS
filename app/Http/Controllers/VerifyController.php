@@ -27,8 +27,12 @@ class VerifyController extends Controller
             // Manually log in the user
             Auth::login($user);
 
-            // Authentication passed...
-            return redirect()->intended('emp_ipcr');
+            // Extract the last two digits of the user's ID
+            $userId = $user->id;
+            $lastTwoDigits = substr((string)$userId, -2);
+
+            // Pass the last two digits to the view
+            return redirect()->intended('emp_ipcr')->with('lastTwoDigits', $lastTwoDigits);
         } else {
             // Authentication failed...
             return back()->withErrors([
@@ -37,3 +41,4 @@ class VerifyController extends Controller
         }
     }
 }
+    
