@@ -17,6 +17,12 @@
     width: 95%;
 }
 
+
+button:hover {
+        cursor: pointer; /* Change cursor to pointer */
+    }
+
+
 #search-ipcr {
     padding: 5px;
     padding-left: 25px;

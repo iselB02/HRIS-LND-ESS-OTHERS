@@ -14,7 +14,9 @@ use App\Livewire\IpcrPdf;
 use Illuminate\Support\Facades\Storage;
 use Dompdf\Dompdf;
 use Dompdf\Options;
-
+use App\Models\EmployeeModel;
+use App\Models\CollegeModel;
+use App\Models\DepartmentModel;
 
 #[Layout("layouts.employeePortal")]
 
@@ -24,6 +26,7 @@ class IpcrPage extends Component
     use WithFileUploads;
 
     public $emp_name;
+  	public $employee;
     public $collegeDepartment;
     public $position;
     public $start_period;
@@ -58,18 +61,58 @@ class IpcrPage extends Component
     public $core_func = [];
     public $sup_func = [];
     public $ipcrs;
+  
+    
+ 	public $departments = [];
+ 	public $colleges = [];
+  
+  	public $validationErrors = [];
+  	
 
-    public function mount()
-    {
-        $this->emp_id = Auth::id();
-        // Initialize with one empty row
-        $this->coreFunctionRows[] = $this->createEmptyRow();
-        $this->supFunctionRows[] = $this->createEmptyRow();
-        $this->generateReferenceNumber();
-        // dd($this->ipcrs);
+  public function mount()
+{
+    $this->emp_id = Auth::id();
+    
+    
+    // Fetch the employee details
+    $this->employee = EmployeeModel::where('employee_id', $this->emp_id)->first();
+    
+    $this->emp_name = $this->employee->first_name . ' ' . $this->employee->middle_name . ' ' . $this->employee->last_name;
+       
+    // Initialize with one empty row
+    $this->coreFunctionRows[] = $this->createEmptyRow();
+    $this->supFunctionRows[] = $this->createEmptyRow();
+    $this->generateReferenceNumber();
+    
+    // Fetch the IPCR records
+    $this->ipcrs = IPCRModel::where('employee_id', $this->emp_id)->get();
+    
+    // Initialize arrays to store departments and colleges
+    $this->departments = [];
+    $this->colleges = [];
+    
+    if ($this->employee) {
+        // Extract department IDs as an array
+        $departmentIds = explode(',', trim($this->employee->department_id, "[]"));
+
+        // Convert each element to an integer
+        $extractedDepartmentIds = array_map('intval', $departmentIds);
         
-        $this->ipcrs = IPCRModel::where('employee_id', $this->emp_id)->get();
+        // Fetch department details for each department ID
+        $this->departments = DepartmentModel::whereIn('department_id', $extractedDepartmentIds)->get(['department_id', 'department_name']);
+
+        // Extract college IDs as an array
+        $collegeIds = explode(',', trim($this->employee->college_id, "[]"));
+                
+        // Convert each element to an integer
+        $extractedCollegesIds = array_map('intval', $collegeIds);
+        
+        // Fetch college details for each college ID
+        $this->colleges = CollegeModel::whereIn('id', $extractedCollegesIds)->get(['id', 'college_name']);
     }
+}
+
+
 
     public function calculateRating()
     {
@@ -139,6 +182,7 @@ class IpcrPage extends Component
 
     public function submitForm()
     {
+         //dd($this->start_period);
         // Validate form
         $this->validateForm();
 
@@ -162,9 +206,10 @@ class IpcrPage extends Component
             'status' => $this->status,
             'final_average_rating' =>$this->total,
             'ipcr_type' => $this->type,
+          	'college/department' => $this->collegeDepartment,
             'employee_name' => $this->emp_name,
             'date_of_filling' => $this->filing_date,
-            'position' => $this->position,
+            'position' => $this->employee->current_position,
             'start_period' => $this->start_period,
             'end_period' => $this->end_period,
             'ratee' => $this->department_head,
@@ -172,9 +217,16 @@ class IpcrPage extends Component
             'discussed_with' => $this->signature,
             'disscused_with_date' => $this->filing_date,
             'application_form' => $this->application_form,
-        ]);
-
+          	'cert_date'=> $this->certification_date, 
+          	'certified_by'=> $this->certified_by,
+          	'approved_date'=> $this->app_date,
+          	'approved_by'=> $this->appBy,
+        ]);	
+     
+	
+  
         // Reset form fields
+      	$this->mount();
         $this->resetFields();
     }
 
@@ -210,7 +262,14 @@ class IpcrPage extends Component
             'supFunctionRows.*.e' => 'nullable|integer|min:1|max:5',
             'supFunctionRows.*.t' => 'nullable|integer|min:1|max:5',
             'supFunctionRows.*.a' => 'required|integer|min:1|max:5',
+          //  'start_period' => 'required|date',
+			//'end_period' => 'required|date',
+
         ]);
+      	if ($validator->fails()) {
+            // Store validation errors in the $validationErrors property
+            $this->validationErrors = $validator->errors()->all();
+        }
 
         $validator->validate();
     }
@@ -244,11 +303,11 @@ class IpcrPage extends Component
     }
 
     
-    public function download()
+    public function download($reference_num)
     {
         // Instantiate the IpcrPdf component to get its content
         $pdfComponent = new IpcrPdf();
-        $pdfComponent->mount();
+        $pdfComponent->mount($reference_num);
 
         // Get the HTML content of the IpcrPdf component
         $pdfHtml = view('livewire.ipcr-pdf', [
@@ -280,6 +339,9 @@ class IpcrPage extends Component
     }
     public function render()
     {
-        return view('livewire.ipcr-page', ['ipcrId' => $this->referenceNumber]);
+        return view('livewire.ipcr-page', 
+                    ['ipcrId' => $this->referenceNumber],
+                   // Pass validation errors to the view
+     		       ['validationErrors' => $this->validationErrors,]);
     }
 }

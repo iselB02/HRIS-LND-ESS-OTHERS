@@ -101,38 +101,32 @@
                   <li>
                     <div class="user-info">
                       <img src="{{ asset('images/test-photo.png') }}" alt="user-profile-pic" class="user-pic">
-                      <div class="user-details">
-                        <span class="user-name">Gino Carlos Miguel</span>
-                        <span class="user-title">Training Specialist 1</span>
-                      </div>
+                         <div class="user-details">
+                            @php
+                            // Retrieve user's associated employee record
+                            $user = auth()->user();
+                            $employee = $user->employee;
+                            $position = $employee->current_position ?? '';
+                            $firstName = $employee->first_name ?? '';
+                            $middleName = $employee->middle_name ?? '';
+                            $lastName = $employee->last_name ?? '';
+                            @endphp
+                            <span class="user-name">{{ $firstName }} {{ $middleName }} {{ $lastName }}</span>
+                            <span class="user-title">{{ $position }}</span>
+                        </div>
                     </div>
                   </li>
                   <li class="divider"></li>
                   <div class="item-container">
-                    <li class="item">
-                      <a href="#" class="link">
-                        <i class='bx bxs-cog'></i>
-                        <span>Settings</span>
-                      </a>
-                    </li>
+ 
                     <li class="item">
                       <a href="{{ route('ipcr.index') }}" class="link">
                         <i class='bx bxs-paste'></i></i>
-                        <span>Employee Portal</span>
+                        <span>Employee</span>
                       </a>
                     </li>
                   </div>
-                  <li class="divider"></li>
-                  <div class="item-container">
-                    <form method="POST" action="{{ route('logout') }}" class="item">
-                      @csrf
-  
-                      <button type="submit" class="link">
-                        <i class='bx bx-log-out'></i>
-                          {{ __('Log Out') }}
-                      </button>
-                    </form>
-                  </div>
+
                 </ul>
               </div>
             </div>

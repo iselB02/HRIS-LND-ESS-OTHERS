@@ -19,7 +19,7 @@ class AdminScholarshipPage extends Component
     public $status;
     public $remarks;
 
-    public $sortBy = 'first_name'; // Default sort field
+    public $sortBy = 'employee_name'; // Default sort field
     public $sortDirection = 'asc'; // Default sort direction
 
     public function selectScholarship($employee_id)
@@ -37,6 +37,7 @@ class AdminScholarshipPage extends Component
             $this->selectedScholarship = ScholarshipModel::where('employee_id', $employee_id)->first();
             $this->status = $this->selectedScholarship->status;
             $this->remarks = $this->selectedScholarship->remarks;
+    //  dd($this->selectedScholarshipId);
         }
 
     public function updateStatus()
@@ -55,10 +56,8 @@ class AdminScholarshipPage extends Component
     public function render()
     {
         $scholars = ScholarshipModel::when($this->searchQuery, function ($query) {
-            $query->where('first_name', 'like', '%' . $this->searchQuery . '%')
-                  ->orwhere('middle_name', 'like', '%' . $this->searchQuery . '%')
-                  ->orwhere('last_name', 'like', '%' . $this->searchQuery . '%')
-                  ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
+            $query->where('employee_name', 'like', '%' . $this->searchQuery . '%')
+                  ->orWhere('college_department', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('type', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('term', 'like', '%' . $this->searchQuery . '%')
                   ->orWhere('units', 'like', '%' . $this->searchQuery . '%')
@@ -92,10 +91,8 @@ class AdminScholarshipPage extends Component
     public function search()
     {
         if (!empty($this->searchQuery)) {
-            $this->scholarshipSearch = ScholarshipModel::where('first_name', 'like', '%' . $this->searchQuery . '%')
-                                    ->orwhere('middle_name', 'like', '%' . $this->searchQuery . '%')
-                                    ->orwhere('last_name', 'like', '%' . $this->searchQuery . '%')
-                                    ->orWhere('officedepartment', 'like', '%' . $this->searchQuery . '%')
+            $this->scholarshipSearch = ScholarshipModel::where('employee_name', 'like', '%' . $this->searchQuery . '%')
+                                    ->orWhere('college_department', 'like', '%' . $this->searchQuery . '%')
                                     ->orWhere('term', 'like', '%' . $this->searchQuery . '%')
                                     ->orWhere('units', 'like', '%' . $this->searchQuery . '%')
                                     ->orWhere('type', 'like', '%' . $this->searchQuery . '%')

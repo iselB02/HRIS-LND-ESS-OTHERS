@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('css/customlayout.css') }}">
     @livewireStyles
 </head>
-<body class="font-sans antialised">
+<body class="font-sans antialiased">
     <nav class="sidebar locked">
         <div class="logo_items flex">
             <span class="nav_image">
@@ -45,12 +45,21 @@
                             <span>Individual Performance</span>
                         </a>
                     </li>
-                    <li class="item">
-                        <a href="{{ route('opcr.index') }}" class="link flex">
-                            <i class='bx bxs-business'></i>
-                            <span>Office Performance</span>
-                        </a>
-                    </li>
+                    @php
+                      $lastName = session('last_name');
+                      $middleName = session('middle_name');
+                      $firstName = session('first_name');
+                      $userId = Session::get('user_id');
+                      $lastTwoDigits = $userId ? substr($userId, -2) : null;
+                    @endphp
+                    @if ($lastTwoDigits === '30')
+                        <li class="item">
+                            <a href="{{ route('opcr.index') }}" class="link flex">
+                                <i class='bx bxs-business'></i>
+                                <span>Office Performance</span>
+                            </a>
+                        </li>
+                    @endif
                     <li class="item">
                         <a href="{{ route('permittostudy.index') }}" class="link flex">
                             <i class='bx bxs-book-reader'></i>
@@ -65,7 +74,7 @@
                     </li>
                     <li class="item">
                         <a href="{{ route('seminartraining.index') }}" class="link flex">
-                            <i class='bx bxs-chalkboard' ></i>
+                            <i class='bx bxs-chalkboard'></i>
                             <span>Seminars and Training</span>
                         </a>
                     </li>
@@ -95,49 +104,44 @@
                     <li>
                         <div class="user-info">
                             <img src="{{ asset('images/test-photo.png') }}" alt="user-profile-pic" class="user-pic">
-                            <div class="user-details">
-                                <span class="user-name">Gino Carlos Miguel</span>
-                                <span class="user-title">Training Specialist 1</span>
+                               <div class="user-details">
+                                @php
+                                // Retrieve user's associated employee record
+                                $user = auth()->user();
+                                $employee = $user->employee;
+                                $position = $employee->current_position ?? '';
+                                $firstName = $employee->first_name ?? '';
+                                $middleName = $employee->middle_name ?? '';
+                                $lastName = $employee->last_name ?? '';
+                                @endphp
+                                <span class="user-name">{{ $firstName }} {{ $middleName }} {{ $lastName }}</span>
+                                <span class="user-title">{{ $position }}</span>
                             </div>
                         </div>
                     </li>
                     <li class="divider"></li>
                     <div class="item-container">
                         <li class="item">
-                            <a href="#" class="link">
+                            <a href=https://employee.plmerp24.cloud/dashboard class="link">
                                 <i class='bx bxs-cog'></i>
-                                <span>Settings</span>
+                                <span>Employee Portal</span>
+                            </a>
+                          </li>
+                       @php
+                        $lastTwoDigits = $userId ? substr($userId, -2) : null;
+                    @endphp
+
+                    <!-- Example: Show the element if the last two digits of the user ID are 29 -->
+                    @if ($lastTwoDigits === '29')
+                        <li class="item">
+                            <a href="{{ route('adminIPCR.index') }}" class="link">
+                                <i class='bx bxs-paste'></i>
+                                <span>Human Resources</span>
                             </a>
                         </li>
-                        <li class="item">
-                          <a href="employee.plmerp24.cloud" class="link">
-                              <i class='bx bxs-cog'></i>
-                              <span>Employee Portal</span>
-                          </a>
-                      </li>
-                      @php
-                      $lastTwoDigits = session('lastTwoDigits');
-                      @endphp
-                      @if ($lastTwoDigits === '29')
-                          <li class="item">
-                              <a href="{{ route('adminIPCR.index') }}" class="link">
-                                  <i class='bx bxs-paste'></i>
-                                  <span>Human Resources</span>
-                              </a>
-                          </li>
-                      @endif
-                    </div>
-                    <li class="divider"></li>
-                    <div class="item-container">
-                        <form method="POST" action="{{ route('logout') }}" class="item">
-                            @csrf
+                    @endif
 
-                            <button type="submit" class="link">
-                                <i class='bx bx-log-out'></i>
-                                {{ __('Log Out') }}
-                            </button>
-                        </form>
-                    </div>
+                  </div>
                 </ul>
             </div>
         </div>

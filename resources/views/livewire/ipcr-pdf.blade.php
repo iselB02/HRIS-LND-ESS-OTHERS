@@ -148,11 +148,11 @@
                         <td id="employee_name"><span><u>{{ $ipcrs->employee_name }}</u></span> <span>{{ $ipcrs->position }}</span></td>
                         <td>{{ $ipcrs->date_of_filling }}</td>
                         <td id="cert_by"><span>I certify that I discussed my assessment of the performance with the employee</span>
-                        <span><u>Supervisor</u></span><span>Signature Over Printed Name of Immediate Supervisor</span></td>
-                        <td>date </td>
+                        <span><u>{{$ipcrs->certified_by}}</u></span><span>Signature Over Printed Name of Immediate Supervisor</span></td>
+                        <td>{{$ipcrs->cert_date}}</td>
                         <td>{{ $total }}</td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$ipcrs->approved_by}}</td>
+                        <td>{{$ipcrs->approved_date}}</td>
                     </tr>
                 </tbody>
             </table>

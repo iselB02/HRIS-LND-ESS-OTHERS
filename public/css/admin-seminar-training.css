@@ -28,6 +28,12 @@
     z-index: 100;
 }
 
+
+button:hover {
+        cursor: pointer; /* Change cursor to pointer */
+    }
+
+
 .modal-overlay, .modal1-overlay  {
     display: none;
     position: fixed;

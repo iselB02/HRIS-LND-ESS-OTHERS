@@ -7,7 +7,7 @@
             <table>
                 <tr>
                     <th>Program</th>
-                    <th>Participants</th>
+                    <!--<th>Participants</th>-->
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Type</th>
@@ -18,9 +18,21 @@
                     <tr data-title="{{ $training->title }}" data-location="{{ $training->location }}" data-pre-link="{{ $training->pre_training}}" data-post-link="{{ $training->post_training }}" data-start-date="{{ $training->start_date }}" data-end-date="{{ $training->end_date }}" data-type="{{ $training->type }}"
                         data-start-time="{{ $training->start_time }}" data-end-time="{{ $training->end_time }}" data-participants="{{ $training->participants}}"  data-descriptions="{{ $training->description}}">
                         <td>{{ $training->title }}</td>
-                        <td>{{ $training->participants }}</td>
-                        <td>{{ $training->start_date }}</td>
-                        <td>{{ $training->end_date }}</td>
+                        <!--<td>{{ $training->participants }}</td>-->
+                         <td>
+                            @if ($training->start_date)
+                                {{ \Carbon\Carbon::parse($training->start_date)->format('F j, Y') }}
+                            @else
+                                N/A
+                            @endif
+                        </td>
+						<td>
+                            @if ($training->end_date)
+                                {{ \Carbon\Carbon::parse($training->end_date)->format('F j, Y') }}
+                            @else
+                                N/A
+                            @endif
+                        </td>
                         <td>{{ $training->type }}</td>
                         <td><button class="view">View</button></td>
                     </tr>
@@ -30,11 +42,23 @@
                 <tr data-title="{{ $training->title }}" data-location="{{ $training->location }}" data-pre-link="{{ $training->pre_training}}" data-post-link="{{ $training->post_training }}" data-start-date="{{ $training->start_date }}" data-end-date="{{ $training->end_date }}" data-type="{{ $training->type }}"
                     data-start-time="{{ $training->start_time }}" data-end-time="{{ $training->end_time }}" data-participants="{{ $training->participants}}"  data-descriptions="{{ $training->description}}">
                     <td>{{ $training->title }}</td>
-                    <td>{{ $training->participants }}</td>
-                    <td>{{ $training->start_date }}</td>
-                    <td>{{ $training->end_date }}</td>
+                   <!-- <td>{{ $training->participants }}</td>-->
+                      <td>
+                            @if ($training->start_date)
+                                {{ \Carbon\Carbon::parse($training->start_date)->format('F j, Y') }}
+                            @else
+                                N/A
+                            @endif
+                        </td>
+						<td>
+                            @if ($training->end_date)
+                                {{ \Carbon\Carbon::parse($training->end_date)->format('F j, Y') }}
+                            @else
+                                N/A
+                            @endif
+                        </td>
                     <td>{{ $training->type }}</td>
-                    <td><button class="view">View</button></td>
+                  <td><button class="view">View</button></td>
                 </tr>
                 @endforeach
             </table>
@@ -68,8 +92,7 @@
                         <li id="detail-date"></li>
                         <li id="detail-time"></li>
                         <li id="detail-location"></li>
-                        <li id="detail-type"></li>
-                        <li id="detail-participants"></li>
+                      <li id="detail-type"></li>
                     </ul>
                     <p id="detail-description"></p>
                 </div>

@@ -27,6 +27,12 @@
     width: 30%;
 }
 
+
+button:hover {
+        cursor: pointer; /* Change cursor to pointer */
+    }
+
+
 #print {
     padding: 5px;
     padding-left: 25px;

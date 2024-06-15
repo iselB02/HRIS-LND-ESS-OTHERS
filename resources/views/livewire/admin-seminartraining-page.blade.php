@@ -19,9 +19,21 @@
                         <!-- Display search result fields -->
                         <td>{{ $training->title }}</td>
                         <td>{{ $training->participants }}</td>
-                        <td>{{ $training->start_date }}</td>
-                        <td>{{ $training->end_date }}</td>
-                        <td>{{ $training->type }}</td>
+                        <td>
+                            @if ($training->start_date)
+                                {{ \Carbon\Carbon::parse($training->start_date)->format('F j, Y') }}
+                            @else
+                                N/A
+                            @endif
+                        </td>
+						<td>
+                            @if ($training->end_date)
+                                {{ \Carbon\Carbon::parse($training->end_date)->format('F j, Y') }}
+                            @else
+                                N/A
+                            @endif
+                        </td>
+                      <td>{{ $training->type }}</td>
                         <td>
                             <button class="view"><img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon"></button>
                             <button class="edit" wire:click="edit({{ $training->id }})"><img src="{{ asset('images/edit.png') }}" alt="Delete Icon" class="delete_icon"></button>   
@@ -36,8 +48,20 @@
                 data-participants="{{ $training->participants}}" data-pre_test="{{ $training->pre_training}}" data-post_test="{{ $training->post_training}}">
                 <td>{{ $training->title }}</td>
                 <td>{{ $training->participants }}</td>
-                <td>{{ $training->start_date }}</td>
-                <td>{{ $training->end_date }}</td>
+              	<td>
+                    @if ($training->start_date)
+                                {{ \Carbon\Carbon::parse($training->start_date)->format('F j, Y') }}
+                    @else
+                   		 N/A
+                    @endif
+                 </td>
+				<td>
+                  	@if ($training->end_date)
+                       {{ \Carbon\Carbon::parse($training->end_date)->format('F j, Y') }}
+                    @else
+                        N/A
+                    @endif
+                 </td>
                 <td>{{ $training->type }}</td>
                 <td>
                     <button class="view"><img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon"></button>

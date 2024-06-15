@@ -47,10 +47,10 @@
                 <th>
                     <span>Date</span>
                     <span>
-                        <button wire:click="sortData('published_date', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                        <button wire:click="sortData('current_date', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
                      </span>
                      <span>
-                         <button wire:click="sortData('published_date', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                         <button wire:click="sortData('current_date', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
                      </span>
                 </th>
                 <th>
@@ -66,15 +66,15 @@
             </tr>
             @if (!empty($searchQuery) && $scholarshipSearch->isNotEmpty())
                 @foreach ($scholarshipSearch as $scholar)
-                <tr id="{{ $scholar->id }}" fname="{{ $scholar->first_name }}" mname="{{ $scholar->middle_name }}" lname="{{ $scholar->last_name }}"
+                <tr id="{{ $scholar->id }}" empname="{{ $scholar->employee_name }}"
                     address="{{ $scholar->address }}" postal="{{ $scholar->postal_code }}" civil-status="{{ $scholar->civil_status }}" position="{{ $scholar->position }}"
                     course="{{ $scholar->course }}" start="{{ $scholar->start_date }}" end="{{ $scholar->end_date }}" school="{{ $scholar->school_name }}"
-                    school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->officedepartment }}" remarks="{{ $scholar->remarks }}">
-                    <td>{{ $scholar->first_name }} {{ $scholar->middle_name }} {{ $scholar->last_name }} unit="{{ $scholar->units }}" term="{{ $scholar->term}}"</td>
-                    <td>{{ $scholar->officedepartment }}</td>
+                    school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->college_department }}" remarks="{{ $scholar->remarks }}">
+                    <td>{{ $scholar->employee_name }} "</td>
+                    <td>{{ $scholar->college_department }}</td>
                     <td>{{ $scholar->position }}</td>
                     <td>{{ $scholar->type }}%</td>
-                    <td>{{ $scholar->published_date }}</td>
+                    <td>{{ $scholar->created_at->format('F j, Y') }}</td>
                     <td>{{ $scholar->status}}</td>
                     <td>
                         <button id="delete">
@@ -88,16 +88,16 @@
             @endforeach
             @else
             @foreach ($scholars as $scholar)
-            <tr id="{{ $scholar->id }}" fname="{{ $scholar->first_name }}" mname="{{ $scholar->middle_name }}" lname="{{ $scholar->last_name }}"
+            <tr id="{{ $scholar->id }}" empname="{{ $scholar->employee_name }}"
                 address="{{ $scholar->address }}" postal="{{ $scholar->postal_code }}" civil-status="{{ $scholar->civil_status }}" position="{{ $scholar->position }}"
                 course="{{ $scholar->course }}" start="{{ $scholar->start_date }}" end="{{ $scholar->end_date }}" school="{{ $scholar->school_name }}"
-                school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->officedepartment }}" remarks="{{ $scholar->remarks }}"
+                school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->college_department }}" remarks="{{ $scholar->remarks }}"
                 unit="{{ $scholar->units }}" term="{{ $scholar->term}}">
-                <td>{{ $scholar->first_name }} {{ $scholar->middle_name }} {{ $scholar->last_name }} </td>
-                <td>{{ $scholar->officedepartment }}</td>
+                <td>{{ $scholar->employee_name }}</td>
+                <td>{{ $scholar->college_department }}</td>
                 <td>{{ $scholar->position }}</td>
                 <td>{{ $scholar->type }}%</td>
-                <td>{{ $scholar->published_date }}</td>
+                <td>{{ $scholar->created_at->format('F j, Y') }}</td>
                 <td>{{ $scholar->status}}</td>
                 <td>
                     <button id="delete">

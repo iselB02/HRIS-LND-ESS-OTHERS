@@ -17,10 +17,13 @@ class AdminPermittoStudyPage extends Component
         public $sortBy = 'name'; // Default sort field
     public $sortDirection = 'asc'; // Default sort direction
     
-    public function delete($id)
+     public function delete($reference_num)
     {
-        $item = PermitToStudyModel::find($id);
-        $item->delete();
+        $item = PermitToStudyModel::where('reference_num', $reference_num);
+        if ($item) {
+            $item->delete();
+        }
+
     }
 
     public function sortData($field, $sortDirection)

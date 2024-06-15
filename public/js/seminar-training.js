@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var startTime = row.getAttribute('data-start-time');
         var endTime = row.getAttribute('data-end-time');
         var type = row.getAttribute('data-type');
-        var participants = row.getAttribute('data-participants');
+        //var participants = row.getAttribute('data-participants');
         var descriptions = row.getAttribute('data-descriptions');
 
         document.getElementById('detail-location').textContent = 'Location: ' + location;
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('detail-date').textContent = 'Date: ' + startDate + ' to ' + endDate;
         document.getElementById('detail-time').textContent = 'Time: ' + startTime + ' to ' + endTime;
         document.getElementById('detail-type').textContent = 'Type: ' + type;
-        document.getElementById('detail-participants').textContent = 'Participants: ' + participants;
+       // document.getElementById('detail-participants').textContent = 'Participants: ' + participants;
         document.getElementById('detail-description').textContent = descriptions;
         
 

@@ -11,6 +11,35 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+
+button:hover {
+        cursor: pointer; /* Change cursor to pointer */
+    }
+
+
+#close{
+    position: absolute;
+    margin: 10px;
+    font-weight: 500;
+    background-color: #2e30a4;
+  	color: white;
+    padding: 5px;
+  	border-radius: 3px;
+  	
+}
+
+button {
+  	background-color: white;
+	border: none;
+}
+
+button:hover {
+        cursor: pointer; /* Change cursor to pointer */
+    }
+
+
+
+
 .seminartraining-banner {
     width: 100%;
     height: 300px;
@@ -39,10 +68,14 @@
     height: 305px;
 }
 
+
+
 #buttons {
     margin-left: 100px;
     font-size: 12px;
 }
+
+
 
 .assessment {
     display: flex;
@@ -110,11 +143,19 @@
     text-justify: inter-word;
 }
 
+#pre-test-btn, #post-test-btn {
+	background-color: white;
+  	width: 90%;
+}
+
 .details ul {
     list-style-type: disc;
     margin-left: 3%;
     font-size: 20px;
 }
+
+
+
 
 .seminar_view {
     display: none;
@@ -122,6 +163,7 @@
     height: 100%;
     width: 100%;
 }
+
 
 .banner_h1 {
     position: absolute;
@@ -136,12 +178,6 @@
     padding: 10px;
 }
 
-#close{
-    position: absolute;
-    color: #FFFFFF;
-    font-weight: 500;
-    padding: 5px;
-}
 
 .seminar_view::-webkit-scrollbar{
     display: none;
@@ -175,6 +211,9 @@ table {
 
 th {
     border-bottom: 1px solid black;
+ 	color: #FFFFFF;
+  	background-color: #2e30a4;
+
 }
 
 th, td {
@@ -184,6 +223,7 @@ th, td {
     text-align: center;
     border-left: 1px solid black;
     border-right: 1px solid black;
+  
 }
 
 .top-menu {

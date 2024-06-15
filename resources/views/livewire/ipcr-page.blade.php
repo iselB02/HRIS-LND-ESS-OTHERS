@@ -11,7 +11,6 @@
             <thead>
                 <tr>
                     <th>Submission Date</th>
-                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -19,9 +18,8 @@
                 @foreach ($ipcrs as $ipcr)
                 <tr>
                     <td>{{ $ipcr->created_at->format('F j, Y') }}</td>
-                    <td>{{ $ipcr->status }}</td>
-                    <td>
-                        <button class="view"  wire:click="download">
+                    <td id="view_button">
+                        <button class="view"  wire:click="download({{$ipcr->reference_num}})">
                             <img src="{{ asset('images/downloadBtn.png') }}" alt="View Icon" class="view_icon">
                         </button>
                     </td>
@@ -36,12 +34,19 @@
         </div>
         <div id="ipcr_form">
             <div id="personal_info">
-                <label for="emp_name">Name:</label>
-                <input wire:model="emp_name" type="text" name="employee_name" id="emp_name">
                 <label for="colDept">College/Department:</label>
-                <input wire:model="collegeDepartment" type="text" name="collegeDepartment" id="colDept">
-                <label for="position">Position:</label>
-                <input wire:model="position" type="text" name="position" id="position">
+                @if ($this->employee)
+                  <select wire:model="collegeDepartment" name="department_or_college_id">
+                      <option value="">Select Department or College</option>
+                      @foreach ($departments as $department)
+                          <option value="{{ $department->department_name }}">{{ $department->department_name }}</option>
+                      @endforeach
+
+                      @foreach ($colleges as $college)
+                          <option value="{{ $college->college_name  }}">{{ $college->college_name }}</option>
+                      @endforeach
+                  </select>
+           	   @endif
                 <label for="startPrd">Start Period:</label>
                 <input wire:model="start_period" type="date" name="start_period" id="startPrd">
                 <label for="endPrd">End Period:</label>
@@ -83,9 +88,9 @@
                         @foreach($coreFunctionRows as $index => $row)
                         <tr>
                             <td>{{ $index + 1 }}</td>
-                            <td><input type="text" wire:model="coreFunctionRows.{{ $index }}.output" class="output"></td>
-                            <td><input type="text" wire:model="coreFunctionRows.{{ $index }}.success_indicators" class="success_indicators"></td>
-                            <td><input type="text" wire:model="coreFunctionRows.{{ $index }}.actual_accomplishments" class="actual_accomplishments"></td>
+                            <td><input type="text" wire:model="coreFunctionRows.{{ $index }}.output" class="output" style="@error('coreFunctionRows.'.$index.'.output') border-color: #ff0000; @enderror"></td>
+                            <td><input type="text" wire:model="coreFunctionRows.{{ $index }}.success_indicators" class="success_indicators" style="@error('coreFunctionRows.'.$index.'.output') border-color: #ff0000; @enderror"></td>
+                            <td><input type="text" wire:model="coreFunctionRows.{{ $index }}.actual_accomplishments" class="actual_accomplishments" style="@error('coreFunctionRows.'.$index.'.output') border-color: #ff0000; @enderror"></td>
                             <td>
                                 <select wire:model="coreFunctionRows.{{ $index }}.q" name="q">
                                     <option selected>Pick</option>
@@ -127,7 +132,7 @@
                                 </select>
                             </td>
                             <td class="removeBtn" >
-                                <button type="button" wire:click="removeSupRow({{ $index }})"><img src="{{ asset('images/deleteBtn.png') }}" alt="View Icon" class="view_icon"></button>
+                                <button type="button" wire:click="removeCoreRow({{ $index }})"><img src="{{ asset('images/deleteBtn.png') }}" alt="View Icon" class="view_icon"></button>
                             </td>
                         </tr>
                         @endforeach
@@ -142,9 +147,9 @@
                         @foreach($supFunctionRows as $index => $row)
                         <tr>
                             <td>{{ $index + 1 }}</td>
-                            <td><input type="text" wire:model="supFunctionRows.{{ $index }}.output" class="output"></td>
-                            <td><input type="text" wire:model="supFunctionRows.{{ $index }}.success_indicators" class="success_indicators"></td>
-                            <td><input type="text" wire:model="supFunctionRows.{{ $index }}.actual_accomplishments" class="actual_accomplishments"></td>
+                            <td><input type="text" wire:model="supFunctionRows.{{ $index }}.output" class="output" style="@error('supFunctionRows.'.$index.'.output') border-color: #ff0000; @enderror"></td>
+                            <td><input type="text" wire:model="supFunctionRows.{{ $index }}.success_indicators" class="success_indicators" style="@error('supFunctionRows.'.$index.'.output') border-color: #ff0000; @enderror"></td>
+                            <td><input type="text" wire:model="supFunctionRows.{{ $index }}.actual_accomplishments" class="actual_accomplishments" style="@error('supFunctionRows.'.$index.'.output') border-color: #ff0000; @enderror"></td>
                             <td>
                                 <select wire:model="supFunctionRows.{{ $index }}.q" name="q">
                                     <option selected>Pick</option>
@@ -207,7 +212,7 @@
                                 <label for="signature">Signature:</label>
                             </td>
                             <td>
-                                <input wire:model="signature" type="file" name="signature" id="signature">
+                                <input wire:model="signature" type="file" accept="image/*" name="signature" id="signature">
                             </td>
                         </tr>
                         <tr>
@@ -243,13 +248,13 @@
                                 <label for="application_form">Application Form:</label>
                             </td>
                             <td>
-                                <input wire:model="application_form" type="file" name="application_form" id="application_form">
+                                <input wire:model="application_form" type="file" accept="application/pdf" name="application_form" id="application_form">
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <label id="comRecoLabel" for="comments_reco">Comments and Recommendations:</label>
-                <textarea wire:model="comments_reco" name="comments_reco" id="comments_reco" cols="130" rows="5"></textarea>
+                <textarea wire:model="comments_reco" name="comments_reco" id="comments_reco" cols="150" rows="5"></textarea>
             </div>
             <div id="bottom_menu">
                 <button id="submit" type="submit">Submit</button>
@@ -257,6 +262,17 @@
             </div>
         </div>
     </form>
+  
+  @if(count($errors->all()) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
 </div>
 
 

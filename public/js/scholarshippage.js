@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     var scholarship = document.getElementById('scholarship-form-container');
+  	var main_view = document.getElementById('applications');
     var cancel = document.getElementById('cancel');
     var submit = document.getElementById('submit');
     var modal = document.querySelector('.view-file');
@@ -10,11 +11,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function formOpen() {
         scholarship.style.display = 'block';
         overlay.style.display = 'block';
+      	main_view.style.display = 'none';
+      	
     }
 
     function formClose() {
         scholarship.style.display = 'none';
         overlay.style.display = 'none';
+      	main_view.style.display = 'block';
     }
 
     cancel.addEventListener('click', formClose);
@@ -25,9 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var button = event.target.closest('button.view');
         var row = button.closest('tr');
 
-        var fname = row.getAttribute('fname');
-        var mname = row.getAttribute('mname');
-        var lname = row.getAttribute('lname');
+        var empname = row.getAttribute('employee_name');
         var address = row.getAttribute('address');
         var postal = row.getAttribute('postal');
         var civil_status = row.getAttribute('civil-status');
@@ -43,10 +45,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var term = row.getAttribute('term');
         var units = row.getAttribute('unit');
 
-        document.getElementById('detail-name').textContent = 'Full Name: ' + fname + ' ' + mname + ' ' + lname;
+        document.getElementById('detail-name').textContent = 'Name: ' + empname;
         document.getElementById('detail-address').textContent = 'Home Address: ' + address;
         document.getElementById('detail-civilStatus').textContent = 'Civil Status: ' + civil_status;
-        document.getElementById('detail-office').textContent = 'Office/Department: ' + office;
+        document.getElementById('detail-office').textContent = 'College/Department: ' + office;
         document.getElementById('detail-position').textContent = 'Position: ' + position;
         document.getElementById('detail-type').textContent = 'Scholarship Type: ' + type_scholarship + '% Scholarship grant';
         document.getElementById('detail-course').textContent = 'Course: ' + course;
@@ -56,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('detail-school').textContent = 'College/University: ' + school;
         document.getElementById('detail-schoolAddress').textContent = 'School Address: ' + school_address;
         document.getElementById('detail-remarks').textContent = 'Remarks: ' + remarks;
-        
 
         modal.style.display = 'block';
         overlay.style.display = 'block';

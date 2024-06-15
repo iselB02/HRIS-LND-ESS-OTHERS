@@ -24,28 +24,28 @@ class OpcrPdf extends Component
     public $core_func;
     public $sup_func;
 
-    public function mount()
-    {
-        $this->emp_id = Auth::id();
-        $this->opcrs = OPCRModel::where('employee_id', 202410000)->first();
+   public function mount($reference_num)
+{
+    //$this->emp_id = $emp_id;
+    $this->opcrs = OPCRModel::where('reference_num', $reference_num)->first();
+    
+    if ($this->opcrs) {
+        $this->core_func = OpcrFunctionsModel::where('opcr_id', $this->opcrs->reference_num)->where('type', 'core')->get();
+        $this->sup_func = OpcrFunctionsModel::where('opcr_id', $this->opcrs->reference_num)->where('type', 'sup')->get();
         
-        if ($this->opcrs) {
-            $this->core_func =OpcrFunctionsModel::where('opcr_id', $this->opcrs->reference_num)->where('type', 'core')->get();
-            $this->sup_func = OpcrFunctionsModel::where('opcr_id', $this->opcrs->reference_num)->where('type', 'sup')->get();
-            
-            $this->employee = EmployeeModel::where('employee_id', 202410000)->first();
-            if ($this->employee) {
-                $departmentIdString = trim($this->employee->department_id, "[]");
-                $extractedDepartmentId = (int) $departmentIdString;
-                $this->department = DepartmentModel::where('department_id', $extractedDepartmentId)->first();
-                
-                $collegeIdString = trim($this->employee->college_id, "[]");
-                $extractedCollegeId = (int) $collegeIdString;
-                $this->college = CollegeModel::where('id', $extractedCollegeId)->first();
-            }
+        // Corrected variable assignment
+        $this->employee = EmployeeModel::with('department', 'college')->where('employee_id', $this->emp_id)->first();
+        if ($this->employee) {
+            $departmentIdString = trim($this->employee->department_id, "[]");
+            $extractedDepartmentId = (int) $departmentIdString;
+            $this->department = DepartmentModel::where('department_id', $extractedDepartmentId)->first();
+            $collegeIdString = trim($this->employee->college_id, "[]");
+            $extractedCollegeId = (int) $collegeIdString;
+            $this->college = CollegeModel::where('id', $extractedCollegeId)->first();
         }
     }
-    
+}
+
 
 
     public function render()

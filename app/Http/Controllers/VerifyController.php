@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\EmployeeModel; // Import EmployeeModel
 use Illuminate\Support\Facades\Auth;
 
 class VerifyController extends Controller
@@ -13,32 +14,43 @@ class VerifyController extends Controller
         return view('auth.login');
     }
 
+    // Modify this method to use the authenticated user's ID directly
     public function verify(Request $request)
     {
-        $credentials = [
-            'id' => $request->input('id'),
-            'password' => $request->input('password'),
-        ];
+        // Get the authenticated user's ID
+        $userId = Auth::id();
 
         // Find the user by ID
-        $user = User::where('id', $credentials['id'])->first();
+        $user = User::where('id', $userId);
 
-        if ($user && $user->password === $credentials['password']) {
-            // Manually log in the user
-            Auth::login($user);
+        if ($user) {
+            // Fetch employee details
+            $employee = EmployeeModel::where('employee_id', $user->id)->first();
 
-            // Extract the last two digits of the user's ID
-            $userId = $user->id;
-            $lastTwoDigits = substr((string)$userId, -2);
+            if ($employee) {
+                // Store in session
+                $lastTwoDigits = substr($user->id, -2);
+                session([
+                    'last_name' => $employee->last_name ?? null,
+                    'first_name' => $employee->first_name ?? null,
+                    'middle_name' => $employee->middle_name ?? null,
+                    'employee_title' => $employee->job_title ?? null,
+                    'lastTwoDigits' => $lastTwoDigits
+                ]);
 
-            // Pass the last two digits to the view
-            return redirect()->intended('emp_ipcr')->with('lastTwoDigits', $lastTwoDigits);
+                // Authentication passed...
+                return redirect()->intended('emp_ipcr');
+            } else {
+                // If employee details are not found
+                return back()->withErrors([
+                    'message' => 'Employee details not found.',
+                ]);
+            }
         } else {
-            // Authentication failed...
+            // If user is not found
             return back()->withErrors([
-                'message' => 'The provided credentials do not match our records.',
+                'message' => 'User not found.',
             ]);
         }
     }
 }
-    

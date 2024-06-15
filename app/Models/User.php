@@ -23,4 +23,9 @@ class User extends Authenticatable
     {
         return $this->password;
     }
+  
+   public function employee()
+    {
+        return $this->hasOne(EmployeeModel::class, 'employee_id');
+    }
 }

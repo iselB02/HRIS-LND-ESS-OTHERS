@@ -20,23 +20,30 @@
 }
 
 .file-name {
-    display: block;
-    margin-top: 5px;
+    margin-left: auto; /* Pushes the file name to the right */
     font-size: 14px;
     color: #555;
+    display: flex;
+    align-items: center; /* Center vertically */
+}
+
+.remove-button {
+    margin-left: 10px;
+    color: red;
+    cursor: pointer;
 }
 
 
-.permit_to_study_side {
+/* .permit_to_study_side {
     display: flex;
     flex-direction: column;
     background: #FFFFFF;
     border-radius: 8px;
     width: 32%;
-    border: 1px solid #ccc; /* Updated border color */
-    padding: 20px; /* Added padding for better spacing */
+    border: 1px solid #ccc; 
+    padding: 20px; 
     overflow-y: scroll;
-}
+} */
 
 .permit_to_study_side .checklist {
     margin: 10px;
@@ -71,34 +78,45 @@
 }
 
 .submitbutton {
-    position: fixed;
+    margin-top: auto; /* Pushes the submit button to the bottom */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#submitfile:disabled {
+    background-color: #ccc; /* Light gray background for disabled state */
+    color: #777; /* Gray text color for disabled state */
+    border-color: #aaa; /* Gray border color for disabled state */
+    cursor: not-allowed; /* Show not-allowed cursor */
 }
 
 
 
 /* Legend styles */
-.legend {
+/* .legend {
     margin-bottom: 1px;
 }
 
 .legend p {
     font-weight: bold;
     margin-bottom: 1px;
-    font-size: 14px; /* Adjust font size */
+    font-size: 14px; 
 }
 
 .legend ul {
     list-style: none;
     padding: 0;
-    margin: 0; /* Remove default margin */
+    margin: 0; 
 }
 
 .legend li {
-    font-size: 15px; /* Adjust font size */
+    font-size: 15px; 
 }
 
 /* Status color styles */
-.pending-color,
+
+/* .pending-color,
 .send-again-color,
 .wrong-document-color,
 .accepted-color {
@@ -106,7 +124,7 @@
     width: 12px;
     height: 12px;
     margin-right: 5px;
-    border: 1px solid #000; /* Optional: Add border for better visibility */
+    border: 1px solid #000; 
 }
 
 .pending-color { 
@@ -123,10 +141,10 @@
 
 .accepted-color { 
     background-color: green; 
-}
+} */
 
 /* File Checkbox */
-.file-checkbox button.check {
+/* .file-checkbox button.check {
     display: none;
 }
 
@@ -188,10 +206,10 @@
     border-top-color: transparent;
     animation: spin 2s linear infinite;
     border-width: 3px;
-}
+} */ 
 
 /* Define the spinning animation */
-@keyframes spin {
+/* @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
+} */

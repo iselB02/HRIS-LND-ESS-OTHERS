@@ -21,7 +21,7 @@
 //     });
 // });
 
-document.addEventListener('DOMContentLoaded', function () {
+/*document.addEventListener('DOMContentLoaded', function () {
     const viewButtons = document.querySelectorAll('.view');
     viewButtons.forEach(button => {
         button.addEventListener('click', function () {
@@ -30,3 +30,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+*/

@@ -26,9 +26,9 @@ class AdminOPCR extends Component
     {
         $this->emp_id = Auth::id();
         $opcrs = OPCRModel::when($this->searchQuery, function ($query) {
-            $query->Where('position', 'like', '%' . $this->searchQuery . '%')
-                  ->orWhere('average', 'like', '%' . $this->searchQuery . '%')
-                  ->orWhere('date_of_filing', 'like', '%' . $this->searchQuery . '%');
+            $query->Where('college_department', 'like', '%' . $this->searchQuery . '%')
+                  ->orWhere('fina_average_rating', 'like', '%' . $this->searchQuery . '%')
+                  ->orWhere('created_at', 'like', '%' . $this->searchQuery . '%');
         })
         ->orderBy($this->sortBy, $this->sortDirection)
         ->paginate(6); // Adjust the pagination count as needed
@@ -53,9 +53,9 @@ class AdminOPCR extends Component
     public function search()
     {
         if (!empty($this->searchQuery)) {
-            $this->opcrSearch = OPCRModel::Where('position', 'like', '%' . $this->searchQuery . '%')
-                                         ->orWhere('average', 'like', '%' . $this->searchQuery . '%')
-                                         ->orWhere('published_date', 'like', '%' . $this->searchQuery . '%')
+            $this->opcrSearch = OPCRModel::Where('college_department', 'like', '%' . $this->searchQuery . '%')
+                                            ->orWhere('fina_average_rating', 'like', '%' . $this->searchQuery . '%')
+                                            ->orWhere('created_at', 'like', '%' . $this->searchQuery . '%')
                                          ->get();
         } else {
             // Reset opcrSearch if search query is empty
@@ -63,11 +63,11 @@ class AdminOPCR extends Component
         }
     }
     
-    public function download()
+    public function download($reference_num)
     {
         // Instantiate the OpcrPdf component to get its content
         $pdfComponent = new OpcrPdf();
-        $pdfComponent->mount();
+        $pdfComponent->mount($reference_num);
 
         // Get the HTML content of the OpcrPdf component
         $pdfHtml = view('livewire.opcr-pdf', [
@@ -98,14 +98,11 @@ class AdminOPCR extends Component
     }
     public function delete($reference_num)
     {
-        $item = OPCRModel::where('reference_num', $reference_num)->first();
-
+        $item = OPCRModel::where('reference_num', $reference_num);
         if ($item) {
-            // If the record exists, delete it
             $item->delete();
         }
 
-        dd($reference_num);
     }
 }
 

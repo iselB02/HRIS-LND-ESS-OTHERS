@@ -9,9 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var button = event.target.closest('button.view');
         var row = button.closest('tr'); // Get the closest table row to the button
 
-        var fname = row.getAttribute('fname');
-        var mname = row.getAttribute('mname');
-        var lname = row.getAttribute('lname');
+        var empname = row.getAttribute('employee_name');
         var address = row.getAttribute('address');
         var postal = row.getAttribute('postal');
         var civil_status = row.getAttribute('civil-status');
@@ -27,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var term = row.getAttribute('term');
         var units = row.getAttribute('unit');
 
-        document.getElementById('detail-name').textContent = 'Full Name: ' + fname + ' ' + mname + ' ' + lname;
+        document.getElementById('detail-name').textContent = 'Name: ' + empname;
         document.getElementById('detail-address').textContent = 'Home Address: ' + address;
         document.getElementById('detail-civilStatus').textContent = 'Civil Status: ' + civil_status;
         document.getElementById('detail-office').textContent = 'Office/Department: ' + office;

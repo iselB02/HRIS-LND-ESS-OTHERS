@@ -1,7 +1,4 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-}
+
 
 .dashboard_container {
     display: flex;
@@ -9,25 +6,53 @@ body {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    margin: 10px;
     background: #FFFFFF;
+    flex-direction: column;
+    margin: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    overflow-y: scroll;
 }
+
+
+button:hover {
+        cursor: pointer; /* Change cursor to pointer */
+    }
+
+
+#applications {
+    display: flex;
+    position: relative;
+    /* align-items: center;
+    justify-content: center; */
+    flex-grow: 1;
+    background: #FFFFFF;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* overflow-y: scroll; */
+    width: 100%;
+    height: 100%;
+   /* display: none;*/
+}
+
 
 
 #scholarship-form-container {
     display: flex;
-    position: fixed;
+    position: relative;
+    border-radius: 8px;
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-grow: 1;
+    background: #FFFFFF;
     flex-direction: column;
-    align-items: center;
-    background-color: #FFFFFF;
-    width: 75%;
-    height: 85%;
-    z-index: 100;
-    display: none;
-    overflow-y: scroll;   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* overflow-y: scroll; */
+    width: 100%;
+    height: 100%;
+    display: none; 
+    
+    
 }
 
 #scholarship-form-container::-webkit-scrollbar{
@@ -43,9 +68,10 @@ body {
     color: #FFFFFF;
     background-color: rgb(45, 52, 154);
     width: 100%;
+    border-radius: 8px 8px 0 0;
 }
 
-.modal-overlay {
+/* .modal-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -53,8 +79,8 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    z-index: 1; /* Ensure a higher z-index than the navbar */
-}
+    /* z-index: 1; Ensure a higher z-index than the navbar */
+/* } */ 
 
 #applications {
     width: 100%;
@@ -144,7 +170,7 @@ th, td {
 }
 
 #section3 label {
-    margin-left: 15px;
+    margin-left: 250px;
 }
 
 #section3 #position {
@@ -154,35 +180,40 @@ th, td {
 
 #section3 #type {
     margin-left: 20px;
-    width: 22%;
+    width: 17%;
 }
-
 #section3 #position-label {
     margin-left: 45%;
 }
 
 #section3 #type-label {
-    margin-left: 19%;
+    margin-left: 11.5%;
 }
 
-#section4 #crs-title {
+#section3 #crs-label {
+    margin-left: 35%;
+}
+
+
+#section3 #crs-title {
     width: 27%;
 }
 
 #section4 #units {
-    margin-left: 35px;
-    width: 10.5%;
+    margin-left: 26px;
+    width: 22%;
 }
 
 #section4 #term {
-    width: 17%;
+    width: 22%;
     border: none;
     border-bottom:1px solid black ;
+  	margin-left: 17px;
 }
 
 #section4 #start-date, #section4 #end-date {
-    width: 15%;
-    margin-left: 10px
+    width: 22%;
+    margin-left: 7px
 }
 
 #section4 input {

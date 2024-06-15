@@ -17,6 +17,12 @@
     width: 95%;
 }
 
+
+button:hover {
+        cursor: pointer; /* Change cursor to pointer */
+    }
+
+
 #search-permittostudy-request {
     padding: 5px;
     padding-left: 25px;
@@ -71,8 +77,13 @@ th, td {
     margin-left: 1px;
 }
 
-.view-file-btn{
+.view-file-btn {
     vertical-align: center;
+    width: 25px;
+    height: 25px;
+}
+
+.view_icon {
     width: 25px;
     height: 25px;
 }

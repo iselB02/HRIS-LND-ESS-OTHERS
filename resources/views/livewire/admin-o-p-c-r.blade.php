@@ -8,7 +8,13 @@
          <table>
              <tr>
                  <th>
-                     <span>Status</span>
+                     <span>College</span>
+                   <span>
+                         <button wire:click="sortData('college_department', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                      </span>
+                      <span>
+                          <button wire:click="sortData('college_department', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                      </span>
                  </th>
 
                  <th>
@@ -24,10 +30,10 @@
                  <th>
                      <span>Date</span>
                      <span>
-                         <button wire:click="sortData('published_date', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
+                         <button wire:click="sortData('created_at', 'asc')" ><img src="{{ asset('images/arrow_up.png') }}" alt=""></button> 
                       </span>
                       <span>
-                          <button wire:click="sortData('published_date', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
+                          <button wire:click="sortData('created_at', 'desc')" ><img src="{{ asset('images/arrow_down.png') }}" alt=""></button> 
                       </span>
                  </th>
                  <th>Actions</th>
@@ -35,14 +41,14 @@
              @if (!empty($searchQuery) && $opcrSearch->isNotEmpty())
                 @foreach ($opcrs as $opcr)
                     <tr>
-                        <td>{{ $opcr->status }}</td>
+                        <td>{{ $opcr->college_department }}</td>
                         <td>{{ $opcr->final_average_rating }}</td>
                         <td>{{ $opcr->created_at->format('Y-m-d') }}</td>
                         <td>
                             <button class="delete-btn" >
                                 <img wire:click.prevent="delete({{ $opcr->reference_num }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                             </button>
-                            <button class="view-btn" wire:click="download">
+                            <button class="view-btn" wire:click="download({{$opcr->reference_num}})">
                                 <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                             </button>
                         </td>
@@ -52,14 +58,14 @@
              @else
                 @foreach ($opcrs as $opcr)
                     <tr>
-                        <td>{{ $opcr->status }}</td>
+                        <td>{{ $opcr->college_department}}</td>
                         <td>{{ $opcr->final_average_rating }}</td>
                         <td>{{ $opcr->created_at->format('Y-m-d') }}</td>
                         <td>
                             <button class="delete-btn" >
                                 <img wire:click.prevent="delete({{ $opcr->reference_num }})" src="{{ asset('images/deleteBtn.png') }}" alt="Delete Icon" class="delete_icon">
                             </button>
-                            <button class="view-btn" wire:click="download">
+                            <button class="view-btn" wire:click="download({{$opcr->reference_num}})">
                                 <img src="{{ asset('images/viewBtn.png') }}" alt="View Icon" class="view_icon">
                             </button>
                         </td>

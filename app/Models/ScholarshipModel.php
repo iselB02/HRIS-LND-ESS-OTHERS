@@ -9,13 +9,10 @@ class ScholarshipModel extends Model
 {
     protected $fillable = [
         'employee_id',
-        'officedepartment',
-        'last_name',
-        'first_name',
-        'middle_name' ,
+        'college_department',
+        'employee_name',
         'type',
         'address',
-        'postal_code',
         'civil_status',        
         'position',
         'course',
@@ -31,6 +28,7 @@ class ScholarshipModel extends Model
     ];
 
     protected $table = 'scholarship_infos';
+   	protected $primaryKey = 'employee_id';
 
     use HasFactory;
 }

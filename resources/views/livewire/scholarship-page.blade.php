@@ -14,12 +14,12 @@
             </thead>
            <tbody>
             @foreach ($scholars as $scholar)
-            <tr id="{{ $scholar->id }}" fname="{{ $scholar->first_name }}" mname="{{ $scholar->middle_name }}" lname="{{ $scholar->last_name }}"
+            <tr id="{{ $scholar->id }}" employee_name="{{ $scholar->employee_name }}"
                 address="{{ $scholar->address }}" postal="{{ $scholar->postal_code }}" civil-status="{{ $scholar->civil_status }}" position="{{ $scholar->position }}"
                 course="{{ $scholar->course }}" start="{{ $scholar->start_date }}" end="{{ $scholar->end_date }}" school="{{ $scholar->school_name }}"
-                school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->officedepartment }}" remarks="{{ $scholar->remarks }}"
+                school-address="{{ $scholar->school_address }}" type="{{ $scholar->type }}" office="{{ $scholar->college_department }}" remarks="{{ $scholar->remarks }}"
                 unit="{{ $scholar->units }}" term="{{ $scholar->term}}">
-                <td>{{ $scholar->published_date }}</td>
+                <td>{{ $scholar->created_at->format('F j, Y') }}</td>
                 <td>{{ $scholar->status }}</td>
                 <td>
                     <button class="view">
@@ -40,69 +40,21 @@
         <h1 class="form-heading">Scholarship Application</h1>
 
         <form wire:submit.prevent="submit_scholarship">
-            <h3>Personal Information</h3>
-            <div id="section1">
-                <input wire:model="first_name" type="text" name="Fname" id="Fname" >
-                <input wire:model="middle_name" type="text" name="Mname" id="Mname">
-                <input wire:model="last_name" type="text" name="Lname" id="Lname">
-                <label for="Fname" id="Fname-label">First Name</label>
-                <label for="Mname" id="Mname-label">Middle Name</label>
-                <label for="Lname" id="Lname-label">Last Name</label>
-            </div>
-            <div id="section2">
-                <input wire:model="address" type="text" id="address">
-                <input wire:model="postal_code" type="text" name="postal" id="postal">
-                <input wire:model="civil_status" type="text" name="civil-status" id="civil-status">
-                <label for="address" id="address-label">Full Address</label>
-                <label for="postal" id="postal-label">Postal code</label>
-                <label for="civil-status" id="civilStatus-label">Civil status</label>
-            </div>
-            <div id="divider"></div>
             <h3>Details of Application</h3>
             <div id="section3">
-                <select wire:model="officedepartment" name="office" id="office" >   
-                    <option value="">Select Office</option>
-                    <option value="Board of Regents">Board of Regents</option>
-                    <option value="PLM office of the President">PLM office of the President</option>
-                    <option value="Office of the Registrar">Office of the Registrar</option>
-                    <option value="Admission">Admission</option>
-                    <option value="Office of the Executive Preisdent">Office of the Executive Preisdent</option>
-                    <option value="Office of the Vice President for Academic Support Units">Office of the Vice President for Academic Support Units</option>
-                    <option value="Office of University Legal Council">Office of University Legal Council</option>
-                    <option value="Office of the Vice President for Information and Communications">Office of the Vice President for Information and Communications</option>
-                    <option value="Office of the Vice President for Administration">Office of the Vice President for Administration</option>
-                    <option value="Office of the Vice President for Finance">Office of the Vice President for Finance</option>
-                    <option value="Cash Office/Treasury">Cash Office/Treasury</option>
-                    <option value="Budget Office">Budget Office</option>
-                    <option value="Internal Audit Office">Internal Audit Office</option>
-                    <option value="Information and Communications Technology Office">Information and Communications Technology Office</option>
-                    <option value="Office of Guidance and Testing Services">Office of Guidance and Testing Services</option>
-                    <option value="Office of Student and Development Services">Office of Student and Development Services</option>
-                    <option value="University Library">University Library</option>
-                    <option value="University Research Center">University Research Center</option>
-                    <option value="Center for University Extension Service">Center for University Extension Service</option>
-                    <option value="University Health Service">University Health Service</option>
-                    <option value="National Service Training Program">National Service Training Program</option>
-                    <option value="Human Resource Development Office">Human Resource Development Office</option>
-                    <option value="Procurement Office">Procurement Office</option>
-                    <option value="Property and Supplies Office">Property and Supplies Office</option>
-                    <option value="Physical Facilities Management Office">Physical Facilities Management Office</option>
-                    <option value="University Security Office">University Security Office</option>
-                    <option value="College of Architecture and Urban Planning">College of Architecture and Urban Planning</option>
-                    <option value="College of Engineering and Technology">College of Engineering and Technology</option>
-                    <option value="College of Education">College of Education</option>
-                    <option value="College of Humanities, Arts and Social Science">College of Humanities, Arts and Social Science </option>
-                    <option value="College of Nursing">College of Nursing</option>
-                    <option value="College of Physical Therapy">College of Physical Therapy</option>
-                    <option value="College of Science">College of Science</option>
-                    <option value="College of Law">College of Law</option>
-                    <option value="College of Medicine">College of Medicine</option>
-                    <option value="PLM Business School">PLM Business School</option>
-                    <option value="Graduate School of Law">Graduate School of Law</option>
-                    <option value="School of Public Health">School of Public Health</option>
-                    <option value="School of Government">School of Government</option>
-                </select>
-                <input wire:model="position" type="text" name="position" id="position">
+               @if ($this->employee)
+                  <select wire:model="collegeDepartment" name="department_or_college_id">
+                      <option value="">Select Department or College</option>
+                      @foreach ($departments as $department)
+                          <option value="{{ $department->department_name }}">{{ $department->department_name }}</option>
+                      @endforeach
+
+                      @foreach ($colleges as $college)
+                          <option value="{{ $college->college_name  }}">{{ $college->college_name }}</option>
+                      @endforeach
+                  </select>
+           	   @endif
+              	<input wire:model="course" type="text" name="crs-title" id="crs-title">
                 <select wire:model="type" name="type" id="type">
                     <option value="">Type of Scholarship</option>
                     <option value="25" >25%</option>
@@ -110,11 +62,11 @@
                     <option value="100" >100%</option>
                 </select>
                 <label for="office" id="office-label">Office</label>
-                <label for="position" id="position-label">Position</label>
+               <label for="crs-title" id="crs-label">Course Title</label>
                 <label for="type" id="type-label">Type of Scholarship</label>
             </div>
             <div id="section4">
-                <input wire:model="course" type="text" name="crs-title" id="crs-title">
+               
                 <select wire:model="term" name="term" id="term">
                     <option value="">School Term</option>
                     <option value="First Semester" >First Semester</option>
@@ -124,7 +76,6 @@
                 <input wire:model="units" type="text" name="units" id="units">
                 <input wire:model="start_date" type="date" name="duration" id="start-date">
                 <input wire:model="end_date" type="date" name="duration" id="end-date">
-                <label for="crs-title" id="crs-label">Course Title</label>
                 <label for="term" id="term-label">School Term</label>
                 <label for="units" id="units-label">Total Units </label>
                 <label for="start-date" id="duration-label">Course Duration</label>

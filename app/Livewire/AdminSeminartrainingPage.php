@@ -6,6 +6,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\SeminarTrainingModel;
 use Livewire\WithPagination;
+use Carbon\Carbon;
 
 #[Layout("layouts.humanResources")]
 class AdminSeminartrainingPage extends Component
@@ -128,7 +129,11 @@ class AdminSeminartrainingPage extends Component
     }
     public function render()
     {
+    
         $trainings = SeminarTrainingModel::paginate(10); // Adjust the number as needed
+      
+   
         return view('livewire.admin-seminartraining-page', ['trainings' => $trainings]);
+      
     }
 }

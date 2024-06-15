@@ -24,11 +24,11 @@
         <h1>OFFICE PERFORMANCE CONTRACT REVIEW</h1>
         <div id="para">
             <p id="main-para">
-                I commit to deliver and agree to be rated on the attainment by the  <u>{{ $department->department_name }}</u> of the following targets in accordance
+                I commit to deliver and agree to be rated on the attainment by the  <u>{{ $opcrs->college_department }}</u> of the following targets in accordance
                 with the measures for the period of <u>{{ $opcrs->start_period }}</u> to <u>{{ $opcrs->end_period }}</u>.
             </p>
             <p id="input-para">
-                <span><u>Dean Name</u></span> <span><u>{{ $opcrs->date_of_filling }}</u></span>
+                <span><u>{{$opcrs->department_head}}</u></span> <span><u>{{ $opcrs->date_of_filling }}</u></span>
             </p>
             <p id="under-para">
                 <span>Dean</span> <span>DATE</span>
@@ -142,9 +142,9 @@
                 <tbody>
                     <tr>
                         <td>{{ $opcrs->date_of_filling }}</td>
-                        <td>{{ $department->department_name }}</td>
-                        <td>HEAD</td>
-                        <td>RATER PROF</td>
+                        <td>{{ $opcrs->college_department }}</td>
+                        <td>{{$opcrs->department_head}}</td>
+                        <td>{{$opcrs->certified_by}}</td>
                     </tr>
                 </tbody>
             </table>

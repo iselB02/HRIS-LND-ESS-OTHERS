@@ -23,16 +23,15 @@ class IPCRModel extends Model
         'discussed_with',
         'discussed_with_date',
         'application_form',
-
+      	'college/department',
+		'cert_date', 
+        'certified_by',
+      	'approved_date',
+        'approved_by',
     ];
 
     protected $table = 'ipcrs';
     protected $primaryKey = 'employee_id';
-
-    // public function scopeSearch($query, $column, $keyword)
-    // {
-    //     return $query->where($column, 'like', '%' . $keyword . '%');
-    // }
 
     use HasFactory;
 }
